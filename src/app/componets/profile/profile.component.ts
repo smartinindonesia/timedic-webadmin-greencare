@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 
@@ -11,11 +11,12 @@ export class ProfileComponent implements OnInit {
 
   user: Object;
 
-  constructor(private authService:AuthService, private router:Router) { }
+  constructor(private authService: AuthService, private router: Router) {
+  }
 
   ngOnInit() {
 
-    this.authService.getProfile().subscribe(profile =>{
+    this.authService.getProfile().subscribe(profile => {
       let time = new Date(profile.dateBirth);
       profile.dateBirth = formatDate(time);
       this.user = profile;
@@ -27,10 +28,10 @@ export class ProfileComponent implements OnInit {
 
     function formatDate(date) {
       var monthNames = [
-        "January", "February", "March",
-        "April", "May", "June", "July",
-        "August", "September", "October",
-        "November", "December"
+        'January', 'February', 'March',
+        'April', 'May', 'June', 'July',
+        'August', 'September', 'October',
+        'November', 'December'
       ];
 
       var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -43,7 +44,7 @@ export class ProfileComponent implements OnInit {
       var dayName = days[d.getDay()];
 
 
-      return  dayName + ', ' + day + ' ' + monthNames[monthIndex] + ' ' + year;
+      return dayName + ', ' + day + ' ' + monthNames[monthIndex] + ' ' + year;
     }
 
     //this.user = this.authService.getProfile();
