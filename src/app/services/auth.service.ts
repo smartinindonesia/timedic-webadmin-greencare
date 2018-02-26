@@ -92,6 +92,7 @@ export class AuthService {
     //return this.http.get('http://localhost:8080/api/users/'+this.user.id, {headers: headers}).map(res=> res.json());
     //return this.http.get('http://167.205.7.227:8080/api/users/'+this.user.id, {headers: headers}).map(res=> res.json());
   }
+
   getPe() {
     let headers = new Headers();
     this.loadToken();
@@ -102,8 +103,6 @@ export class AuthService {
     //return this.http.get('http://localhost:8080/api/users/'+this.user.id, {headers: headers}).map(res=> res.json());
     //return this.http.get('http://167.205.7.227:8080/api/users/'+this.user.id, {headers: headers}).map(res=> res.json());
   }
-
-
 
   storeUserData(token, user) {
     localStorage.setItem('id_token', token);
@@ -127,5 +126,7 @@ export class AuthService {
     localStorage.clear();
   }
 
-
+  getCurrentToken(){
+    return this.authToken;
+  }
 }
