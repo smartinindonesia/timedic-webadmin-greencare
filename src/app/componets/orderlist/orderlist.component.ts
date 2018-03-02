@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {OrderlistService} from '../../services/orderlist.service';
 import {Router} from '@angular/router';
 import {FlashMessagesService} from 'angular2-flash-messages';
@@ -11,20 +11,22 @@ import {FlashMessagesService} from 'angular2-flash-messages';
 
 export class OrderlistComponent implements OnInit {
 
-  orderList : Object;
+  orderList: Object;
 
-  constructor(
-    private orderListService: OrderlistService,
-    private router:Router,
-    private flashMessage:FlashMessagesService) { }
-
-  ngOnInit() {
+  constructor(private orderListService: OrderlistService,
+              private router: Router,
+              private flashMessage: FlashMessagesService) {
   }
 
-  getOrderList(){
+  ngOnInit() {
+    this.getOrderList();
+  }
+
+  getOrderList() {
     this.orderListService.getOderList().subscribe(
-      data =>  {
+      data => {
         this.orderList = data;
+        console.log(data);
       }, error => {
         console.log(error);
         return false;
