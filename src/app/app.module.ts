@@ -22,6 +22,7 @@ import {ClinicComponent} from './componets/clinic/clinic.component';
 import {PatientListComponent} from './componets/patient-list/patient-list.component';
 import {OrderlistComponent} from './componets/orderlist/orderlist.component';
 import {OrderlistService} from './services/orderlist.service';
+import {ProfileService} from './services/profile.service';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -55,7 +56,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule
   ],
-  providers: [ValidateService, AuthService, PatientlistService, OrderlistService, AuthGuard],
+  providers: [ValidateService, AuthService, PatientlistService, OrderlistService, AuthGuard, ProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
