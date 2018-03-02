@@ -9,7 +9,7 @@
         <th>Deskripsi</th>
       </tr>
       <tr *ngFor="let order of orderList;">
-        <td>{{order.expiredTransactionTime}}</td>
+        <td>{{order.expiredTransactionTimeConv}}</td>
         <td>{{order.receiptPath}}</td>
         <td>{{order.predictionPrice}}</td>
         <td>{{order.transactionDescription}}</td>
