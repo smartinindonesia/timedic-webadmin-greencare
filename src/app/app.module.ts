@@ -20,6 +20,8 @@ import {AuthGuard} from './guards/auth.guard';
 import {FooterComponent} from './componets/footer/footer.component';
 import {ClinicComponent} from './componets/clinic/clinic.component';
 import {PatientListComponent} from './componets/patient-list/patient-list.component';
+import {OrderlistComponent} from './componets/orderlist/orderlist.component';
+import {OrderlistService} from './services/orderlist.service';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -28,7 +30,8 @@ const appRoutes: Routes = [
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'clinic', component: ClinicComponent, canActivate: [AuthGuard]},
-  {path: 'patients', component: PatientListComponent, canActivate: [AuthGuard]}
+  {path: 'patients', component: PatientListComponent, canActivate: [AuthGuard]},
+  {path: 'orderlist', component: OrderlistComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -42,7 +45,8 @@ const appRoutes: Routes = [
     ProfileComponent,
     FooterComponent,
     ClinicComponent,
-    PatientListComponent
+    PatientListComponent,
+    OrderlistComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule
   ],
-  providers: [ValidateService, AuthService, PatientlistService, AuthGuard],
+  providers: [ValidateService, AuthService, PatientlistService, OrderlistService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {
