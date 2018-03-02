@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../services/auth.service';
+import {ProfileService} from '../../services/profile.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -11,16 +11,16 @@ export class ProfileComponent implements OnInit {
 
   user: Object;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private profileService: ProfileService, private router: Router) {
   }
 
   ngOnInit() {
+    this.profileService.getProfile().subscribe(profile => {
 
-    this.authService.getProfile().subscribe(profile => {
       let time = new Date(profile.dateBirth);
       profile.dateBirth = formatDate(time);
       this.user = profile;
-      //console.log(profile);
+
     }, err => {
       console.log(err);
       return false;
@@ -43,11 +43,9 @@ export class ProfileComponent implements OnInit {
       var d = new Date(date);
       var dayName = days[d.getDay()];
 
-
       return dayName + ', ' + day + ' ' + monthNames[monthIndex] + ' ' + year;
     }
 
-    //this.user = this.authService.getProfile();
   }
 
 }

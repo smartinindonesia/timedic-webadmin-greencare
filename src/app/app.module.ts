@@ -22,8 +22,7 @@ import {ClinicComponent} from './componets/clinic/clinic.component';
 import {PatientListComponent} from './componets/patient-list/patient-list.component';
 import {OrderlistComponent} from './componets/orderlist/orderlist.component';
 import {OrderlistService} from './services/orderlist.service';
-import {CaregiverlistService} from './services/caregiverlist.service';
-import { CaregiverlistComponent } from './componets/caregiverlist/caregiverlist.component';
+import {ProfileService} from './services/profile.service';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -33,8 +32,7 @@ const appRoutes: Routes = [
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'clinic', component: ClinicComponent, canActivate: [AuthGuard]},
   {path: 'patients', component: PatientListComponent, canActivate: [AuthGuard]},
-  {path: 'orderlist', component: OrderlistComponent, canActivate: [AuthGuard]},
-  {path: 'caregiver', component: CaregiverlistComponent, canActivate: [AuthGuard]}
+  {path: 'orderlist', component: OrderlistComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -49,8 +47,7 @@ const appRoutes: Routes = [
     FooterComponent,
     ClinicComponent,
     PatientListComponent,
-    OrderlistComponent,
-    CaregiverlistComponent
+    OrderlistComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +56,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule
   ],
-  providers: [ValidateService, AuthService, PatientlistService, OrderlistService, CaregiverlistService, AuthGuard],
+  providers: [ValidateService, AuthService, PatientlistService, OrderlistService, AuthGuard, ProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
