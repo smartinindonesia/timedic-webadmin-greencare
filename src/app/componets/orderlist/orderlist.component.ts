@@ -29,8 +29,8 @@ export class OrderlistComponent implements OnInit {
       data => {
         for(var i = 0; i < data.length; i++)
         {
-          var date = new Date(data[i].expiredTransactionTime);
-          data[i]["expiredTransactionTimeConv"] = date.toString();
+          let time = new Date(data[i].expiredTransactionTime);
+          data[i]["expiredTransactionTimeConv"] = formatDate(time);
         }
         this.orderList = data;
         console.log(data);
@@ -39,6 +39,28 @@ export class OrderlistComponent implements OnInit {
         return false;
       }
     );
+
+    function formatDate(date) {
+      var monthNames = [
+        'January', 'February', 'March',
+        'April', 'May', 'June', 'July',
+        'August', 'September', 'October',
+        'November', 'December'
+      ];
+
+      var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+      var day = date.getDate();
+      var monthIndex = date.getMonth();
+      var year = date.getFullYear();
+
+      var d = new Date(date);
+      var dayName = days[d.getDay()];
+      var time = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+
+      return dayName + ', ' + day + ' ' + monthNames[monthIndex] + ' ' + year + ' : ' + time;
+    }
+
   }
 
 

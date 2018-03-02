@@ -43,7 +43,6 @@ export class ProfileComponent implements OnInit {
       var d = new Date(date);
       var dayName = days[d.getDay()];
 
-
       return dayName + ', ' + day + ' ' + monthNames[monthIndex] + ' ' + year;
     }
 
