@@ -13,8 +13,9 @@ export class CaregiverlistComponent implements OnInit {
   careGiverList: Object;
   page: number;
   size: number;
+  registerFeedback: Object;
 
-  constructor(private caregiverList: CaregiverlistService,
+  constructor(private caregiverListSvc: CaregiverlistService,
               private router: Router,
               private flashMessage: FlashMessagesService) {
   }
@@ -38,7 +39,7 @@ export class CaregiverlistComponent implements OnInit {
       'sort': 'ASC',
       'sortField': 'id'
     };
-    this.caregiverList.getCareGivers(param).subscribe(data => {
+    this.caregiverListSvc.getCareGivers(param).subscribe(data => {
       this.careGiverList = data;
       console.log(data);
     }, error => {
@@ -48,7 +49,14 @@ export class CaregiverlistComponent implements OnInit {
   }
 
   addCareGiver(){
-
+    let param;
+    this.caregiverListSvc.registerCareGivers(param).subscribe(data=>{
+      this.registerFeedback = data;
+      console.log(data);
+    }, error => {
+      console.log(error);
+      return false;
+    });
   }
 
 }
