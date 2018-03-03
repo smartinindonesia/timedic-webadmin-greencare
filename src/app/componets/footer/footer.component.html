@@ -1,43 +1,76 @@
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 
 		<ul class="nav menu">
-			<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/dashboard']"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
-			<li class="parent " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-				<a href="#">
+
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a [routerLink]="['/dashboard']"><span class="glyphicon glyphicon-dashboard"></span> Main Menu</a>
+      </li>
+
+      <li class="parent " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+				<a href="/dashboard" >
 					<span class="glyphicon glyphicon-list"></span> Data Pasien <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-1">
 					<li>
 						<a class="" [routerLink]="['/patients']">
-							<span class="glyphicon glyphicon-share-alt"></span> Daftar Pasien
+							<span class="glyphicon glyphicon-share-alt"></span> Data Pasien
 						</a>
 					</li>
 				</ul>
 			</li>
-			<li class="parent " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-				<a href="#">
-					<span class="glyphicon glyphicon-list"></span> Data Klinik <span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
-				</a>
-				<ul class="children collapse" id="sub-item-2">
-					<li>
-						<a class="" [routerLink]="['/clinic']">
-							<span class="glyphicon glyphicon-share-alt"></span> Daftar Klinik
-						</a>
-					</li>
-				</ul>
-			</li>
+
       <li class="parent " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a href="#">
-          <span class="glyphicon glyphicon-list"></span> Data Pemesanan <span data-toggle="collapse" href="#sub-item-3" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+        <a href="/dashboard" >
+          <span class="glyphicon glyphicon-list"></span> Data User <span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
         </a>
-        <ul class="children collapse" id="sub-item-3">
+        <ul class="children collapse" id="sub-item-2">
           <li>
-            <a class="" [routerLink]="['/orderlist']">
-              <span class="glyphicon glyphicon-share-alt"></span> Daftar Order
+            <a class="" [routerLink]="['/users']">
+              <span class="glyphicon glyphicon-share-alt"></span> Data User
             </a>
           </li>
         </ul>
       </li>
+
+      <li class="parent " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+				<a href="/dashboard">
+					<span class="glyphicon glyphicon-list"></span> Data Klinik <span data-toggle="collapse" href="#sub-item-3" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+				</a>
+				<ul class="children collapse" id="sub-item-3">
+					<li>
+						<a class="" [routerLink]="['/clinic']">
+							<span class="glyphicon glyphicon-share-alt"></span> Data Klinik
+						</a>
+					</li>
+				</ul>
+			</li>
+
+      <li class="parent " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a href="/dashboard">
+          <span class="glyphicon glyphicon-list"></span> Data Pemesanan <span data-toggle="collapse" href="#sub-item-4" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+        </a>
+        <ul class="children collapse" id="sub-item-4">
+          <li>
+            <a class="" [routerLink]="['/orderlist']">
+              <span class="glyphicon glyphicon-share-alt"></span> Data Order Masuk
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="parent " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a href="/dashboard">
+          <span class="glyphicon glyphicon-list"></span> Data Perawat <span data-toggle="collapse" href="#sub-item-5" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+        </a>
+        <ul class="children collapse" id="sub-item-5">
+          <li>
+            <a class="" [routerLink]="['/caregivers']">
+              <span class="glyphicon glyphicon-share-alt"></span> Data Perawat
+            </a>
+          </li>
+        </ul>
+      </li>
+
 		</ul>
-		<div class="attribution">Create by <a href="https://timedic.id">TiMedic</a></div>
+  <div class="attribution">Create by <a href="https://timedic.id">TiMedic</a></div>
 	</div><!--/.sidebar-->
