@@ -38,6 +38,18 @@
           </li>
         </ul>
       </li>
+      <li class="parent " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a href="#">
+          <span class="glyphicon glyphicon-list"></span> Perawat <span data-toggle="collapse" href="#sub-item-4" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+        </a>
+        <ul class="children collapse" id="sub-item-4">
+          <li>
+            <a class="" [routerLink]="['/caregiverlist']">
+              <span class="glyphicon glyphicon-share-alt"></span> Daftar Perawat
+            </a>
+          </li>
+        </ul>
+      </li>
 		</ul>
 		<div class="attribution">Create by <a href="https://timedic.id">TiMedic</a></div>
 	</div><!--/.sidebar-->

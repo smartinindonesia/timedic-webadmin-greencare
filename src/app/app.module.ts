@@ -11,6 +11,7 @@ import {RegisterComponent} from './componets/register/register.component';
 import {HomeComponent} from './componets/home/home.component';
 import {DashboardComponent} from './componets/dashboard/dashboard.component';
 import {ProfileComponent} from './componets/profile/profile.component';
+import {CaregiverlistComponent} from './componets/caregiverlist/caregiverlist.component';
 
 import {ValidateService} from './services/validate.service';
 import {AuthService} from './services/auth.service';
@@ -23,6 +24,7 @@ import {PatientListComponent} from './componets/patient-list/patient-list.compon
 import {OrderlistComponent} from './componets/orderlist/orderlist.component';
 import {OrderlistService} from './services/orderlist.service';
 import {ProfileService} from './services/profile.service';
+import {CaregiverlistService} from './services/caregiverlist.service';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -32,7 +34,8 @@ const appRoutes: Routes = [
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'clinic', component: ClinicComponent, canActivate: [AuthGuard]},
   {path: 'patients', component: PatientListComponent, canActivate: [AuthGuard]},
-  {path: 'orderlist', component: OrderlistComponent, canActivate: [AuthGuard]}
+  {path: 'orderlist', component: OrderlistComponent, canActivate: [AuthGuard]},
+  {path: 'caregiverlist', component: CaregiverlistComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -47,7 +50,8 @@ const appRoutes: Routes = [
     FooterComponent,
     ClinicComponent,
     PatientListComponent,
-    OrderlistComponent
+    OrderlistComponent,
+    CaregiverlistComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +60,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule
   ],
-  providers: [ValidateService, AuthService, PatientlistService, OrderlistService, AuthGuard, ProfileService],
+  providers: [ValidateService, AuthService, PatientlistService, OrderlistService, AuthGuard, ProfileService, CaregiverlistService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

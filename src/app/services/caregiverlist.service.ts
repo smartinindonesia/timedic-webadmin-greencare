@@ -9,12 +9,13 @@ export class CaregiverlistService {
 
   constructor(private http: Http) { }
 
-  getCareGivers(params) {
+  getCareGivers(page, sze, srt, srtFld) {
     let headers = new Headers();
     this.loadToken();
     headers.append('Authorization', this.authToken);
-    let strpar = '?page='+params.page+'&size='+params.size+'&sort='+params.sort+'&sortField='+params.sortField;
-    return this.http.get('https://timedic.id:8443/api/caregiverswithpagination'+strpar, {headers: headers}).map(res => res.json());
+    let strpar = '?page='+page+'&size='+sze+'&sort='+srt+'&sortField='+srtFld;
+    console.log(strpar);
+    return this.http.get('https://timedic.id:8443/api/caregiversWithPagination'+strpar, {headers: headers}).map(res => res.json());
   }
 
   registerCareGivers(params){
