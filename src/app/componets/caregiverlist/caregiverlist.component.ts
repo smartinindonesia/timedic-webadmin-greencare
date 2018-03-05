@@ -13,6 +13,7 @@ export class CaregiverlistComponent implements OnInit {
   careGiverList: Object;
   page: number;
   size: number;
+  maxpage: number;
   registerFeedback: Object;
 
   constructor(private caregiverListSvc: CaregiverlistService,
@@ -23,12 +24,22 @@ export class CaregiverlistComponent implements OnInit {
   ngOnInit() {
     this.page = 0;
     this.size = 20;
+    this.maxpage = 10;
     this.getCareGiverList();
   }
 
   onClickNext() {
-    this.page++;
-    this.getCareGiverList();
+    if (this.page < this.maxpage) {
+      this.page++;
+      this.getCareGiverList();
+    }
+  }
+
+  onClickSelectedPage(input){
+    if (input >=0 && input < this.maxpage){
+      this.page = input;
+      this.getCareGiverList();
+    }
   }
 
   onClickPrevious() {

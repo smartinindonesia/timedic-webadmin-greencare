@@ -45,7 +45,7 @@ export class AddcaregiverComponent implements OnInit {
     }
     this.caregiverListSvc.registerCareGivers(caregiver).subscribe(data =>{
       if(data.username != null){
-        this.flashMessage.show('Conratulations, now you are registered as '+data.username+' and please go to log in', {cssClass: 'alert-success', timeout:5000});
+        this.flashMessage.show('Conratulations, now you are registered as '+data.username+' and please log in by android apps', {cssClass: 'alert-success', timeout:5000});
         //console.log("Berhasil Input data");
       }else {
         this.flashMessage.show('Failed Register', {cssClass: 'alert-danger', timeout:5000});

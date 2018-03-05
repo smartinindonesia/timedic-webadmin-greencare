@@ -1,61 +1,60 @@
-<div class="row">
-  <div class="col-md-4">
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+  <div class="row">
+    <ol class="breadcrumb">
+      <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+      <li class="active">Data Perawat / Pendaftaran Perawat</li>
+    </ol>
   </div>
-
-  <div class="col-md-4">
-    <h2 class="page-header">Register Form</h2>
-    <form (submit)="onSubmitClick()" >
-
-      <div class="form-group">
-        <label>Front Name</label>
-        <input type="text" [(ngModel)]="frontName" name="frontName" class="form-control">
-      </div>
-
-      <div class="form-group">
-        <label>Middle Name</label>
-        <input type="text" [(ngModel)]="middleName" name="middleName" class="form-control">
-      </div>
-
-      <div class="form-group">
-        <label>Last Name</label>
-        <input type="text" [(ngModel)]="lastName" name="LastName" class="form-control">
-      </div>
-
-      <div class="form-group">
-        <label>Email</label>
-        <input type="text" [(ngModel)]="email" name="email" class="form-control">
-      </div>
-
-      <div class="form-group">
-        <label>Mobile Phone</label>
-        <input type="text" [(ngModel)]="phoneNumber" name="phoneNumber" class="form-control">
-      </div>
-
-      <div class="form-group">
-        <label>Username</label>
-        <input type="text" [(ngModel)]="username" name="username" class="form-control">
-      </div>
-
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" [(ngModel)]="password" name="password" class="form-control">
-      </div>
-
-      <div class="form-group">
-        <label>Nomor STR</label>
-        <input type="text" [(ngModel)]="registerNurseNumber" name="registerNurseNumber" class="form-control">
-      </div>
-
-      <input type="submit" class="btn btn-primary" value="Submit">
-    </form>
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Pendaftaran Perawat</h1>
+    </div>
   </div>
-
-  <div class="col-md-4">
-
-  </div>
-
-  <div class="col-md-4">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">Form Elements</div>
+        <div class="panel-body">
+          <div class="col-md-12">
+            <form (submit)="onSubmitClick()">
+              <div class="form-group">
+                <label>Front Name</label>
+                <input type="text" [(ngModel)]="frontName" name="frontName" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Middle Name</label>
+                <input type="text" [(ngModel)]="middleName" name="middleName" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" [(ngModel)]="lastName" name="LastName" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="text" [(ngModel)]="email" name="email" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Mobile Phone</label>
+                <input type="text" [(ngModel)]="phoneNumber" name="phoneNumber" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Username</label>
+                <input type="text" [(ngModel)]="username" name="username" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" [(ngModel)]="password" name="password" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Nomor STR</label>
+                <input type="text" [(ngModel)]="registerNurseNumber" name="registerNurseNumber" class="form-control">
+              </div>
+              <input type="submit" class="btn btn-primary" value="Submit">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>
-

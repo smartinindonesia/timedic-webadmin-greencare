@@ -3,7 +3,7 @@
 		<ul class="nav menu">
 			<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/dashboard']"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
 			<li class="parent " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-				<a href="#">
+				<a >
 					<span class="glyphicon glyphicon-list"></span> Data Pasien <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-1">
@@ -15,7 +15,7 @@
 				</ul>
 			</li>
 			<li class="parent " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-				<a href="#">
+				<a >
 					<span class="glyphicon glyphicon-list"></span> Data Klinik <span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-2">
@@ -27,17 +27,35 @@
 				</ul>
 			</li>
       <li class="parent " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a href="#">
+        <a >
           <span class="glyphicon glyphicon-list"></span> Data Pemesanan <span data-toggle="collapse" href="#sub-item-3" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
         </a>
         <ul class="children collapse" id="sub-item-3">
           <li>
             <a class="" [routerLink]="['/orderlist']">
-              <span class="glyphicon glyphicon-share-alt"></span> Daftar Order
+              <span class="glyphicon glyphicon-share-alt"></span> Daftar Pemesanan
             </a>
           </li>
         </ul>
       </li>
+      <li class="parent " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a >
+          <span class="glyphicon glyphicon-list"></span> Data Perawat <span data-toggle="collapse" href="#sub-item-4" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+        </a>
+        <ul class="children collapse" id="sub-item-4">
+          <li>
+            <a class="" [routerLink]="['/caregiverlist']">
+              <span class="glyphicon glyphicon-share-alt"></span> Daftar Perawat
+            </a>
+          </li>
+          <li>
+            <a class="" [routerLink]="['/addcaregiver']">
+              <span class="glyphicon glyphicon-share-alt"></span> Pendaftaran Perawat
+            </a>
+          </li>
+        </ul>
+      </li>
+
 		</ul>
 		<div class="attribution">Create by <a href="https://timedic.id">TiMedic</a></div>
 	</div><!--/.sidebar-->
