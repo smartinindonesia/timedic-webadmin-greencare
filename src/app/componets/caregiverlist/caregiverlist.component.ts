@@ -28,10 +28,14 @@ export class CaregiverlistComponent implements OnInit {
 
   onClickNext() {
     this.page++;
+    this.getCareGiverList();
   }
 
   onClickPrevious() {
-    this.page--;
+    if (this.page >= 0) {
+      this.page--;
+      this.getCareGiverList();
+    }
   }
 
   getCareGiverList() {
