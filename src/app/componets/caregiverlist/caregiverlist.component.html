@@ -20,6 +20,7 @@
               <th>Alamat</th>
               <th>Tanggal Lahir</th>
               <th>Email</th>
+              <th>Aksi</th>
             </tr>
 
             <tr *ngFor="let caregiver of careGiverList;">
@@ -27,12 +28,13 @@
               <td>{{caregiver.address}}</td>
               <td>{{caregiver.dobtext}}</td>
               <td>{{caregiver.email}}</td>
-              <input type="button" value="edit" class="btn btn-outline-success btn-sm" (click)="openModal('editModal',caregiver)"/>
+              <td><input type="button" value="edit" class="btn btn-warning btn-sm" (click)="openModal('editModal',caregiver)"/></td>
               <!--<td><button type="button" value="edit" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#editModal">Edit</button></td>-->
             </tr>
           </table>
-          <div>
+          <div class="pull-right">
             <input type="button" value="<<" class="btn btn-outline-success btn-sm" (click)="onClickPrevious()"/>
+            {{page+1}}/{{maxpage}}
             <input type="button" value=">>" class="btn btn-outline-success btn-sm" (click)="onClickNext()"/>
           </div>
         </div>

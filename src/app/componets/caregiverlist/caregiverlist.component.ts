@@ -50,7 +50,7 @@ export class CaregiverlistComponent implements OnInit {
   }
 
   onClickSelectedPage(input) {
-    if (input >= 0 && input < this.maxpage) {
+    if (input >= 0 && input < (this.maxpage - 1)) {
       this.page = input;
       this.getCareGiverList();
     }
@@ -104,6 +104,7 @@ export class CaregiverlistComponent implements OnInit {
       this.registerFeedback = data;
       console.log(data);
       this.router.navigate(['caregiverlist']);
+      this.flashMessage.show('Berhasil mengubah data perawat!', {cssClass: 'alert-success', timeout: 5000});
     }, error => {
       console.log(error);
       this.router.navigate(['caregiverlist']);
