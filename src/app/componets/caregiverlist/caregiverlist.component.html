@@ -28,7 +28,10 @@
               <td>{{caregiver.address}}</td>
               <td>{{caregiver.dobtext}}</td>
               <td>{{caregiver.email}}</td>
-              <td><input type="button" value="edit" class="btn btn-warning btn-sm" (click)="openModal('editModal',caregiver)"/></td>
+              <td class="btn-group-vertical btn-group-xs">
+                <input type="button" value="Edit" class="btn btn-warning" (click)="openModal('editModal',caregiver)"/>
+                <input type="button" value="Jadwal" class="btn btn-info" (click)="openModal('editModal',caregiver)"/>
+              </td>
               <!--<td><button type="button" value="edit" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#editModal">Edit</button></td>-->
             </tr>
           </table>
