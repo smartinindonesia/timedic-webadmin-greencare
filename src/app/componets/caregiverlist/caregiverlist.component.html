@@ -26,11 +26,11 @@
               <td>{{caregiver.address}}</td>
               <td>{{caregiver.dobtext}}</td>
               <td>{{caregiver.email}}</td>
+              <input type="button" value="edit" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#editModal">
               <!--<td><button type="button" value="edit" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#editModal">Edit</button></td>-->
             </tr>
           </table>
-          <button type="button" value="edit" class="btn btn-outline-success btn-sm" data-toggle="modal"
-                  data-target="#editModal">Edit
+          <button (click)="shg = !shg" type="button" value="edit" class="btn btn-outline-success btn-sm" data-toggle="modal">Edit
           </button>
         </div>
       </div>
@@ -38,6 +38,14 @@
   </div>
 </div>
 
+<app-dialog [(visible)]="shg">
+  <h1>Hello World</h1>
+
+  <button type="button" class="btn btn-primary">Save changes</button>
+  <button (click)="shg = !shg" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</app-dialog>
+
+<!--
 <div id="editModal" class="modal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -47,8 +55,8 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
+      <div class="modal-body" >
+        <p>{{caregiver.frontName}}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary">Save changes</button>
@@ -56,4 +64,6 @@
       </div>
     </div>
   </div>
+
 </div>
+-->

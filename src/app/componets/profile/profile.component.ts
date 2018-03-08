@@ -20,7 +20,6 @@ export class ProfileComponent implements OnInit {
       let time = new Date(profile.dateBirth);
       profile.dateBirth = formatDate(time);
       this.user = profile;
-
     }, err => {
       console.log(err);
       return false;

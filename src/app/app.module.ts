@@ -26,6 +26,7 @@ import {OrderlistService} from './services/orderlist.service';
 import {ProfileService} from './services/profile.service';
 import {CaregiverlistService} from './services/caregiverlist.service';
 import { AddcaregiverComponent } from './componets/addcaregiver/addcaregiver.component';
+import { DialogComponent } from './componets/dialog/dialog.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -54,7 +55,8 @@ const appRoutes: Routes = [
     PatientListComponent,
     OrderlistComponent,
     CaregiverlistComponent,
-    AddcaregiverComponent
+    AddcaregiverComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

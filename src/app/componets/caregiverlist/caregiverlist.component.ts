@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {CaregiverlistService} from '../../services/caregiverlist.service';
 import {Router} from '@angular/router';
 import {FlashMessagesService} from 'angular2-flash-messages';
@@ -15,6 +15,7 @@ export class CaregiverlistComponent implements OnInit {
   size: number;
   maxpage: number;
   registerFeedback: Object;
+  caregiverById: Object;
 
   constructor(private caregiverListSvc: CaregiverlistService,
               private router: Router,
@@ -81,6 +82,11 @@ export class CaregiverlistComponent implements OnInit {
 
       return dayName + ', ' + day + ' ' + monthNames[monthIndex] + ' ' + year + ' : ' + time;
     }
+  }
+
+
+  onItemEdit(){
+
   }
 
   addCareGiver() {
