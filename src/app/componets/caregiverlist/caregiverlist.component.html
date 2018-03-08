@@ -21,6 +21,7 @@
               <th>Tanggal Lahir</th>
               <th>Email</th>
             </tr>
+
             <tr *ngFor="let caregiver of careGiverList;">
               <td>{{caregiver.frontName}} {{caregiver.middleName}} {{caregiver.lastName}}</td>
               <td>{{caregiver.address}}</td>
@@ -30,6 +31,10 @@
               <!--<td><button type="button" value="edit" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#editModal">Edit</button></td>-->
             </tr>
           </table>
+          <div>
+            <input type="button" value="<<" class="btn btn-outline-success btn-sm" (click)="onClickPrevious()"/>
+            <input type="button" value=">>" class="btn btn-outline-success btn-sm" (click)="onClickNext()"/>
+          </div>
         </div>
       </div>
     </div>
