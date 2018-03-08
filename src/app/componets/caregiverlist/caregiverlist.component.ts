@@ -17,7 +17,9 @@ export class CaregiverlistComponent implements OnInit {
   size: number;
   maxpage: number;
   registerFeedback: Object;
-  caregiverById: Object;
+
+  caregiverObj: Object;
+
 
   constructor(private modalService: ModalService, private caregiverListSvc: CaregiverlistService,
               private router: Router,
@@ -31,7 +33,8 @@ export class CaregiverlistComponent implements OnInit {
     this.getCareGiverList();
   }
 
-  openModal(id: string) {
+  openModal(id: string, caregiver: Object) {
+    this.caregiverObj = caregiver;
     this.modalService.open(id);
   }
 
