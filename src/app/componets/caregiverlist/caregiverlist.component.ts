@@ -2,12 +2,14 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {CaregiverlistService} from '../../services/caregiverlist.service';
 import {Router} from '@angular/router';
 import {FlashMessagesService} from 'angular2-flash-messages';
+import {ModalService} from '../../services/modal.service';
 
 @Component({
   selector: 'app-caregiverlist',
   templateUrl: './caregiverlist.component.html',
   styleUrls: ['./caregiverlist.component.css']
 })
+
 export class CaregiverlistComponent implements OnInit {
 
   careGiverList: Object;
@@ -17,7 +19,7 @@ export class CaregiverlistComponent implements OnInit {
   registerFeedback: Object;
   caregiverById: Object;
 
-  constructor(private caregiverListSvc: CaregiverlistService,
+  constructor(private modalService: ModalService, private caregiverListSvc: CaregiverlistService,
               private router: Router,
               private flashMessage: FlashMessagesService) {
   }
@@ -29,6 +31,14 @@ export class CaregiverlistComponent implements OnInit {
     this.getCareGiverList();
   }
 
+  openModal(id: string) {
+    this.modalService.open(id);
+  }
+
+  closeModal(id: string) {
+    this.modalService.close(id);
+  }
+
   onClickNext() {
     if (this.page < this.maxpage) {
       this.page++;
@@ -36,8 +46,8 @@ export class CaregiverlistComponent implements OnInit {
     }
   }
 
-  onClickSelectedPage(input){
-    if (input >=0 && input < this.maxpage){
+  onClickSelectedPage(input) {
+    if (input >= 0 && input < this.maxpage) {
       this.page = input;
       this.getCareGiverList();
     }
@@ -85,7 +95,7 @@ export class CaregiverlistComponent implements OnInit {
   }
 
 
-  onItemEdit(){
+  onItemEdit() {
 
   }
 

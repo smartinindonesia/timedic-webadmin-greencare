@@ -16,6 +16,7 @@ import {animate, Component, EventEmitter, Input, OnInit, Output, style, transiti
     ])
   ]
 })
+
 export class DialogComponent implements OnInit {
 
   @Input() closable = true;

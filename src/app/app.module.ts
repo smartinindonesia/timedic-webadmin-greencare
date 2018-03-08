@@ -17,6 +17,7 @@ import {ValidateService} from './services/validate.service';
 import {AuthService} from './services/auth.service';
 import {PatientlistService} from './services/patientlist.service';
 import {FlashMessagesModule} from 'angular2-flash-messages';
+import {ModalService} from './services/modal.service'
 import {AuthGuard} from './guards/auth.guard';
 import {FooterComponent} from './componets/footer/footer.component';
 import {ClinicComponent} from './componets/clinic/clinic.component';
@@ -27,6 +28,7 @@ import {ProfileService} from './services/profile.service';
 import {CaregiverlistService} from './services/caregiverlist.service';
 import { AddcaregiverComponent } from './componets/addcaregiver/addcaregiver.component';
 import { DialogComponent } from './componets/dialog/dialog.component';
+import { ModalComponent } from './componets/modal/modal.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -56,7 +58,8 @@ const appRoutes: Routes = [
     OrderlistComponent,
     CaregiverlistComponent,
     AddcaregiverComponent,
-    DialogComponent
+    DialogComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule
   ],
-  providers: [ValidateService, AuthService, PatientlistService, OrderlistService, AuthGuard, ProfileService, CaregiverlistService],
+  providers: [ValidateService, AuthService, PatientlistService, OrderlistService, AuthGuard, ProfileService, CaregiverlistService, ModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
