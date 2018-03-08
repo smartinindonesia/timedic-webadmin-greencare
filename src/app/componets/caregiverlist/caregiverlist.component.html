@@ -46,13 +46,28 @@
         <h2 class="modal-title">Edit Perawat</h2>
       </div>
       <div class="modal-body" *ngIf="caregiverObj">
-        <input type="text" value="{{caregiverObj.frontName}} {{caregiverObj.middleName}} {{caregiverObj.lastName}}"/>
-        <input type="text" value="{{caregiverObj.address}}"/>
-        <input type="text" value="{{caregiverObj.dobtext}}"/>
-        <input type="text" value="{{caregiverObj.email}}"/>
+        <div class="panel-body">
+          <div class="col-md-6">
+            <form role="form">
+              <h3>Nama Perawat</h3>
+              <div class="form-group">
+                <label>Nama Depan</label>
+                <input class="form-control" placeholder="Nama Depan" [(ngModel)]="caregiverObj.frontName" name="caregiverObj.frontName" value="{{caregiverObj.frontName}}"/>
+              </div>
+              <div class="form-group">
+                <label>Nama Tengah</label>
+                <input class="form-control" placeholder="Nama Tengah" [(ngModel)]="caregiverObj.middleName" name="caregiverObj.middleName"  value="{{caregiverObj.middleName}}"/>
+              </div>
+              <div class="form-group">
+                <label>Nama Belakang</label>
+                <input class="form-control" placeholder="Nama Belakang" [(ngModel)]="caregiverObj.lastName" name="caregiverObj.lastName"  value="{{caregiverObj.lastName}}"/>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" (click)="onItemEdit()">Save changes</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>

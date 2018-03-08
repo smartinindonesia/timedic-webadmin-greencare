@@ -99,6 +99,15 @@ export class CaregiverlistComponent implements OnInit {
 
 
   onItemEdit() {
+    delete this.caregiverObj['username'];
+    this.caregiverListSvc.editCareGivers(this.caregiverObj).subscribe(data => {
+      this.registerFeedback = data;
+      console.log(data);
+      this.router.navigate(['caregiverlist']);
+    }, error => {
+      console.log(error);
+      this.router.navigate(['caregiverlist']);
+    });
 
   }
 
@@ -107,9 +116,10 @@ export class CaregiverlistComponent implements OnInit {
     this.caregiverListSvc.registerCareGivers(param).subscribe(data => {
       this.registerFeedback = data;
       console.log(data);
+      this.router.navigate(['caregiverlist']);
     }, error => {
       console.log(error);
-      return false;
+      this.router.navigate(['caregiverlist']);
     });
   }
 
