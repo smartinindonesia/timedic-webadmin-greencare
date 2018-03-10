@@ -29,12 +29,17 @@
               <td class="align-middle">{{caregiver.address}}</td>
               <td class="align-middle">{{caregiver.dobtext}}</td>
               <td class="align-middle">{{caregiver.email}}</td>
-              <td class="btn-group-vertical btn-group-xs align-middle">
-                <input [ngClass]="{disabled : (!dist)}" type="button" value="Disetujui" class="btn btn-warning" (click)="openModal('editModal',caregiver)"/>
+              <td>
+                <div class="btn-group-vertical btn-group-xs align-middle">
+                  <input [ngClass]="{disabled : (!dist)}" type="button" value="Disetujui" class="btn btn-warning"
+                         (click)="openModal('editModal',caregiver)"/>
+                </div>
               </td>
-              <td class="btn-group-vertical btn-group-xs align-middle">
-                <input type="button" value="Edit" class="btn btn-warning" (click)="openModal('editModal',caregiver)"/>
-                <input type="button" value="Jadwal" class="btn btn-info" (click)="openModal('editModal',caregiver)"/>
+              <td>
+                <div class="btn-group-vertical btn-group-xs align-middle">
+                  <input type="button" value="Edit" class="btn btn-warning" (click)="openModal('editModal',caregiver)"/>
+                  <input type="button" value="Jadwal" class="btn btn-info" (click)="openModal('editModal',caregiver)"/>
+                </div>
               </td>
             </tr>
           </table>
@@ -65,15 +70,18 @@
               <h3>Nama Perawat</h3>
               <div class="form-group">
                 <label>Nama Depan</label>
-                <input class="form-control" placeholder="Nama Depan" [(ngModel)]="caregiverObj.frontName" name="caregiverObj.frontName" value="{{caregiverObj.frontName}}"/>
+                <input class="form-control" placeholder="Nama Depan" [(ngModel)]="caregiverObj.frontName"
+                       name="caregiverObj.frontName" value="{{caregiverObj.frontName}}"/>
               </div>
               <div class="form-group">
                 <label>Nama Tengah</label>
-                <input class="form-control" placeholder="Nama Tengah" [(ngModel)]="caregiverObj.middleName" name="caregiverObj.middleName"  value="{{caregiverObj.middleName}}"/>
+                <input class="form-control" placeholder="Nama Tengah" [(ngModel)]="caregiverObj.middleName"
+                       name="caregiverObj.middleName" value="{{caregiverObj.middleName}}"/>
               </div>
               <div class="form-group">
                 <label>Nama Belakang</label>
-                <input class="form-control" placeholder="Nama Belakang" [(ngModel)]="caregiverObj.lastName" name="caregiverObj.lastName"  value="{{caregiverObj.lastName}}"/>
+                <input class="form-control" placeholder="Nama Belakang" [(ngModel)]="caregiverObj.lastName"
+                       name="caregiverObj.lastName" value="{{caregiverObj.lastName}}"/>
               </div>
             </form>
           </div>

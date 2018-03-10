@@ -67,10 +67,11 @@ export class CaregiverlistComponent implements OnInit {
 
   getCareGiverList() {
     this.caregiverListSvc.getCareGivers(this.page, this.size, 'ASC', 'id').subscribe(data => {
-      this.careGiverList = data;
       for (var i = 0; i < data.length; i++) {
-        data[i].dobtext = formatDate(new Date(data[i].dateOfBirth));
+        data[0][i].dobtext = formatDate(new Date(data[0][i].dateOfBirth));
       }
+      this.maxpage = data[1].numOfRows;
+      this.careGiverList = data[0];
       console.log(data);
     }, error => {
       console.log(error);

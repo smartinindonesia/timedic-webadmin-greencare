@@ -19,11 +19,11 @@
               <th>Nama Pasien</th>
               <th>Nama Pemesan</th>
               <th>Nomor Telefon</th>
-              <th>Transaksi Berakhir</th>
               <th>Bukti Pembayaran</th>
               <th>Harga Perkiraan</th>
               <th>Deskripsi</th>
               <th>Pintasan</th>
+              <th>Status Transaksi</th>
             </tr>
             <tr *ngFor="let order of orderList;">
               <td>{{order.homecarePatientId.name}}</td>
@@ -31,13 +31,21 @@
                 {{order.homecarePatientId.idAppUser.lastName}}
               </td>
               <td>{{order.homecarePatientId.idAppUser.phoneNumber}}</td>
-              <td>{{order.expiredTransactionTimeConv}}</td>
               <td>{{order.receiptPath}}</td>
               <td>{{order.predictionPrice}}</td>
               <td>{{order.transactionDescription}}</td>
-              <td class="btn-group-vertical btn-group-xs align-middle">
-                <input type="button" value="Assessment" class="btn btn-warning" (click)="goToAssessmentOrder(order)"/>
-                <input type="button" value="Jadwal" class="btn btn-info"/>
+              <td >
+               <div class="btn-group-vertical btn-group-xs align-middle">
+                 <input type="button" value="Assessment" class="btn btn-warning" (click)="goToAssessmentOrder(order)"/>
+                 <input type="button" value="Assign Perawat" class="btn btn-info"/>
+               </div>
+              </td>
+              <td >
+               <div class="btn-group-vertical btn-group-xs align-middle">
+                 <input  type="button" (ngClass)="{disable:(order.idCaregiverStatus.id == 1)}" class="btn btn-warning" value="Approve"/>
+                 <input type="button" (ngClass)="{disable:(order.idCaregiverStatus.id == 2)}" class="btn btn-warning" value="Pending"/>
+                 <input type="button" (ngClass)="{disable:(order.idCaregiverStatus.id == 3)}" class="btn btn-warning" value="Suspend"/>
+               </div>
               </td>
               <!--<td><button type="button" value="edit" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#editModal">Edit</button></td>-->
             </tr>
