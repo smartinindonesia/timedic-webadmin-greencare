@@ -37,8 +37,11 @@
               </td>
               <td>
                 <div class="btn-group-vertical btn-group-xs align-middle">
-                  <input type="button" value="Edit" class="btn btn-warning" (click)="openModal('editModal',caregiver)"/>
                   <input type="button" value="Jadwal" class="btn btn-info" (click)="openModal('editModal',caregiver)"/>
+                </div>
+                <div class="btn-group-vertical btn-group-xs align-middle">
+                  <input type="button" value="Edit" class="btn btn-warning" (click)="openModal('editModal',caregiver)"/>
+                  <input type="button" value="Delete" class="btn btn-danger" (click)="openModal('deleteModal',caregiver)"/>
                 </div>
               </td>
             </tr>
@@ -65,7 +68,7 @@
       </div>
       <div class="modal-body" *ngIf="caregiverObj">
         <div class="panel-body">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <form role="form">
               <h3>Nama Perawat</h3>
               <div class="form-group">
@@ -88,10 +91,35 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="onItemEdit()">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="onItemEdit()">Simpan Perubahan</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
       </div>
     </div>
   </div>
 </modal>
 
+<modal id="deleteModal" class="modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h2 class="modal-title">Hapus Perawat</h2>
+      </div>
+      <div class="modal-body" *ngIf="caregiverObj">
+        <div class="panel-body">
+          <div class="col-md-12">
+            <form role="form">
+              <div><p>Apakah anda benar-benar ingin menghapus user dengan username <b> {{caregiverObj.username}} </b> dari daftar perawat?</p></div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="onItemDelete()">Ya</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+      </div>
+    </div>
+  </div>
+</modal>

@@ -100,6 +100,19 @@ export class CaregiverlistComponent implements OnInit {
     }
   }
 
+  onItemDelete(){
+    this.caregiverListSvc.deleteCareGiver(this.caregiverObj).subscribe(data => {
+      this.registerFeedback = data;
+      console.log(data);
+      this.flashMessage.show('Berhasil menghapus data perawat!', {cssClass: 'alert-success', timeout: 5000});
+      this.getCareGiverList();
+      this.router.navigate(['caregiverlist']);
+    }, error => {
+      console.log(error);
+      this.getCareGiverList();
+      this.router.navigate(['caregiverlist']);
+    });
+  }
 
   onItemEdit() {
     delete this.caregiverObj['username'];
