@@ -8,13 +8,13 @@ import {DatatransferService} from '../../services/datatransfer.service';
 })
 export class AssessmentorderComponent implements OnInit {
 
-  dataTransfer: Object;
+  orderObject: Object;
 
   constructor(private dataTransferService: DatatransferService) {
   }
 
   ngOnInit() {
-    this.dataTransfer = this.dataTransferService.getDataTransfer();
+    this.orderObject = this.dataTransferService.getDataTransfer();
   }
 
 }
