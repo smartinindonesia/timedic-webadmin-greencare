@@ -1,0 +1,81 @@
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" *ngIf="orderObject">
+  <div class="row">
+    <ol class="breadcrumb">
+      <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+      <li class="active">Data Perawat / Daftar Perawat / Order Perawat</li>
+    </ol>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Data Perawat Tersedia</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <table class="table table-hover">
+
+            <tr>
+              <td class="align-middle">Nama Pasien</td>
+              <td class="align-middle">{{orderObject.homecarePatientId.name}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Nama Pemesan</td>
+              <td class="align-middle">{{orderObject.homecarePatientId.idAppUser.frontName}} {{orderObject.homecarePatientId.idAppUser.middleName}} {{orderObject.homecarePatientId.idAppUser.lastName}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Kontak</td>
+              <td class="align-middle">{{orderObject.homecarePatientId.idAppUser.phoneNumber}}</td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-8">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Daftar Perawat</div>
+        <div class="panel-body">
+          <table class="table table-hover">
+            <tr class="table-info">
+              <th>Nama Perawat</th>
+              <th>Surat Tanda Registrasi</th>
+            </tr>
+
+            <tr *ngFor="let record of orderObject.homecareTransactionCaregiverlistList;">
+              <td class="align-middle">{{record.caregiverName}}</td>
+              <td class="align-middle">{{record.registerNurseNumber}}</td>
+            </tr>
+          </table>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">Perawat Terpilih</div>
+        <div class="panel-body">
+          <table class="table table-hover">
+            <tr class="table-info">
+              <th>Nama Perawat</th>
+              <th>Surat Tanda Registrasi</th>
+            </tr>
+
+            <tr *ngFor="let record of orderObject.homecareTransactionCaregiverlistList;">
+              <td class="align-middle">{{record.caregiverName}}</td>
+              <td class="align-middle">{{record.registerNurseNumber}}</td>
+            </tr>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
