@@ -31,6 +31,25 @@ export class OrderlistComponent implements OnInit {
     this.router.navigate(['assessmentorder']);
   }
 
+  updateOrder(orders: Object, type: number) {
+    console.log('Order ' + orders['transactionStatusId']['id']);
+    let updateparams = null;
+      updateparams = {
+        'id': orders['id'],
+        'transactionStatusId': {
+          'id':orders['transactionStatusId']['id']
+        }
+    }
+    this.orderListService.updateOrder(updateparams).subscribe(
+      data => {
+        this.router.navigate(['orderlist']);
+      }, error => {
+        this.router.navigate(['orderlist']);
+        console.log(error);
+      }
+    );
+  }
+
   getOrderList() {
     this.orderListService.getOderList().subscribe(
       data => {

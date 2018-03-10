@@ -34,18 +34,21 @@
               <td>{{order.receiptPath}}</td>
               <td>{{order.predictionPrice}}</td>
               <td>{{order.transactionDescription}}</td>
-              <td >
-               <div class="btn-group-vertical btn-group-xs align-middle">
-                 <input type="button" value="Assessment" class="btn btn-warning" (click)="goToAssessmentOrder(order)"/>
-                 <input type="button" value="Assign Perawat" class="btn btn-info"/>
-               </div>
+              <td>
+                <div class="btn-group-vertical btn-group-xs align-middle">
+                  <input type="button" value="Assessment" class="btn btn-warning" (click)="goToAssessmentOrder(order)"/>
+                  <input type="button" value="Assign Perawat" class="btn btn-info"/>
+                </div>
               </td>
-              <td >
-               <div class="btn-group-vertical btn-group-xs align-middle">
-                 <input  type="button" (ngClass)="{disable:(order.idCaregiverStatus.id == 1)}" class="btn btn-warning" value="Approve"/>
-                 <input type="button" (ngClass)="{disable:(order.idCaregiverStatus.id == 2)}" class="btn btn-warning" value="Pending"/>
-                 <input type="button" (ngClass)="{disable:(order.idCaregiverStatus.id == 3)}" class="btn btn-warning" value="Suspend"/>
-               </div>
+              <td>
+                <div class="btn-group-vertical btn-group-xs align-middle">
+                  <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 1)}" class="btn btn-success"
+                         value="Approve" (click)="updateOrder(order,1)"/>
+                  <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 2)}" class="btn btn-warning"
+                         value="Pending" (click)="updateOrder(order,2)"/>
+                  <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 3)}" class="btn btn-danger"
+                         value="Suspend" (click)="updateOrder(order,3)"/>
+                </div>
               </td>
               <!--<td><button type="button" value="edit" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#editModal">Edit</button></td>-->
             </tr>

@@ -20,7 +20,7 @@ export class OrderlistService {
     return this.http.get('https://timedic.id:8443/api/transactions/homecare/' , {headers: headers}).map(res => res.json());
   }
 
-  addCaregiver(input){
+  updateOrder(input){
     let headers = new Headers();
     this.loadToken();
     headers.append('Authorization', this.authToken);
