@@ -31,6 +31,7 @@ import {AddcaregiverComponent} from './componets/addcaregiver/addcaregiver.compo
 import {DialogComponent} from './componets/dialog/dialog.component';
 import {ModalComponent} from './componets/modal/modal.component';
 import {AssessmentorderComponent} from './componets/assessmentorder/assessmentorder.component';
+import { AssignperawatComponent } from './componets/assignperawat/assignperawat.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
   {path: 'orderlist', component: OrderlistComponent, canActivate: [AuthGuard]},
   {path: 'caregiverlist', component: CaregiverlistComponent, canActivate: [AuthGuard]},
   {path: 'addcaregiver', component: AddcaregiverComponent, canActivate: [AuthGuard]},
-  {path: 'assessmentorder', component: AssessmentorderComponent, canActivate: [AuthGuard]}
+  {path: 'assessmentorder', component: AssessmentorderComponent, canActivate: [AuthGuard]},
+  {path: 'assigncaregiver', component: AssignperawatComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -63,7 +65,8 @@ const appRoutes: Routes = [
     AddcaregiverComponent,
     DialogComponent,
     ModalComponent,
-    AssessmentorderComponent
+    AssessmentorderComponent,
+    AssignperawatComponent
   ],
   imports: [
     BrowserModule,

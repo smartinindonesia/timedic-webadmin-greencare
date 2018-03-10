@@ -20,11 +20,11 @@ export class OrderlistService {
     return this.http.get('https://timedic.id:8443/api/transactions/homecare/' , {headers: headers}).map(res => res.json());
   }
 
-  updateOrder(input){
+  updateOrder(input, id){
     let headers = new Headers();
     this.loadToken();
     headers.append('Authorization', this.authToken);
-    return this.http.put('https://timedic.id:8443/api/transactions/homecare/', input,{headers: headers}).map(res => res.json());
+    return this.http.put('https://timedic.id:8443/api/transactions/homecare/'+id, input,{headers: headers}).map(res => res.json());
   }
 
   loadToken() {

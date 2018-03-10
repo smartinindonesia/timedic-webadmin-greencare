@@ -33,21 +33,25 @@ export class OrderlistComponent implements OnInit {
 
   updateOrder(orders: Object, type: number) {
     console.log('Order ' + orders['transactionStatusId']['id']);
-    let updateparams = null;
-      updateparams = {
-        'id': orders['id'],
-        'transactionStatusId': {
-          'id':orders['transactionStatusId']['id']
-        }
-    }
-    this.orderListService.updateOrder(updateparams).subscribe(
+    let updateparams = {
+      "transactionStatusId": {
+        "id": type
+      }
+    };
+    this.orderListService.updateOrder(updateparams, orders['id']).subscribe(
       data => {
+        this.getOrderList();
         this.router.navigate(['orderlist']);
       }, error => {
+        this.getOrderList();
         this.router.navigate(['orderlist']);
-        console.log(error);
       }
     );
+  }
+
+  assignCaregiver(myorder:Object){
+    this.dataTransferService.setDataTransfer(myorder);
+    this.router.navigate(['assigncaregiver'])
   }
 
   getOrderList() {
