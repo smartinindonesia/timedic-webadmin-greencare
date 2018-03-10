@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {OrderlistService} from '../../services/orderlist.service';
-import {Router} from '@angular/router';
+import {Data, Router} from '@angular/router';
 import {FlashMessagesService} from 'angular2-flash-messages';
+import {DatatransferService} from '../../services/datatransfer.service';
 import {log} from 'util';
 import {forEach} from '@angular/router/src/utils/collection';
 
@@ -15,7 +16,8 @@ export class OrderlistComponent implements OnInit {
 
   orderList: Object;
 
-  constructor(private orderListService: OrderlistService,
+  constructor(private dataTransferService: DatatransferService,
+              private orderListService: OrderlistService,
               private router: Router,
               private flashMessage: FlashMessagesService) {
   }
@@ -24,13 +26,17 @@ export class OrderlistComponent implements OnInit {
     this.getOrderList();
   }
 
+  goToAssessmentOrder(data: Object) {
+    this.dataTransferService.setDataTransfer(data);
+    this.router.navigate(['assessmentorder']);
+  }
+
   getOrderList() {
     this.orderListService.getOderList().subscribe(
       data => {
-        for(var i = 0; i < data.length; i++)
-        {
+        for (var i = 0; i < data.length; i++) {
           let time = new Date(data[i].expiredTransactionTime);
-          data[i]["expiredTransactionTimeConv"] = formatDate(time);
+          data[i]['expiredTransactionTimeConv'] = formatDate(time);
         }
         this.orderList = data;
         console.log(data);

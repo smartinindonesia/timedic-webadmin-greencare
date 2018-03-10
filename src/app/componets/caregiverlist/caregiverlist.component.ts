@@ -19,6 +19,7 @@ export class CaregiverlistComponent implements OnInit {
   registerFeedback: Object;
 
   caregiverObj: Object;
+  dist:boolean;
 
 
   constructor(private modalService: ModalService, private caregiverListSvc: CaregiverlistService,
@@ -31,6 +32,7 @@ export class CaregiverlistComponent implements OnInit {
     this.size = 20;
     this.maxpage = 10;
     this.getCareGiverList();
+    this.dist = false;
   }
 
   openModal(id: string, caregiver: Object) {

@@ -18,6 +18,7 @@ import {AuthService} from './services/auth.service';
 import {PatientlistService} from './services/patientlist.service';
 import {FlashMessagesModule} from 'angular2-flash-messages';
 import {ModalService} from './services/modal.service'
+import {DatatransferService} from './services/datatransfer.service';
 import {AuthGuard} from './guards/auth.guard';
 import {FooterComponent} from './componets/footer/footer.component';
 import {ClinicComponent} from './componets/clinic/clinic.component';
@@ -26,9 +27,10 @@ import {OrderlistComponent} from './componets/orderlist/orderlist.component';
 import {OrderlistService} from './services/orderlist.service';
 import {ProfileService} from './services/profile.service';
 import {CaregiverlistService} from './services/caregiverlist.service';
-import { AddcaregiverComponent } from './componets/addcaregiver/addcaregiver.component';
-import { DialogComponent } from './componets/dialog/dialog.component';
-import { ModalComponent } from './componets/modal/modal.component';
+import {AddcaregiverComponent} from './componets/addcaregiver/addcaregiver.component';
+import {DialogComponent} from './componets/dialog/dialog.component';
+import {ModalComponent} from './componets/modal/modal.component';
+import {AssessmentorderComponent} from './componets/assessmentorder/assessmentorder.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -40,7 +42,8 @@ const appRoutes: Routes = [
   {path: 'patients', component: PatientListComponent, canActivate: [AuthGuard]},
   {path: 'orderlist', component: OrderlistComponent, canActivate: [AuthGuard]},
   {path: 'caregiverlist', component: CaregiverlistComponent, canActivate: [AuthGuard]},
-  {path: 'addcaregiver', component: AddcaregiverComponent, canActivate: [AuthGuard]}
+  {path: 'addcaregiver', component: AddcaregiverComponent, canActivate: [AuthGuard]},
+  {path: 'assessmentorder', component: AssessmentorderComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -59,7 +62,8 @@ const appRoutes: Routes = [
     CaregiverlistComponent,
     AddcaregiverComponent,
     DialogComponent,
-    ModalComponent
+    ModalComponent,
+    AssessmentorderComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +72,17 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule
   ],
-  providers: [ValidateService, AuthService, PatientlistService, OrderlistService, AuthGuard, ProfileService, CaregiverlistService, ModalService],
+  providers: [
+    ValidateService,
+    AuthService,
+    PatientlistService,
+    OrderlistService,
+    AuthGuard,
+    ProfileService,
+    CaregiverlistService,
+    ModalService,
+    DatatransferService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

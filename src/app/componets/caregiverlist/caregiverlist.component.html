@@ -20,19 +20,22 @@
               <th>Alamat</th>
               <th>Tanggal Lahir</th>
               <th>Email</th>
+              <th>Status</th>
               <th>Aksi</th>
             </tr>
 
             <tr *ngFor="let caregiver of careGiverList;">
-              <td>{{caregiver.frontName}} {{caregiver.middleName}} {{caregiver.lastName}}</td>
-              <td>{{caregiver.address}}</td>
-              <td>{{caregiver.dobtext}}</td>
-              <td>{{caregiver.email}}</td>
-              <td class="btn-group-vertical btn-group-xs">
+              <td class="align-middle">{{caregiver.frontName}} {{caregiver.middleName}} {{caregiver.lastName}}</td>
+              <td class="align-middle">{{caregiver.address}}</td>
+              <td class="align-middle">{{caregiver.dobtext}}</td>
+              <td class="align-middle">{{caregiver.email}}</td>
+              <td class="btn-group-vertical btn-group-xs align-middle">
+                <input [ngClass]="{disabled : (!dist)}" type="button" value="Disetujui" class="btn btn-warning" (click)="openModal('editModal',caregiver)"/>
+              </td>
+              <td class="btn-group-vertical btn-group-xs align-middle">
                 <input type="button" value="Edit" class="btn btn-warning" (click)="openModal('editModal',caregiver)"/>
                 <input type="button" value="Jadwal" class="btn btn-info" (click)="openModal('editModal',caregiver)"/>
               </td>
-              <!--<td><button type="button" value="edit" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#editModal">Edit</button></td>-->
             </tr>
           </table>
           <div class="pull-right">

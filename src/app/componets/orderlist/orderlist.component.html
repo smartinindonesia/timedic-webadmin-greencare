@@ -16,16 +16,29 @@
         <div class="panel-body">
           <table class="table table-hover">
             <tr class="table-info">
+              <th>Nama Pasien</th>
+              <th>Nama Pemesan</th>
+              <th>Nomor Telefon</th>
               <th>Transaksi Berakhir</th>
               <th>Bukti Pembayaran</th>
               <th>Harga Perkiraan</th>
               <th>Deskripsi</th>
+              <th>Pintasan</th>
             </tr>
             <tr *ngFor="let order of orderList;">
+              <td>{{order.homecarePatientId.name}}</td>
+              <td>{{order.homecarePatientId.idAppUser.frontName}} {{order.homecarePatientId.idAppUser.middleName}}
+                {{order.homecarePatientId.idAppUser.lastName}}
+              </td>
+              <td>{{order.homecarePatientId.idAppUser.phoneNumber}}</td>
               <td>{{order.expiredTransactionTimeConv}}</td>
               <td>{{order.receiptPath}}</td>
               <td>{{order.predictionPrice}}</td>
               <td>{{order.transactionDescription}}</td>
+              <td class="btn-group-vertical btn-group-xs align-middle">
+                <input type="button" value="Assessment" class="btn btn-warning" (click)="goToAssessmentOrder(order)"/>
+                <input type="button" value="Jadwal" class="btn btn-info"/>
+              </td>
               <!--<td><button type="button" value="edit" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#editModal">Edit</button></td>-->
             </tr>
           </table>
