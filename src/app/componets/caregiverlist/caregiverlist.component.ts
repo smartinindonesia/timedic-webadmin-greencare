@@ -13,24 +13,23 @@ import {ModalService} from '../../services/modal.service';
 export class CaregiverlistComponent implements OnInit {
 
   careGiverList: Object;
-  page: number;
-  size: number;
-  maxpage: number;
+  page: number; //current page number
+  size: number; //number of item per page
+  maxpage: number; //maximum page of table view
   registerFeedback: Object;
 
   caregiverObj: Object;
-  dist:boolean;
+  dist: boolean;
 
-
-  constructor(private modalService: ModalService, private caregiverListSvc: CaregiverlistService,
+  constructor(private modalService: ModalService,
+              private caregiverListSvc: CaregiverlistService,
               private router: Router,
               private flashMessage: FlashMessagesService) {
   }
 
   ngOnInit() {
     this.page = 0;
-    this.size = 20;
-    this.maxpage = 10;
+    this.size = 2;
     this.getCareGiverList();
     this.dist = false;
   }
@@ -45,21 +44,21 @@ export class CaregiverlistComponent implements OnInit {
   }
 
   onClickNext() {
-    if (this.page < this.maxpage) {
+    if (this.page < (this.maxpage - 1)) {
       this.page++;
       this.getCareGiverList();
     }
   }
 
   onClickSelectedPage(input) {
-    if (input >= 0 && input < (this.maxpage - 1)) {
+    if (input > 0 && input < (this.maxpage - 1)) {
       this.page = input;
       this.getCareGiverList();
     }
   }
 
   onClickPrevious() {
-    if (this.page >= 0) {
+    if (this.page > 0) {
       this.page--;
       this.getCareGiverList();
     }
@@ -67,10 +66,10 @@ export class CaregiverlistComponent implements OnInit {
 
   getCareGiverList() {
     this.caregiverListSvc.getCareGivers(this.page, this.size, 'ASC', 'id').subscribe(data => {
-      for (var i = 0; i < data.length; i++) {
+      for (var i = 0; i < data[0].length; i++) {
         data[0][i].dobtext = formatDate(new Date(data[0][i].dateOfBirth));
       }
-      this.maxpage = data[1].numOfRows;
+      this.maxpage = Math.ceil(data[1].numOfRows / this.size);
       this.careGiverList = data[0];
       console.log(data);
     }, error => {
@@ -100,7 +99,7 @@ export class CaregiverlistComponent implements OnInit {
     }
   }
 
-  onItemDelete(){
+  onItemDelete() {
     this.caregiverListSvc.deleteCareGiver(this.caregiverObj).subscribe(data => {
       this.registerFeedback = data;
       console.log(data);
