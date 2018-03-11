@@ -3,6 +3,7 @@ import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import 'rxjs/add/operator/catch';
+import {DatatransferService} from '../../services/datatransfer.service';
 
 @Component({
   selector: 'app-login',

@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {ProfileService} from '../../services/profile.service';
 import {Router} from '@angular/router';
 import {FlashMessagesService} from 'angular2-flash-messages';
+import {DatatransferService} from '../../services/datatransfer.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +11,11 @@ import {FlashMessagesService} from 'angular2-flash-messages';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  @Input()
   user: Object;
 
   constructor(private authService: AuthService,
-              private profileService: ProfileService,
+              private data: DatatransferService,
               private router: Router,
               private flashMessage: FlashMessagesService) {
   }
@@ -22,9 +24,9 @@ export class NavbarComponent implements OnInit {
     this.getProfile();
   }
 
-  getProfile(){
+  getProfile() {
     this.user = this.authService.getUserData();
-    console.log(this.user + "PROFILE");
+    console.log(this.user + 'PROFILE');
   }
 
   onLogoutClick() {

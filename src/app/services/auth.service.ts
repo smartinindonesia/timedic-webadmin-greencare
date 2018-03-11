@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 import {tokenNotExpired} from 'angular2-jwt';
 import * as CryptoJS from 'crypto-js';
 import {Observable} from 'rxjs/Observable';
+import {DatatransferService} from './datatransfer.service';
 
 @Injectable()
 export class AuthService {
@@ -13,7 +14,7 @@ export class AuthService {
   authToken: any;
   user: any;
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private data:DatatransferService) {
   }
 
   registerUser(user) {
@@ -68,12 +69,13 @@ export class AuthService {
   storeUserData(token, user) {
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));
+    this.data.publish(user);
     this.authToken = token;
     this.user = user;
   }
 
   getUserData() {
-    return localStorage.getItem('user');
+    return JSON.parse(localStorage.getItem('user'));
   }
 
   loadToken() {
