@@ -11,6 +11,7 @@ import {FlashMessagesService} from 'angular2-flash-messages';
 })
 export class NavbarComponent implements OnInit {
   user: Object;
+
   constructor(private authService: AuthService,
               private profileService: ProfileService,
               private router: Router,
@@ -18,36 +19,12 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.profileService.getProfile().subscribe(profile => {
+    this.getProfile();
+  }
 
-      let time = new Date(profile.dateBirth);
-      profile.dateBirth = formatDate(time);
-      this.user = profile;
-
-    }, err => {
-      console.log(err);
-      return false;
-    });
-
-    function formatDate(date) {
-      var monthNames = [
-        'January', 'February', 'March',
-        'April', 'May', 'June', 'July',
-        'August', 'September', 'October',
-        'November', 'December'
-      ];
-
-      var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-      var day = date.getDate();
-      var monthIndex = date.getMonth();
-      var year = date.getFullYear();
-
-      var d = new Date(date);
-      var dayName = days[d.getDay()];
-
-      return dayName + ', ' + day + ' ' + monthNames[monthIndex] + ' ' + year;
-    }
+  getProfile(){
+    this.user = this.authService.getUserData();
+    console.log(this.user + "PROFILE");
   }
 
   onLogoutClick() {

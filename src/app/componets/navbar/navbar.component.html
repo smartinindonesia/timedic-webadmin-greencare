@@ -9,8 +9,8 @@
 				</button>
 				<a class="navbar-brand" [routerLink]="['/dashboard']"><span>TiMedic </span>Admin</a>
 				<ul class="user-menu">
-					<li  class="dropdown pull-right" *ngIf="authService.loggedIn() && user" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user" ></span> &nbsp;{{user.username}} <span class="caret"></span></a>
+					<li class="dropdown pull-right" *ngIf="authService.loggedIn() && user" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> {{user.username}}&nbsp;<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a [routerLink]="['/profile']"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
 							<li><a href="#" (click)="onLogoutClick()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>

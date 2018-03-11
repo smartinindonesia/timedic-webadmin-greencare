@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 
 @Injectable()
@@ -7,7 +7,8 @@ export class ProfileService {
   authToken: any;
   user: any;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+  }
 
   getProfile() {
     let headers = new Headers();
@@ -22,9 +23,12 @@ export class ProfileService {
     this.authToken = token;
   }
 
-  loadUser(){
+  loadUser() {
     const user = localStorage.getItem('user');
     this.user = JSON.parse(user);
   }
 
+  getUser(){
+    return this.user;
+  }
 }

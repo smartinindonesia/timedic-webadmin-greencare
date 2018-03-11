@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     this.authService.authenticateUserTimedic(user).subscribe(data =>  {
       //console.log(data);
       this.authService.storeUserData(data.token, data.user);
-      this.flashMessage.show('Login Successful', {cssClass: 'alert-success', timeout: 5000});
+      //this.flashMessage.show('Login Successful', {cssClass: 'alert-success', timeout: 5000});
       this.router.navigate(['dashboard']);
     }, error => {
       //console.log(error.status);

@@ -1,12 +1,17 @@
 <app-navbar></app-navbar>
 
-<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" *ngIf="authService.loggedIn()">
-  <flash-messages></flash-messages>
-</div>
-<div *ngIf="!authService.loggedIn()">
-  <flash-messages></flash-messages>
+
+<div *ngIf="authService.loggedIn();">
+  <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <flash-messages></flash-messages>
+  </div>
 </div>
 
+  <div>
+    <flash-messages></flash-messages>
+  </div>
+
 <router-outlet></router-outlet>
+
 <app-footer *ngIf="authService.loggedIn()"></app-footer>
 

@@ -59,35 +59,39 @@ export class AuthService {
 
   authenticateUserTimedic(user): Observable<any> {
 
-      var body = 'username=' + user.username + '&password=' + this.encryptedText(user.password);
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/x-www-form-urlencoded');
-      return this.http.post('https://timedic.id:8443/authenticate/user', body, {headers: headers}).map(res => res.json());
+    var body = 'username=' + user.username + '&password=' + this.encryptedText(user.password);
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    return this.http.post('https://timedic.id:8443/authenticate/user', body, {headers: headers}).map(res => res.json());
   }
 
   storeUserData(token, user) {
-      localStorage.setItem('id_token', token);
-      localStorage.setItem('user', JSON.stringify(user));
-      this.authToken = token;
-      this.user = user;
+    localStorage.setItem('id_token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+    this.authToken = token;
+    this.user = user;
+  }
+
+  getUserData() {
+    return localStorage.getItem('user');
   }
 
   loadToken() {
-      const token = localStorage.getItem('id_token');
-      this.authToken = token;
+    const token = localStorage.getItem('id_token');
+    this.authToken = token;
   }
 
   loggedIn() {
-      return tokenNotExpired();
+    return tokenNotExpired();
   }
 
   logout() {
-      this.authToken = null;
-      this.user = null;
-      localStorage.clear();
+    this.authToken = null;
+    this.user = null;
+    localStorage.clear();
   }
 
-  getCurrentToken(){
+  getCurrentToken() {
     return this.authToken;
   }
 }
