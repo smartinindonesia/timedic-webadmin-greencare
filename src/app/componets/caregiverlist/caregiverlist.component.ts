@@ -52,7 +52,7 @@ export class CaregiverlistComponent implements OnInit {
 
   onClickSelectedPage(input) {
     if (input > 0 && input < (this.maxpage - 1)) {
-      this.page = input;
+      this.page = input - 1;
       this.getCareGiverList();
     }
   }
