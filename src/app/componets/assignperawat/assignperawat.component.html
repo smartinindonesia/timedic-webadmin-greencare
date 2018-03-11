@@ -23,7 +23,10 @@
 
             <tr>
               <td class="align-middle">Nama Pemesan</td>
-              <td class="align-middle">{{orderObject.homecarePatientId.idAppUser.frontName}} {{orderObject.homecarePatientId.idAppUser.middleName}} {{orderObject.homecarePatientId.idAppUser.lastName}}</td>
+              <td class="align-middle">{{orderObject.homecarePatientId.idAppUser.frontName}}
+                {{orderObject.homecarePatientId.idAppUser.middleName}}
+                {{orderObject.homecarePatientId.idAppUser.lastName}}
+              </td>
             </tr>
 
             <tr>
@@ -47,14 +50,16 @@
             <tr class="table-info">
               <th>Nama Perawat</th>
               <th>Surat Tanda Registrasi</th>
+              <th>Ceklist</th>
             </tr>
 
             <tr *ngFor="let record of orderObject.homecareTransactionCaregiverlistList;">
               <td class="align-middle">{{record.caregiverName}}</td>
               <td class="align-middle">{{record.registerNurseNumber}}</td>
+              <td class="align-middle"><input type="checkbox"/></td>
             </tr>
           </table>
-
+          <input type="button" value="Submit Perawat">
         </div>
       </div>
     </div>
