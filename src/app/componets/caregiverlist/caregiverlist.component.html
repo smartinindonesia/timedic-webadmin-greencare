@@ -34,7 +34,7 @@
                   <input type="button" [ngClass]="{disabled:(caregiver.idCaregiverStatus.id == 1)}" class="btn btn-success"
                          value="Approve" (click)="onItemEditStatus(caregiver,1)"/>
                   <input type="button" [ngClass]="{disabled:(caregiver.idCaregiverStatus.id == 2)}" class="btn btn-warning"
-                         value="Pending" (click)="onItemEditStatus(order,2)"/>
+                         value="Pending" (click)="onItemEditStatus(caregiver,2)"/>
                   <input type="button" [ngClass]="{disabled:(caregiver.idCaregiverStatus.id == 3)}" class="btn btn-danger"
                          value="Suspend" (click)="onItemEditStatus(caregiver,3)"/>
                 </div>

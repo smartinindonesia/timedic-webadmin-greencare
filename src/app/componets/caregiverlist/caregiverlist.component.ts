@@ -144,6 +144,7 @@ export class CaregiverlistComponent implements OnInit {
     }, error => {
       console.log(error);
       this.router.navigate(['caregiverlist']);
+      this.flashMessage.show('Berhasil mengubah data perawat!', {cssClass: 'alert-danger', timeout: 5000});
     });
   }
 
