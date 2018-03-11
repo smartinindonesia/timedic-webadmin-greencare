@@ -73,7 +73,9 @@ export class AuthService {
   }
 
   getUserData() {
-    return localStorage.getItem('user');
+    let users = JSON.parse(localStorage.getItem('user'));
+    this.user = users;
+    return this.user;
   }
 
   loadToken() {
