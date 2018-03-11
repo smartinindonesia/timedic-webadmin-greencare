@@ -1,19 +1,6 @@
-<div *ngIf="!authService.getUserData();">
-  <app-navbar></app-navbar>
-</div>
-
-<div *ngIf="authService.loggedIn();">
-  <app-navbar></app-navbar>
-  <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-    <flash-messages></flash-messages>
-  </div>
-</div>
-
-  <div>
-    <flash-messages></flash-messages>
-  </div>
-
+<app-navbar *ngIf="!authService.getUserData();"></app-navbar>
+<app-navbar *ngIf="authService.loggedIn();"></app-navbar>
+<flash-messages *ngIf="authService.loggedIn();" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main"></flash-messages>
+<flash-messages></flash-messages>
 <router-outlet></router-outlet>
-
 <app-footer *ngIf="authService.loggedIn()"></app-footer>
-

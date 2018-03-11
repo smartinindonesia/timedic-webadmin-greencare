@@ -2,21 +2,51 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title>TiMedic Client Web Admin</title>
-  <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
-<link href="./assets/css/datepicker3.css" rel="stylesheet">
-<link href="./assets/css/styles.css" rel="stylesheet">
-  <base href="/">
+	<meta charset="utf-8">
+	<title>TiMedic Client Web Admin</title>
+	<link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="./assets/css/datepicker3.css" rel="stylesheet">
+	<link href="./assets/css/styles.css" rel="stylesheet">
+	<base href="/">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="favicon.png">
+	<!--<link rel="icon" type="image/x-icon" href="favicon.png"> -->
+	<style>
+		.loader {
+			border: 16px solid #f3f3f3;
+			border-radius: 50%;
+			border-top: 16px solid #3498db;
+			width: 120px;
+			height: 120px;
+			-webkit-animation: spin 2s linear infinite;
+			/* Safari */
+			animation: spin 2s linear infinite;
+		}
+		/* Safari */
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.png">
-  <!--<link rel="icon" type="image/x-icon" href="favicon.png"> -->
+		@-webkit-keyframes spin {
+			0% {
+				-webkit-transform: rotate(0deg);
+			}
+			100% {
+				-webkit-transform: rotate(360deg);
+			}
+		}
+
+		@keyframes spin {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+	</style>
 </head>
 
 <body>
 
-<script src="./assets/js/jquery-1.11.1.min.js"></script>
+	<script src="./assets/js/jquery-1.11.1.min.js"></script>
 	<script src="./assets/js/bootstrap.min.js"></script>
 	<script src="./assets/js/chart.min.js"></script>
 	<script src="./assets/js/chart-data.js"></script>
@@ -24,26 +54,29 @@
 	<script src="./assets/js/easypiechart-data.js"></script>
 	<script src="./assets/js/bootstrap-datepicker.js"></script>
 	<script>
-
 		$('#calendar').datepicker({
 		});
 
 		!function ($) {
-		    $(document).on("click","ul.nav li.parent > a > span.icon", function(){
-		        $(this).find('em:first').toggleClass("glyphicon-minus");
-		    });
-		    $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+			$(document).on("click", "ul.nav li.parent > a > span.icon", function () {
+				$(this).find('em:first').toggleClass("glyphicon-minus");
+			});
+			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
 		}(window.jQuery);
 
 		$(window).on('resize', function () {
-		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+			if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
 		})
 		$(window).on('resize', function () {
-		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+			if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
 		})
 	</script>
 
-  <app-root>Loading...</app-root>
+	<app-root>
+		<center>
+			<div class="loader"></div>
+		</center>
+	</app-root>
 
 </body>
 
