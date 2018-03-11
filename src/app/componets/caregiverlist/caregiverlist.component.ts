@@ -115,16 +115,36 @@ export class CaregiverlistComponent implements OnInit {
 
   onItemEdit() {
     delete this.caregiverObj['username'];
-    this.caregiverListSvc.editCareGivers(this.caregiverObj).subscribe(data => {
+    this.caregiverListSvc.editCareGivers(this.caregiverObj, this.caregiverObj['id']).subscribe(data => {
       this.registerFeedback = data;
       console.log(data);
+      this.getCareGiverList();
       this.router.navigate(['caregiverlist']);
       this.flashMessage.show('Berhasil mengubah data perawat!', {cssClass: 'alert-success', timeout: 5000});
     }, error => {
       console.log(error);
       this.router.navigate(['caregiverlist']);
+      this.flashMessage.show('Berhasil mengubah data perawat!', {cssClass: 'alert-success', timeout: 5000});
     });
 
+  }
+
+  onItemEditStatus(obj: any, input: number) {
+    let param = {
+      'idCaregiverStatus': {
+        'id': input
+      }
+    }
+    this.caregiverListSvc.editCareGivers(param, obj.id).subscribe(data => {
+      this.registerFeedback = data;
+      console.log(data);
+      this.router.navigate(['caregiverlist']);
+      this.getCareGiverList();
+      this.flashMessage.show('Berhasil mengubah data perawat!', {cssClass: 'alert-success', timeout: 5000});
+    }, error => {
+      console.log(error);
+      this.router.navigate(['caregiverlist']);
+    });
   }
 
   addCareGiver() {
@@ -132,6 +152,7 @@ export class CaregiverlistComponent implements OnInit {
     this.caregiverListSvc.registerCareGivers(param).subscribe(data => {
       this.registerFeedback = data;
       console.log(data);
+      this.getCareGiverList();
       this.router.navigate(['caregiverlist']);
     }, error => {
       console.log(error);

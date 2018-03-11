@@ -26,11 +26,11 @@ export class CaregiverlistService {
     return this.http.post('https://timedic.id:8443/api/caregiver', params, {headers: headers}).map(res => res.json());
   }
 
-  editCareGivers(params) {
+  editCareGivers(params:any, id:number) {
     let headers = new Headers();
     this.loadToken();
     headers.append('Authorization', this.authToken);
-    return this.http.put('https://timedic.id:8443/api/caregiver/' + params.id, params, {headers: headers}).map(res => res.json());
+    return this.http.put('https://timedic.id:8443/api/caregiver/' + id, params, {headers: headers}).map(res => res.json());
   }
 
   deleteCareGiver(params){
