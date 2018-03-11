@@ -73,7 +73,7 @@ export class AuthService {
   }
 
   getUserData() {
-    return localStorage.getItem('user');
+    return JSON.parse(localStorage.getItem('user'));
   }
 
   loadToken() {

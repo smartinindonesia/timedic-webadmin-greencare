@@ -16,7 +16,7 @@ import {CaregiverlistComponent} from './componets/caregiverlist/caregiverlist.co
 import {ValidateService} from './services/validate.service';
 import {AuthService} from './services/auth.service';
 import {PatientlistService} from './services/patientlist.service';
-import {FlashMessagesModule, FlashMessagesService} from 'angular2-flash-messages';
+import {FlashMessagesModule} from 'angular2-flash-messages';
 import {ModalService} from './services/modal.service'
 import {DatatransferService} from './services/datatransfer.service';
 import {AuthGuard} from './guards/auth.guard';
