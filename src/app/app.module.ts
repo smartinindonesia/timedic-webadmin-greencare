@@ -31,8 +31,8 @@ import {AddcaregiverComponent} from './componets/addcaregiver/addcaregiver.compo
 import {DialogComponent} from './componets/dialog/dialog.component';
 import {ModalComponent} from './componets/modal/modal.component';
 import {AssessmentorderComponent} from './componets/assessmentorder/assessmentorder.component';
-import { AssignperawatComponent } from './componets/assignperawat/assignperawat.component';
-import { AssignscheduleComponent } from './componets/assignschedule/assignschedule.component';
+import {AssignperawatComponent} from './componets/assignperawat/assignperawat.component';
+import {AssignscheduleComponent} from './componets/assignschedule/assignschedule.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -46,7 +46,8 @@ const appRoutes: Routes = [
   {path: 'caregiverlist', component: CaregiverlistComponent, canActivate: [AuthGuard]},
   {path: 'addcaregiver', component: AddcaregiverComponent, canActivate: [AuthGuard]},
   {path: 'assessmentorder', component: AssessmentorderComponent, canActivate: [AuthGuard]},
-  {path: 'assigncaregiver', component: AssignperawatComponent, canActivate: [AuthGuard]}
+  {path: 'assigncaregiver', component: AssignperawatComponent, canActivate: [AuthGuard]},
+  {path: 'assignschedule', component: AssignscheduleComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
