@@ -32,6 +32,7 @@ import {DialogComponent} from './componets/dialog/dialog.component';
 import {ModalComponent} from './componets/modal/modal.component';
 import {AssessmentorderComponent} from './componets/assessmentorder/assessmentorder.component';
 import { AssignperawatComponent } from './componets/assignperawat/assignperawat.component';
+import { AssignscheduleComponent } from './componets/assignschedule/assignschedule.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -66,7 +67,8 @@ const appRoutes: Routes = [
     DialogComponent,
     ModalComponent,
     AssessmentorderComponent,
-    AssignperawatComponent
+    AssignperawatComponent,
+    AssignscheduleComponent
   ],
   imports: [
     BrowserModule,
