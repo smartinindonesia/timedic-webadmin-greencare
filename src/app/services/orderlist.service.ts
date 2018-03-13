@@ -24,7 +24,7 @@ export class OrderlistService {
     let headers = new Headers();
     this.loadToken();
     headers.append('Authorization', this.authToken);
-    return this.http.put('https://timedic.id:8443/api/transactions/homecare/'+id, input,{headers: headers}).map(res => res.json());
+    return this.http.put('https://timedic.id:8443/api/transactions/homecare/'+id, input,{headers: headers});
   }
 
   loadToken() {

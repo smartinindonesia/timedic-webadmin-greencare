@@ -4,6 +4,8 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule, Http, XHRBackend, RequestOptions} from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 
+import { AgmCoreModule } from 'angular2-google-maps/core';
+
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './componets/navbar/navbar.component';
 import {LoginComponent} from './componets/login/login.component';
@@ -33,6 +35,8 @@ import {ModalComponent} from './componets/modal/modal.component';
 import {AssessmentorderComponent} from './componets/assessmentorder/assessmentorder.component';
 import {AssignperawatComponent} from './componets/assignperawat/assignperawat.component';
 import {AssignscheduleComponent} from './componets/assignschedule/assignschedule.component';
+import { ChangeorderstatusComponent } from './componets/changeorderstatus/changeorderstatus.component';
+import { OrdermapComponent } from './componets/ordermap/ordermap.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -47,8 +51,14 @@ const appRoutes: Routes = [
   {path: 'addcaregiver', component: AddcaregiverComponent, canActivate: [AuthGuard]},
   {path: 'assessmentorder', component: AssessmentorderComponent, canActivate: [AuthGuard]},
   {path: 'assigncaregiver', component: AssignperawatComponent, canActivate: [AuthGuard]},
-  {path: 'assignschedule', component: AssignscheduleComponent, canActivate: [AuthGuard]}
+  {path: 'assignschedule', component: AssignscheduleComponent, canActivate: [AuthGuard]},
+  {path: 'orderstatus', component: ChangeorderstatusComponent, canActivate: [AuthGuard]},
+  {path: 'ordermap', component: OrdermapComponent, canActivate: [AuthGuard]}
 ];
+
+const googleMapsCore = AgmCoreModule.forRoot({
+  apiKey : 'AIzaSyAu1wjM9EJ2Ld_IVSROrsS5K9xG_WIs1yA',
+});
 
 @NgModule({
   declarations: [
@@ -69,14 +79,17 @@ const appRoutes: Routes = [
     ModalComponent,
     AssessmentorderComponent,
     AssignperawatComponent,
-    AssignscheduleComponent
+    AssignscheduleComponent,
+    ChangeorderstatusComponent,
+    OrdermapComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    FlashMessagesModule
+    FlashMessagesModule,
+    googleMapsCore
   ],
   providers: [
     ValidateService,

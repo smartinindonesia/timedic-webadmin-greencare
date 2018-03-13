@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DatatransferService} from '../../services/datatransfer.service';
 import {CaregiverlistService} from '../../services/caregiverlist.service';
 
@@ -12,15 +12,18 @@ export class AssignperawatComponent implements OnInit {
   orderObject: Object;
   careGiverList: Object;
 
-  pagetab1:number;
-  sizetab1:number;
-  maxpagetab1:number;
+  pagetab1: number;
+  sizetab1: number;
+  maxpagetab1: number;
 
-  constructor(private dataTransferService: DatatransferService, private caregiverListSvc:CaregiverlistService) {
+  constructor(private dataTransferService: DatatransferService, private caregiverListSvc: CaregiverlistService) {
   }
 
   ngOnInit() {
+    this.pagetab1 = 0;
+    this.sizetab1 = 2;
     this.orderObject = this.dataTransferService.getDataTransfer();
+    this.getCareGiverList();
   }
 
   getCareGiverList() {
@@ -57,5 +60,4 @@ export class AssignperawatComponent implements OnInit {
       return dayName + ', ' + day + ' ' + monthNames[monthIndex] + ' ' + year + ' : ' + time;
     }
   }
-
 }

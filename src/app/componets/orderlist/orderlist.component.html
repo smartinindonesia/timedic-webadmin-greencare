@@ -21,6 +21,7 @@
               <th>Nomor Telefon</th>
               <th>Bukti Pembayaran</th>
               <th>Harga Perkiraan</th>
+              <th>Lokasi</th>
               <th>Deskripsi</th>
               <th>Pintasan</th>
               <th>Status Transaksi</th>
@@ -33,6 +34,7 @@
               <td>{{order.homecarePatientId.idAppUser.phoneNumber}}</td>
               <td>{{order.receiptPath}}</td>
               <td>{{order.predictionPrice}}</td>
+              <td>({{order.locationLatitude}},{{order.locationLongitude}})<input type="button" value="Lihat Peta" class="btn btn-info btn-xs" (click)="goToOrderMap(order)"/></td>
               <td>{{order.transactionDescription}}</td>
               <td>
                 <div class="btn-group-vertical btn-group-xs align-middle">
@@ -41,26 +43,8 @@
                 </div>
               </td>
               <td>
-                <div class="btn-group-vertical btn-group-xs align-middle">
-                  <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 2)}" class="btn btn-warning"
-                         value="Unpaid" (click)="updateOrder(order,2)"/>
-                  <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 3)}" class="btn btn-danger"
-                         value="Failed" (click)="updateOrder(order,3)"/>
-                  <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 4)}" class="btn btn-danger"
-                         value="Cancelled" (click)="updateOrder(order,4)"/>
-                </div>
-                <div class="btn-group-vertical btn-group-xs align-middle">
-                  <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 5)}" class="btn btn-danger"
-                         value="Expired" (click)="updateOrder(order,5)"/>
-                  <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 6)}" class="btn btn-success"
-                         value="Finish" (click)="updateOrder(order,6)"/>
-                  <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 7)}" class="btn btn-danger"
-                         value="Down Payment" (click)="updateOrder(order,7)"/>
-                </div>
-                <div class="btn-group-vertical btn-group-xs align-middle">
-                  <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 1)}" class="btn btn-success"
-                         value="Paid" (click)="updateOrder(order,1)"/>
-                </div>
+                <input type="button" class="btn btn-warning btn-xs"
+                       value="{{order.transactionStatusId.status}}" (click)="goToEditTransaction(order)"/>
               </td>
               <!--<td><button type="button" value="edit" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#editModal">Edit</button></td>-->
             </tr>

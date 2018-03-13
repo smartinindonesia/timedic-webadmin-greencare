@@ -53,7 +53,7 @@
               <th>Ceklist</th>
             </tr>
 
-            <tr *ngFor="let record of orderObject.homecareTransactionCaregiverlistList;">
+            <tr *ngFor="let record of careGiverList;">
               <td class="align-middle">{{record.caregiverName}}</td>
               <td class="align-middle">{{record.registerNurseNumber}}</td>
               <td class="align-middle"><input type="checkbox"/></td>
@@ -72,7 +72,6 @@
               <th>Nama Perawat</th>
               <th>Surat Tanda Registrasi</th>
             </tr>
-
             <tr *ngFor="let record of orderObject.homecareTransactionCaregiverlistList;">
               <td class="align-middle">{{record.caregiverName}}</td>
               <td class="align-middle">{{record.registerNurseNumber}}</td>

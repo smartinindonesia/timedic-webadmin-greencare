@@ -1,0 +1,72 @@
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" *ngIf="order">
+  <div class="row">
+    <ol class="breadcrumb">
+      <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+      <li class="active">Data Pemesanan / Daftar Pemesanan / Perubahan Status</li>
+    </ol>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Perubahan Status Pemesanan</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <table class="table table-hover">
+
+            <tr>
+              <td class="align-middle">Nama Pasien</td>
+              <td class="align-middle">{{order.homecarePatientId.name}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Nama Pemesan</td>
+              <td class="align-middle">{{order.homecarePatientId.idAppUser.frontName}}
+                {{order.homecarePatientId.idAppUser.middleName}}
+                {{order.homecarePatientId.idAppUser.lastName}}
+              </td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Kontak</td>
+              <td class="align-middle">{{order.homecarePatientId.idAppUser.phoneNumber}}</td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="btn-group-vertical btn-group-lg align-middle">
+            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 2)}" class="btn btn-warning"
+                   value="Unpaid" (click)="updateOrder(order,2)"/>
+            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 3)}" class="btn btn-danger"
+                   value="Failed" (click)="updateOrder(order,3)"/>
+            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 4)}" class="btn btn-danger"
+                   value="Cancelled" (click)="updateOrder(order,4)"/>
+            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 5)}" class="btn btn-danger"
+                   value="Expired" (click)="updateOrder(order,5)"/>
+          </div>
+          <div class="btn-group-vertical btn-group-lg align-middle">
+            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 6)}" class="btn btn-success"
+                   value="Finish" (click)="updateOrder(order,6)"/>
+            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 7)}" class="btn btn-danger"
+                   value="DP" (click)="updateOrder(order,7)"/>
+            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 1)}" class="btn btn-success"
+                   value="Paid" (click)="updateOrder(order,1)"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

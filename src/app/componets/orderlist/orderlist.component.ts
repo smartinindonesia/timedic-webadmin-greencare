@@ -31,6 +31,16 @@ export class OrderlistComponent implements OnInit {
     this.router.navigate(['assessmentorder']);
   }
 
+  goToOrderMap(data: Object){
+    this.dataTransferService.setDataTransfer(data);
+    this.router.navigate(['ordermap']);
+  }
+
+  goToEditTransaction(data: Object){
+    this.dataTransferService.setDataTransfer(data);
+    this.router.navigate(['orderstatus']);
+  }
+
   updateOrder(orders: Object, type: number) {
     console.log('Order ' + orders['transactionStatusId']['id']);
     let updateparams = {
