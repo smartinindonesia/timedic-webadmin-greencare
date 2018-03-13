@@ -34,7 +34,7 @@
               <td>{{order.homecarePatientId.idAppUser.phoneNumber}}</td>
               <td>{{order.receiptPath}}</td>
               <td>{{order.predictionPrice}}</td>
-              <td>({{order.locationLatitude}},{{order.locationLongitude}})<input type="button" value="Lihat Peta" class="btn btn-info btn-xs" (click)="goToOrderMap(order)"/></td>
+              <td>({{order.locationLatitude}},{{order.locationLongitude}})<input type="button" value="Lihat Lokasi" class="btn btn-info btn-xs" (click)="goToOrderMap(order)"/></td>
               <td>{{order.transactionDescription}}</td>
               <td>
                 <div class="btn-group-vertical btn-group-xs align-middle">
@@ -49,9 +49,6 @@
               <!--<td><button type="button" value="edit" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#editModal">Edit</button></td>-->
             </tr>
           </table>
-          <button type="button" value="edit" class="btn btn-outline-success btn-sm" data-toggle="modal"
-                  data-target="#editModal">Edit
-          </button>
         </div>
       </div>
     </div>
