@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule, Http, XHRBackend, RequestOptions} from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 
-import {AgmCoreModule} from 'angular2-google-maps/core';
+import {AgmCoreModule} from '@agm/core';
 
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './componets/navbar/navbar.component';

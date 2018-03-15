@@ -45,15 +45,15 @@
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-body">
-          <sebm-google-map
+          <agm-map
             [latitude]="orderObject.locationLatitude"
             [longitude]="orderObject.locationLongitude"
             [zoom]="18">
-            <sebm-google-map-marker
+            <agm-marker
               [latitude]="orderObject.locationLatitude"
               [longitude]="orderObject.locationLongitude">
-            </sebm-google-map-marker>
-          </sebm-google-map>
+            </agm-marker>
+          </agm-map>
         </div>
       </div>
     </div>

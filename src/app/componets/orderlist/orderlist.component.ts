@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, PLATFORM_ID} from '@angular/core';
 import {OrderlistService} from '../../services/orderlist.service';
 import {Data, Router} from '@angular/router';
 import {FlashMessagesService} from 'angular2-flash-messages';

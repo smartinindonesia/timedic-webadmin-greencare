@@ -12,18 +12,20 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/common": "^2.3.1",
-    "@angular/compiler": "^2.3.1",
-    "@angular/core": "^2.3.1",
-    "@angular/forms": "^2.3.1",
-    "@angular/http": "^2.3.1",
-    "@angular/platform-browser": "^2.3.1",
-    "@angular/platform-browser-dynamic": "^2.3.1",
-    "@angular/router": "^3.3.1",
+    "@agm/core": "^1.0.0-beta.2",
+    "@angular/animations": "^5.2.9",
+    "@angular/common": "^5.2.9",
+    "@angular/compiler": "^5.2.9",
+    "@angular/core": "^5.2.9",
+    "@angular/forms": "^5.2.9",
+    "@angular/http": "^5.2.9",
+    "@angular/platform-browser": "^5.2.9",
+    "@angular/platform-browser-dynamic": "^5.2.9",
+    "@angular/platform-server": "^5.2.9",
+    "@angular/router": "^5.2.9",
     "@types/jquery": "^1.10.34",
     "angular-cli": "^1.0.0-beta.28.3",
     "angular2-flash-messages": "^1.0.5",
-    "angular2-google-maps": "^0.17.0",
     "angular2-jwt": "^0.1.28",
     "angular2-websocket": "^0.9.6",
     "core-js": "^2.4.1",
@@ -38,7 +40,7 @@
   },
   "devDependencies": {
     "@angular/cli": "^1.7.0",
-    "@angular/compiler-cli": "^2.3.1",
+    "@angular/compiler-cli": "^5.2.9",
     "@types/crypto-js": "^3.1.38",
     "@types/jasmine": "2.5.38",
     "@types/node": "^6.0.42",
@@ -54,6 +56,6 @@
     "protractor": "~4.0.13",
     "ts-node": "1.2.1",
     "tslint": "^4.3.0",
-    "typescript": "~2.0.3"
+    "typescript": "^2.7.2"
   }
 }
