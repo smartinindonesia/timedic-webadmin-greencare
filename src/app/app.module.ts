@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule, Http, XHRBackend, RequestOptions} from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 
-import { AgmCoreModule } from 'angular2-google-maps/core';
+import {AgmCoreModule} from 'angular2-google-maps/core';
 
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './componets/navbar/navbar.component';
@@ -35,8 +35,9 @@ import {ModalComponent} from './componets/modal/modal.component';
 import {AssessmentorderComponent} from './componets/assessmentorder/assessmentorder.component';
 import {AssignperawatComponent} from './componets/assignperawat/assignperawat.component';
 import {AssignscheduleComponent} from './componets/assignschedule/assignschedule.component';
-import { ChangeorderstatusComponent } from './componets/changeorderstatus/changeorderstatus.component';
-import { OrdermapComponent } from './componets/ordermap/ordermap.component';
+import {ChangeorderstatusComponent} from './componets/changeorderstatus/changeorderstatus.component';
+import {OrdermapComponent} from './componets/ordermap/ordermap.component';
+import {PushNotificationsModule} from 'ng-push';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -57,7 +58,7 @@ const appRoutes: Routes = [
 ];
 
 const googleMapsCore = AgmCoreModule.forRoot({
-  apiKey : 'AIzaSyAu1wjM9EJ2Ld_IVSROrsS5K9xG_WIs1yA',
+  apiKey: 'AIzaSyAu1wjM9EJ2Ld_IVSROrsS5K9xG_WIs1yA',
 });
 
 @NgModule({
@@ -89,6 +90,7 @@ const googleMapsCore = AgmCoreModule.forRoot({
     HttpModule,
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule,
+    PushNotificationsModule,
     googleMapsCore
   ],
   providers: [

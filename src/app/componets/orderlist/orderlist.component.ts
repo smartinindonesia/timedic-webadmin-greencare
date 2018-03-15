@@ -5,6 +5,7 @@ import {FlashMessagesService} from 'angular2-flash-messages';
 import {DatatransferService} from '../../services/datatransfer.service';
 import {log} from 'util';
 import {forEach} from '@angular/router/src/utils/collection';
+import {} from '@angular/common';
 
 @Component({
   selector: 'app-orderlist',
@@ -31,12 +32,12 @@ export class OrderlistComponent implements OnInit {
     this.router.navigate(['assessmentorder']);
   }
 
-  goToOrderMap(data: Object){
+  goToOrderMap(data: Object) {
     this.dataTransferService.setDataTransfer(data);
     this.router.navigate(['ordermap']);
   }
 
-  goToEditTransaction(data: Object){
+  goToEditTransaction(data: Object) {
     this.dataTransferService.setDataTransfer(data);
     this.router.navigate(['orderstatus']);
   }
@@ -44,8 +45,8 @@ export class OrderlistComponent implements OnInit {
   updateOrder(orders: Object, type: number) {
     console.log('Order ' + orders['transactionStatusId']['id']);
     let updateparams = {
-      "transactionStatusId": {
-        "id": type
+      'transactionStatusId': {
+        'id': type
       }
     };
     this.orderListService.updateOrder(updateparams, orders['id']).subscribe(
@@ -59,7 +60,7 @@ export class OrderlistComponent implements OnInit {
     );
   }
 
-  assignCaregiver(myorder:Object){
+  assignCaregiver(myorder: Object) {
     this.dataTransferService.setDataTransfer(myorder);
     this.router.navigate(['assigncaregiver'])
   }
