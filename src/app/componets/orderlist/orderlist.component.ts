@@ -6,8 +6,8 @@ import {FlashMessagesService} from 'angular2-flash-messages';
 import {DatatransferService} from '../../services/datatransfer.service';
 import {forEach} from '@angular/router/src/utils/collection';
 import {PushNotificationsService} from 'ng-push';
-import Stomp from 'stompjs';
-import SockJS from 'sockjs-client';
+import * as Stomp from 'stompjs';
+import * as SockJS from 'sockjs-client';
 
 @Component({
   selector: 'app-orderlist',
@@ -17,7 +17,7 @@ import SockJS from 'sockjs-client';
 
 export class OrderlistComponent implements OnInit {
 
-  private stompClient: any;
+  private stompClient;
   private connected: boolean = false;
   private serverUrl = 'https://timedic.id:8443/socket';
   private title = 'WebSockets chat';
@@ -33,6 +33,7 @@ export class OrderlistComponent implements OnInit {
               private orderListService: OrderlistService,
               private router: Router,
               private flashMessage: FlashMessagesService) {
+
     if (isPlatformBrowser(platformId)) {
       //inject service only on browser platform
       this._push = this.injector.get(PushNotificationsService);
@@ -65,31 +66,34 @@ export class OrderlistComponent implements OnInit {
     this.audio.currentTime = 0;
   }
 
-  connectWebSocket(){
+  connectWebSocket() {
     let ws = new SockJS(this.serverUrl);
     this.stompClient = Stomp.over(ws);
     let that = this;
-    this.stompClient.connect({}, function(frame) {
+    this.stompClient.connect({}, function (frame) {
       this.connected = true;
-      console.log('Connected: ' + frame);
-      that.stompClient.subscribe("/notification", (message) => {
-        if(message.body) {
+      that.stompClient.subscribe('/notification', (message) => {
+        if (message.body) {
           let msj = JSON.parse(message.body);
-          this.addNotification('Pesanan', msj);
+          console.log('BODY ', msj.toString());
+          that.addNotification('Pemesanan Jasa Perawat', msj);
         }
       });
     });
   }
 
-  addNotification(title: string, messagebody: any) {
-    let notif = 'telah memesan layanan ';
+  addNotification(title: string, messagebody: any): any {
+    let notif = messagebody.homecarePatientId.idAppUser.frontName +
+      ' ' + messagebody.homecarePatientId.idAppUser.middleName +
+      ' ' + messagebody.homecarePatientId.idAppUser.lastName +
+      ' telah memesan layanan perawat. Klik notifikasi ini untuk melihat detail pemesanan';
     let bd = {
       body: notif,
     }
-
     this._pushNotifications.create(title, bd).subscribe(
       res => {
         this.playAudio();
+        this.getOrderList();
         if (res.event.type === 'click') {
           this.restartAudio();
           this.goToOrderDetails(messagebody);
