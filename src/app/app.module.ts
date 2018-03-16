@@ -38,6 +38,7 @@ import {AssignscheduleComponent} from './componets/assignschedule/assignschedule
 import {ChangeorderstatusComponent} from './componets/changeorderstatus/changeorderstatus.component';
 import {OrdermapComponent} from './componets/ordermap/ordermap.component';
 import {PushNotificationsModule} from 'ng-push';
+import {OrderdetailsComponent} from './componets/orderdetails/orderdetails.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -54,7 +55,8 @@ const appRoutes: Routes = [
   {path: 'assigncaregiver', component: AssignperawatComponent, canActivate: [AuthGuard]},
   {path: 'assignschedule', component: AssignscheduleComponent, canActivate: [AuthGuard]},
   {path: 'orderstatus', component: ChangeorderstatusComponent, canActivate: [AuthGuard]},
-  {path: 'ordermap', component: OrdermapComponent, canActivate: [AuthGuard]}
+  {path: 'ordermap', component: OrdermapComponent, canActivate: [AuthGuard]},
+  {path: 'orderdetails', component: OrderdetailsComponent, canActivate: [AuthGuard]}
 ];
 
 const googleMapsCore = AgmCoreModule.forRoot({
@@ -82,7 +84,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     AssignperawatComponent,
     AssignscheduleComponent,
     ChangeorderstatusComponent,
-    OrdermapComponent
+    OrdermapComponent,
+    OrderdetailsComponent
   ],
   imports: [
     BrowserModule,

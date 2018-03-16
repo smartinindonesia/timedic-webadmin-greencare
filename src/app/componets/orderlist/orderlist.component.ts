@@ -4,9 +4,10 @@ import {OrderlistService} from '../../services/orderlist.service';
 import {Data, Router} from '@angular/router';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import {DatatransferService} from '../../services/datatransfer.service';
-import {log} from 'util';
 import {forEach} from '@angular/router/src/utils/collection';
 import {PushNotificationsService} from 'ng-push';
+import Stomp from 'stompjs';
+import SockJS from 'sockjs-client';
 
 @Component({
   selector: 'app-orderlist',
@@ -16,9 +17,14 @@ import {PushNotificationsService} from 'ng-push';
 
 export class OrderlistComponent implements OnInit {
 
+  private stompClient: any;
+  private connected: boolean = false;
+  private serverUrl = 'https://timedic.id:8443/socket';
+  private title = 'WebSockets chat';
+
   private _push: PushNotificationsService;
   orderList: Object;
-  audio:any;
+  audio: any;
 
   constructor(@Inject(PLATFORM_ID) platformId: string,
               private _pushNotifications: PushNotificationsService,
@@ -38,14 +44,15 @@ export class OrderlistComponent implements OnInit {
     this.getOrderList();
     this.initAudio();
     this.loadAudio();
+    this.connectWebSocket();
   }
 
-  initAudio(){
+  initAudio() {
     this.audio = new Audio();
     this.audio.src = '../../../assets/audio/message.mx';
   }
 
-  loadAudio(){
+  loadAudio() {
     this.audio.load();
   }
 
@@ -53,10 +60,46 @@ export class OrderlistComponent implements OnInit {
     this.audio.play();
   }
 
-  restartAudio(){
+  restartAudio() {
     this.audio.pause();
     this.audio.currentTime = 0;
   }
+
+  connectWebSocket(){
+    let ws = new SockJS(this.serverUrl);
+    this.stompClient = Stomp.over(ws);
+    let that = this;
+    this.stompClient.connect({}, function(frame) {
+      this.connected = true;
+      console.log('Connected: ' + frame);
+      that.stompClient.subscribe("/notification", (message) => {
+        if(message.body) {
+          let msj = JSON.parse(message.body);
+          this.addNotification('Pesanan', msj);
+        }
+      });
+    });
+  }
+
+  addNotification(title: string, messagebody: any) {
+    let notif = 'telah memesan layanan ';
+    let bd = {
+      body: notif,
+    }
+
+    this._pushNotifications.create(title, bd).subscribe(
+      res => {
+        this.playAudio();
+        if (res.event.type === 'click') {
+          this.restartAudio();
+          this.goToOrderDetails(messagebody);
+          res.notification.close();
+        }
+      },
+      err => console.log(err)
+    )
+  }
+
 
   trialFirst() {
     let bd = {
@@ -78,7 +121,6 @@ export class OrderlistComponent implements OnInit {
         this.playAudio();
         if (res.event.type === 'click') {
           this.restartAudio();
-          // You can do anything else here
           res.notification.close();
         }
       },
@@ -99,6 +141,11 @@ export class OrderlistComponent implements OnInit {
   goToEditTransaction(data: Object) {
     this.dataTransferService.setDataTransfer(data);
     this.router.navigate(['orderstatus']);
+  }
+
+  goToOrderDetails(data: Object) {
+    this.dataTransferService.setDataTransfer(data);
+    this.router.navigate(['orderdetails']);
   }
 
   updateOrder(orders: Object, type: number) {
