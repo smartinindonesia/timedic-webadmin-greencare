@@ -38,6 +38,7 @@ import {AssignscheduleComponent} from './componets/assignschedule/assignschedule
 import {ChangeorderstatusComponent} from './componets/changeorderstatus/changeorderstatus.component';
 import {OrdermapComponent} from './componets/ordermap/ordermap.component';
 import {PushNotificationsModule} from 'ng-push';
+import {NotifService} from './services/notif.service';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -102,7 +103,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     ProfileService,
     CaregiverlistService,
     ModalService,
-    DatatransferService
+    DatatransferService,
+    NotifService
   ],
   bootstrap: [AppComponent]
 })

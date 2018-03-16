@@ -1,11 +1,13 @@
-import {Component, OnInit, PLATFORM_ID} from '@angular/core';
+import {Component, OnInit, PLATFORM_ID, Inject, Injector} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
 import {OrderlistService} from '../../services/orderlist.service';
 import {Data, Router} from '@angular/router';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import {DatatransferService} from '../../services/datatransfer.service';
 import {log} from 'util';
 import {forEach} from '@angular/router/src/utils/collection';
-import {} from '@angular/common';
+import {PushNotificationsService} from 'ng-push';
+import {NotifService} from '../../services/notif.service';
 
 @Component({
   selector: 'app-orderlist',
@@ -15,16 +17,51 @@ import {} from '@angular/common';
 
 export class OrderlistComponent implements OnInit {
 
+  private _push: PushNotificationsService;
   orderList: Object;
 
-  constructor(private dataTransferService: DatatransferService,
+  constructor(@Inject(PLATFORM_ID) platformId: string,
+              private _pushNotifications: PushNotificationsService,
+              private injector: Injector,
+              private dataTransferService: DatatransferService,
               private orderListService: OrderlistService,
               private router: Router,
               private flashMessage: FlashMessagesService) {
+    if (isPlatformBrowser(platformId)) {
+      //inject service only on browser platform
+      this._push = this.injector.get(PushNotificationsService);
+    }
   }
 
   ngOnInit() {
+    this._pushNotifications.requestPermission();
     this.getOrderList();
+  }
+
+  trialFirst(){
+    let bd = {
+      body: 'Just an example',
+      //icon?: string
+      //tag?: string
+      //renotify?: boolean
+      //silent?: boolean
+      sound: '../../assets/audio/notificationsound.mp3'
+      //noscreen?: boolean
+      //sticky?: boolean
+      //dir?: 'auto' | 'ltr' | 'rtl'
+      //lang?: string
+      //vibrate?: number[]
+    }
+
+    this._pushNotifications.create('Example', bd).subscribe(
+      res => {
+        if (res.event.type === 'click') {
+          // You can do anything else here
+          res.notification.close();
+        }
+      },
+      err => console.log(err)
+    )
   }
 
   goToAssessmentOrder(data: Object) {
