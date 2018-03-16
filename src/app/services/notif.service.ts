@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {$WebSocket, WebSocketSendMode} from 'angular2-websocket/angular2-websocket';
 import {PushNotificationsService} from 'ng-push';
 
@@ -7,6 +7,7 @@ export class NotifService {
 
   ws: any;
   notification: any;
+  audio: Audio;
 
   constructor(private _pushNotifications: PushNotificationsService) {
     //this.initNotifService();
@@ -26,26 +27,41 @@ export class NotifService {
     this.addNotif('Example', bd);
   }
 
-  initNotifService(){
-    this.ws = new $WebSocket("");
+  initNotifService() {
+    this.ws = new $WebSocket('ws://127.0.0.1:7000');
   }
 
-  turnOnNotifService(){
+  initAudio() {
+    this.audio = new Audio();
+    this.audio.src = '../../../assets/audio/alarm.wav';
+
+  }
+
+  playAudio() {
+    this.audio.load();
+    this.audio.play();
+  }
+
+  stopAudio() {
+    this.audio.stop();
+  }
+
+  turnOnNotifService() {
     this.ws.getDataStream().subscribe(
-      (msg)=> {
-        console.log("next", msg.data);
+      (msg) => {
+        console.log('next', msg.data);
         this.ws.close(false);
       },
-      (msg)=> {
-        console.log("error", msg);
+      (msg) => {
+        console.log('error', msg);
       },
-      ()=> {
-        console.log("complete");
+      () => {
+        console.log('complete');
       }
     );
   }
 
-  addNotif(title:string, bd:any){
+  addNotif(title: string, bd: any) {
     this._pushNotifications.create(title, bd).subscribe(
       res => {
         if (res.event.type === 'click') {
@@ -57,7 +73,7 @@ export class NotifService {
     )
   }
 
-  turnOffNotifService(){
+  turnOffNotifService() {
     this.ws.close(true);
   }
 
