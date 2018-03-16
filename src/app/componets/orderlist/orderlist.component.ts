@@ -18,6 +18,7 @@ export class OrderlistComponent implements OnInit {
 
   private _push: PushNotificationsService;
   orderList: Object;
+  audio:any;
 
   constructor(@Inject(PLATFORM_ID) platformId: string,
               private _pushNotifications: PushNotificationsService,
@@ -35,15 +36,27 @@ export class OrderlistComponent implements OnInit {
   ngOnInit() {
     this._pushNotifications.requestPermission();
     this.getOrderList();
+    this.initAudio();
+    this.loadAudio();
+  }
+
+  initAudio(){
+    this.audio = new Audio();
+    this.audio.src = '../../../assets/audio/message.mx';
+  }
+
+  loadAudio(){
+    this.audio.load();
   }
 
   playAudio() {
-    let audio = new Audio();
-    audio.src = '../../../assets/audio/alert.ma';
-    audio.load();
-    audio.play();
+    this.audio.play();
   }
 
+  restartAudio(){
+    this.audio.pause();
+    this.audio.currentTime = 0;
+  }
 
   trialFirst() {
     let bd = {
@@ -64,8 +77,8 @@ export class OrderlistComponent implements OnInit {
       res => {
         this.playAudio();
         if (res.event.type === 'click') {
+          this.restartAudio();
           // You can do anything else here
-
           res.notification.close();
         }
       },
