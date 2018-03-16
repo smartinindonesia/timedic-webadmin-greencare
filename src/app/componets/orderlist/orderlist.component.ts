@@ -7,7 +7,6 @@ import {DatatransferService} from '../../services/datatransfer.service';
 import {log} from 'util';
 import {forEach} from '@angular/router/src/utils/collection';
 import {PushNotificationsService} from 'ng-push';
-import {NotifService} from '../../services/notif.service';
 
 @Component({
   selector: 'app-orderlist',
@@ -38,14 +37,22 @@ export class OrderlistComponent implements OnInit {
     this.getOrderList();
   }
 
-  trialFirst(){
+  playAudio() {
+    let audio = new Audio();
+    audio.src = '../../../assets/audio/alert.ma';
+    audio.load();
+    audio.play();
+  }
+
+
+  trialFirst() {
     let bd = {
       body: 'Just an example',
       //icon?: string
       //tag?: string
       //renotify?: boolean
-      //silent?: boolean
-      sound: '../../assets/audio/notificationsound.mp3'
+      //silent: false,
+      //sound: ''
       //noscreen?: boolean
       //sticky?: boolean
       //dir?: 'auto' | 'ltr' | 'rtl'
@@ -55,8 +62,10 @@ export class OrderlistComponent implements OnInit {
 
     this._pushNotifications.create('Example', bd).subscribe(
       res => {
+        this.playAudio();
         if (res.event.type === 'click') {
           // You can do anything else here
+
           res.notification.close();
         }
       },
