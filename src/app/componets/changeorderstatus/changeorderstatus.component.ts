@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CaregiverlistService} from '../../services/caregiverlist.service';
 import {DatatransferService} from '../../services/datatransfer.service';
-import Order = jasmine.Order;
 import {OrderlistService} from '../../services/orderlist.service';
 import {Router} from '@angular/router';
 import {FlashMessagesService} from 'angular2-flash-messages';

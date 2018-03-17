@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {CaregiverlistService} from '../../services/caregiverlist.service';
+import {DatatransferService} from '../../services/datatransfer.service';
+import {OrderlistService} from '../../services/orderlist.service';
+import {Router} from '@angular/router';
+import {FlashMessagesService} from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-orderdetails',
@@ -6,10 +11,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./orderdetails.component.css']
 })
 export class OrderdetailsComponent implements OnInit {
+  order: Object;
 
-  constructor() { }
+  constructor(private router: Router, private dataTransferService: DatatransferService, private orderListService: OrderlistService, private flashMessage: FlashMessagesService) {
+
+  }
 
   ngOnInit() {
+    this.order = this.dataTransferService.getDataTransfer();
   }
 
 }
