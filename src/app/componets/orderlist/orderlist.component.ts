@@ -104,34 +104,6 @@ export class OrderlistComponent implements OnInit {
     )
   }
 
-
-  trialFirst() {
-    let bd = {
-      body: 'Just an example',
-      //icon?: string
-      //tag?: string
-      //renotify?: boolean
-      //silent: false,
-      //sound: ''
-      //noscreen?: boolean
-      //sticky?: boolean
-      //dir?: 'auto' | 'ltr' | 'rtl'
-      //lang?: string
-      //vibrate?: number[]
-    }
-
-    this._pushNotifications.create('Example', bd).subscribe(
-      res => {
-        this.playAudio();
-        if (res.event.type === 'click') {
-          this.restartAudio();
-          res.notification.close();
-        }
-      },
-      err => console.log(err)
-    )
-  }
-
   goToAssessmentOrder(data: Object) {
     this.dataTransferService.setDataTransfer(data);
     this.router.navigate(['assessmentorder']);
