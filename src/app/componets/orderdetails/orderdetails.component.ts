@@ -26,4 +26,9 @@ export class OrderdetailsComponent implements OnInit {
     this.router.navigate(['ordermap']);
   }
 
+  goToAssesmentOrder(data: Object){
+    this.dataTransferService.setDataTransfer(data);
+    this.router.navigate(['assessmentorder']);
+  }
+
 }

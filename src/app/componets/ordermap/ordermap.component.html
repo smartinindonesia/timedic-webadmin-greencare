@@ -23,9 +23,17 @@
 
             <tr>
               <td class="align-middle">Nama Pemesan</td>
-              <td class="align-middle">{{orderObject.homecarePatientId.idAppUser.frontName}}
+              <td class="align-middle">
+                {{orderObject.homecarePatientId.idAppUser.frontName}}
                 {{orderObject.homecarePatientId.idAppUser.middleName}}
                 {{orderObject.homecarePatientId.idAppUser.lastName}}
+              </td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Keterangan Alamat Pemesanan</td>
+              <td class="align-middle">
+                {{orderObject.fullAddress}}
               </td>
             </tr>
 
@@ -46,6 +54,7 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <agm-map
+            [style.height.px]="500"
             [latitude]="orderObject.locationLatitude"
             [longitude]="orderObject.locationLongitude"
             [zoom]="18">
