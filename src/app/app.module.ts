@@ -40,6 +40,7 @@ import {OrdermapComponent} from './componets/ordermap/ordermap.component';
 import {PushNotificationsModule} from 'ng-push';
 import {OrderdetailsComponent} from './componets/orderdetails/orderdetails.component';
 import {UserlistComponent} from './componets/userlist/userlist.component';
+import {CaregiverdetailsComponent} from './componets/caregiverdetails/caregiverdetails.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -58,7 +59,8 @@ const appRoutes: Routes = [
   {path: 'orderstatus', component: ChangeorderstatusComponent, canActivate: [AuthGuard]},
   {path: 'ordermap', component: OrdermapComponent, canActivate: [AuthGuard]},
   {path: 'orderdetails', component: OrderdetailsComponent, canActivate: [AuthGuard]},
-  {path: 'userlist', component: UserlistComponent, canActivate: [AuthGuard]}
+  {path: 'userlist', component: UserlistComponent, canActivate: [AuthGuard]},
+  {path: 'caregiverdetails', component: CaregiverdetailsComponent, canActive: [AuthGuard]}
 ];
 
 const googleMapsCore = AgmCoreModule.forRoot({
@@ -88,7 +90,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     ChangeorderstatusComponent,
     OrdermapComponent,
     OrderdetailsComponent,
-    UserlistComponent
+    UserlistComponent,
+    CaregiverdetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -112,5 +115,6 @@ const googleMapsCore = AgmCoreModule.forRoot({
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }
