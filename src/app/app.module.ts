@@ -59,8 +59,8 @@ const appRoutes: Routes = [
   {path: 'orderstatus', component: ChangeorderstatusComponent, canActivate: [AuthGuard]},
   {path: 'ordermap', component: OrdermapComponent, canActivate: [AuthGuard]},
   {path: 'orderdetails', component: OrderdetailsComponent, canActivate: [AuthGuard]},
-  {path: 'userlist', component: UserlistComponent, canActivate: [AuthGuard]},
-  {path: 'caregiverdetails', component: CaregiverdetailsComponent, canActive: [AuthGuard]}
+  {path: 'caredetails', component: CaregiverdetailsComponent, canActivate: [AuthGuard]},
+  {path: 'userlist', component: UserlistComponent, canActivate: [AuthGuard]}
 ];
 
 const googleMapsCore = AgmCoreModule.forRoot({

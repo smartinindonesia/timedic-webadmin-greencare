@@ -3,6 +3,7 @@ import {CaregiverlistService} from '../../services/caregiverlist.service';
 import {Router} from '@angular/router';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import {ModalService} from '../../services/modal.service';
+import {DatatransferService} from '../../services/datatransfer.service';
 
 @Component({
   selector: 'app-caregiverlist',
@@ -24,6 +25,7 @@ export class CaregiverlistComponent implements OnInit {
   constructor(private modalService: ModalService,
               private caregiverListSvc: CaregiverlistService,
               private router: Router,
+              private dataTransferService: DatatransferService,
               private flashMessage: FlashMessagesService) {
   }
 
@@ -146,6 +148,11 @@ export class CaregiverlistComponent implements OnInit {
       this.router.navigate(['caregiverlist']);
       this.flashMessage.show('Berhasil mengubah data perawat!', {cssClass: 'alert-danger', timeout: 5000});
     });
+  }
+
+  goToCaregiverDetails(caregiver:Object){
+    this.dataTransferService.setDataTransfer(caregiver);
+    this.router.navigate(['caredetails']);
   }
 
   addCareGiver() {

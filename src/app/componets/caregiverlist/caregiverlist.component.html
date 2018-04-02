@@ -31,21 +31,28 @@
               <td class="align-middle">{{caregiver.email}}</td>
               <td>
                 <div class="btn-group-vertical btn-group-xs align-middle" *ngIf="caregiver.idCaregiverStatus">
-                  <input type="button" [ngClass]="{disabled:(caregiver.idCaregiverStatus.id == 1)}" class="btn btn-success"
+                  <input type="button" [ngClass]="{disabled:(caregiver.idCaregiverStatus.id == 1)}"
+                         class="btn btn-success"
                          value="Approve" (click)="onItemEditStatus(caregiver,1)"/>
-                  <input type="button" [ngClass]="{disabled:(caregiver.idCaregiverStatus.id == 2)}" class="btn btn-warning"
+                  <input type="button" [ngClass]="{disabled:(caregiver.idCaregiverStatus.id == 2)}"
+                         class="btn btn-warning"
                          value="Pending" (click)="onItemEditStatus(caregiver,2)"/>
-                  <input type="button" [ngClass]="{disabled:(caregiver.idCaregiverStatus.id == 3)}" class="btn btn-danger"
+                  <input type="button" [ngClass]="{disabled:(caregiver.idCaregiverStatus.id == 3)}"
+                         class="btn btn-danger"
                          value="Suspend" (click)="onItemEditStatus(caregiver,3)"/>
                 </div>
               </td>
               <td>
                 <div class="btn-group-vertical btn-group-xs align-middle">
+                  <input type="button" value="Detail" class="btn btn-info" (click)="goToCaregiverDetails(caregiver)"/>
+                </div>
+                <div class="btn-group-vertical btn-group-xs align-middle">
                   <input type="button" value="Jadwal" class="btn btn-info" (click)="openModal('editModal',caregiver)"/>
                 </div>
                 <div class="btn-group-vertical btn-group-xs align-middle">
                   <input type="button" value="Edit" class="btn btn-warning" (click)="openModal('editModal',caregiver)"/>
-                  <input type="button" value="Delete" class="btn btn-danger" (click)="openModal('deleteModal',caregiver)"/>
+                  <input type="button" value="Delete" class="btn btn-danger"
+                         (click)="openModal('deleteModal',caregiver)"/>
                 </div>
               </td>
             </tr>
@@ -115,7 +122,8 @@
         <div class="panel-body">
           <div class="col-md-12">
             <form role="form">
-              <div><p>Apakah anda benar-benar ingin menghapus user dengan username <b> {{caregiverObj.username}} </b> dari daftar perawat?</p></div>
+              <div><p>Apakah anda benar-benar ingin menghapus user dengan username <b> {{caregiverObj.username}} </b>
+                dari daftar perawat?</p></div>
             </form>
           </div>
         </div>
