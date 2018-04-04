@@ -109,6 +109,11 @@ export class OrderlistComponent implements OnInit {
     this.router.navigate(['assessmentorder']);
   }
 
+  goToOrderPrice(data: Object){
+    this.dataTransferService.setDataTransfer(data);
+    this.router.navigate(['orderpriceeditor']);
+  }
+
   goToOrderMap(data: Object) {
     this.dataTransferService.setDataTransfer(data);
     this.router.navigate(['ordermap']);

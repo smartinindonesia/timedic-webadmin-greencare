@@ -41,8 +41,8 @@ import {PushNotificationsModule} from 'ng-push';
 import {OrderdetailsComponent} from './componets/orderdetails/orderdetails.component';
 import {UserlistComponent} from './componets/userlist/userlist.component';
 import {CaregiverdetailsComponent} from './componets/caregiverdetails/caregiverdetails.component';
-import { OrderpriceeditorComponent } from './componets/orderpriceeditor/orderpriceeditor.component';
-import { CaregiverschedulesComponent } from './componets/caregiverschedules/caregiverschedules.component';
+import {OrderpriceeditorComponent} from './componets/orderpriceeditor/orderpriceeditor.component';
+import {CaregiverschedulesComponent} from './componets/caregiverschedules/caregiverschedules.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
