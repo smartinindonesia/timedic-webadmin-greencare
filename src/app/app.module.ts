@@ -41,6 +41,8 @@ import {PushNotificationsModule} from 'ng-push';
 import {OrderdetailsComponent} from './componets/orderdetails/orderdetails.component';
 import {UserlistComponent} from './componets/userlist/userlist.component';
 import {CaregiverdetailsComponent} from './componets/caregiverdetails/caregiverdetails.component';
+import { OrderpriceeditorComponent } from './componets/orderpriceeditor/orderpriceeditor.component';
+import { CaregiverschedulesComponent } from './componets/caregiverschedules/caregiverschedules.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -60,7 +62,9 @@ const appRoutes: Routes = [
   {path: 'ordermap', component: OrdermapComponent, canActivate: [AuthGuard]},
   {path: 'orderdetails', component: OrderdetailsComponent, canActivate: [AuthGuard]},
   {path: 'caredetails', component: CaregiverdetailsComponent, canActivate: [AuthGuard]},
-  {path: 'userlist', component: UserlistComponent, canActivate: [AuthGuard]}
+  {path: 'userlist', component: UserlistComponent, canActivate: [AuthGuard]},
+  {path: 'orderpriceeditor', component: OrderpriceeditorComponent, canActivate: [AuthGuard]},
+  {path: 'caregiverschedules', component: CaregiverschedulesComponent, canActivate: [AuthGuard]}
 ];
 
 const googleMapsCore = AgmCoreModule.forRoot({
@@ -91,7 +95,9 @@ const googleMapsCore = AgmCoreModule.forRoot({
     OrdermapComponent,
     OrderdetailsComponent,
     UserlistComponent,
-    CaregiverdetailsComponent
+    CaregiverdetailsComponent,
+    OrderpriceeditorComponent,
+    CaregiverschedulesComponent
   ],
   imports: [
     BrowserModule,
