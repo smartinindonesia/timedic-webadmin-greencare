@@ -53,12 +53,15 @@
 
             <tr>
               <td class="align-middle">Harga Perkiraan</td>
-              <td class="align-middle">{{order.predictionPrice}}</td>
+              <td class="align-middle">{{order.predictionPrice}}
+              </td>
             </tr>
 
             <tr>
               <td class="align-middle">Harga Tetap</td>
-              <td class="align-middle">{{order.fixedPrice}}</td>
+              <td class="align-middle">{{order.fixedPrice}}<br>
+                <input type="button" value="Input Harga" class="btn btn-warning btn-xs" (click)="goToOrderPrice(order)"/>
+              </td>
             </tr>
 
             <tr>

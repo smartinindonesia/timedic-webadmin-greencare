@@ -31,4 +31,9 @@ export class OrderdetailsComponent implements OnInit {
     this.router.navigate(['assessmentorder']);
   }
 
+  goToOrderPrice(data: Object){
+    this.dataTransferService.setDataTransfer(data);
+    this.router.navigate(['orderpriceeditor']);
+  }
+
 }
