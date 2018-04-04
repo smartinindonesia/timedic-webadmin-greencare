@@ -40,7 +40,7 @@ export class AuthService {
       var key = CryptoJS.PBKDF2(passPhrase, CryptoJS.enc.Hex.parse(salt),
         {keySize: this.keySize, iterations: this.iterationCount});
       return key;
-    }
+    };
 
     AesUtil.prototype.encrypt = function (salt, iv, passPhrase, plainText) {
       var key = this.generateKey(salt, passPhrase);
@@ -49,13 +49,13 @@ export class AuthService {
         key,
         {iv: CryptoJS.enc.Hex.parse(iv)});
       return encrypted.toString();
-    }
+    };
 
     var aesUtil = new AesUtil(keySize, iterationCount);
     var plaintext = aesUtil.encrypt(salt, iv, passPhrase, dataToDecrypt);
 
     return plaintext;
-  }
+  };
 
   authenticateUserTimedic(user): Observable<any> {
 

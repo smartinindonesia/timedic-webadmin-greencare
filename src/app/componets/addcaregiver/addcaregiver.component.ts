@@ -38,7 +38,7 @@ export class AddcaregiverComponent implements OnInit {
       password: this.password,
       phoneNumber: this.phoneNumber,
       registerNurseNumber: this.registerNurseNumber
-    }
+    };
     if(!this.validateSvc.validateEmail(caregiver.email)){
       this.flashMessage.show('Please Use valid email', {cssClass: 'alert-danger', timeout: 5000});
       return false;

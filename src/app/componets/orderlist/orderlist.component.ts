@@ -89,7 +89,7 @@ export class OrderlistComponent implements OnInit {
       ' telah memesan layanan perawat. Klik notifikasi ini untuk melihat detail pemesanan';
     let bd = {
       body: notif,
-    }
+    };
     this._pushNotifications.create(title, bd).subscribe(
       res => {
         this.playAudio();

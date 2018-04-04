@@ -25,7 +25,7 @@ export class OrderpriceeditorComponent implements OnInit {
   updatePrice() {
     let updateParams = {
       'fixedPrice': this.fixedPrice
-    }
+    };
 
     let that = this;
     this.orderListService.updateOrder(updateParams, this.order['id']).subscribe(function (data) {

@@ -136,7 +136,7 @@ export class CaregiverlistComponent implements OnInit {
       'idCaregiverStatus': {
         'id': input
       }
-    }
+    };
     this.caregiverListSvc.editCareGivers(param, obj.id).subscribe(data => {
       this.registerFeedback = data;
       console.log(data);

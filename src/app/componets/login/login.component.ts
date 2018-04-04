@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     const user = {
       username: this.username,
       password: this.password
-    }
+    };
 
     this.authService.authenticateUserTimedic(user).subscribe(data => {
       this.authService.storeUserData(data.token, data.user);

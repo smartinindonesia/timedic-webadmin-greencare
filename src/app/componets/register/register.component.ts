@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
       username: this.username,
       password: this.password,
       phoneNumber: this.phoneNumber
-    }
+    };
 
     // Required Fields
     /*
