@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DatatransferService} from '../../services/datatransfer.service';
 import {CaregiverlistService} from '../../services/caregiverlist.service';
+import {OrderlistService} from '../../services/orderlist.service';
 
 @Component({
   selector: 'app-assignperawat',
@@ -16,7 +17,7 @@ export class AssignperawatComponent implements OnInit {
   sizetab1: number;
   maxpagetab1: number;
 
-  constructor(private dataTransferService: DatatransferService, private caregiverListSvc: CaregiverlistService) {
+  constructor(private dataTransferService: DatatransferService, private caregiverListSvc: CaregiverlistService, private orderListService: OrderlistService) {
   }
 
   ngOnInit() {
@@ -27,27 +28,42 @@ export class AssignperawatComponent implements OnInit {
   }
 
   onSubmitCaregiver() {
+    let that = this;
     var insertlist = [];
     this.careGiverList.forEach(function (arrayItem) {
-      if (arrayItem['readysubmit']){
+      if (arrayItem['readysubmit']) {
         console.log(arrayItem['frontName']);
-        var item = {
-          'caregiverName' : arrayItem['frontName'] + ' ' + arrayItem['middleName'] + ' ' + arrayItem['lastName'],
-          'registerNurseNumber' : arrayItem['registerNurseNumber'],
-          'idHomecareClinic' : {
-            'id' : 1,
-          },
-          'idServiceTransaction' : {
-
-          },
-          'idCaregiver':{
-
-          },
-          'rateStatus' : false
-        }
-        insertlist.push()
+        var uploadItem =
+          {
+            'caregiverName': arrayItem['frontName'] + ' ' + arrayItem['middleName'] + ' ' + arrayItem['lastName'],
+            'registerNurseNumber': arrayItem['registerNurseNumber'],
+            'idHomecareClinic': {
+              'id': 1,
+            },
+            'idServiceTransaction': {
+              'id': that.orderObject['id']
+            },
+            'idCaregiver': {
+              'id': arrayItem['id']
+            },
+            'rateStatus': false
+          }
+        insertlist.push(uploadItem);
       }
     });
+    var updateItem =
+      {
+        'homecareTransactionCaregiverlistList': insertlist
+      };
+    var itemJSON = JSON.stringify(updateItem);
+    console.log(itemJSON);
+    /*
+    that.orderListService.updateOrder(itemJSON, this.orderObject['id']).subscribe(data => {
+      console.log(data);
+    }, error => {
+      console.log(error);
+    });
+    */
   }
 
   getCareGiverList() {
