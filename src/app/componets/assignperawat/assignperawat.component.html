@@ -54,12 +54,12 @@
             </tr>
 
             <tr *ngFor="let record of careGiverList;">
-              <td class="align-middle">{{record.caregiverName}}</td>
+              <td class="align-middle">{{record.frontName}} {{record.middleName}} {{record.lastName}}</td>
               <td class="align-middle">{{record.registerNurseNumber}}</td>
-              <td class="align-middle"><input type="checkbox"/></td>
+              <td class="align-middle"><input type="checkbox" (change)="record.readysubmit = !record.readysubmit;" [checked]="record.readysubmit"/></td>
             </tr>
           </table>
-          <input type="button" value="Submit Perawat">
+          <input type="button" class="btn-primary" value="Submit Perawat" (click)="onSubmitCaregiver()">
         </div>
       </div>
     </div>

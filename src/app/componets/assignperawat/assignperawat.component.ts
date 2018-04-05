@@ -10,7 +10,7 @@ import {CaregiverlistService} from '../../services/caregiverlist.service';
 export class AssignperawatComponent implements OnInit {
 
   orderObject: Object;
-  careGiverList: Object;
+  careGiverList: Object[];
 
   pagetab1: number;
   sizetab1: number;
@@ -26,10 +26,35 @@ export class AssignperawatComponent implements OnInit {
     this.getCareGiverList();
   }
 
+  onSubmitCaregiver() {
+    var insertlist = [];
+    this.careGiverList.forEach(function (arrayItem) {
+      if (arrayItem['readysubmit']){
+        console.log(arrayItem['frontName']);
+        var item = {
+          'caregiverName' : arrayItem['frontName'] + ' ' + arrayItem['middleName'] + ' ' + arrayItem['lastName'],
+          'registerNurseNumber' : arrayItem['registerNurseNumber'],
+          'idHomecareClinic' : {
+            'id' : 1,
+          },
+          'idServiceTransaction' : {
+
+          },
+          'idCaregiver':{
+
+          },
+          'rateStatus' : false
+        }
+        insertlist.push()
+      }
+    });
+  }
+
   getCareGiverList() {
     this.caregiverListSvc.getCareGivers(this.pagetab1, this.sizetab1, 'ASC', 'id').subscribe(data => {
       for (var i = 0; i < data[0].length; i++) {
         data[0][i].dobtext = formatDate(new Date(data[0][i].dateOfBirth));
+        data[0][i]['readysubmit'] = false;
       }
       this.maxpagetab1 = Math.ceil(data[1].numOfRows / this.sizetab1);
       this.careGiverList = data[0];

@@ -101,6 +101,11 @@ export class CaregiverlistComponent implements OnInit {
     }
   }
 
+  gotoCaregiverSchedule(item:Object){
+    this.dataTransferService.setDataTransfer(item);
+    this.router.navigate(['caregiverschedules']);
+  }
+
   onItemDelete() {
     this.caregiverListSvc.deleteCareGiver(this.caregiverObj).subscribe(data => {
       this.registerFeedback = data;

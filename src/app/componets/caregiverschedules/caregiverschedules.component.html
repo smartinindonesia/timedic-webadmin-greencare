@@ -1,3 +1,76 @@
-<p>
-  caregiverschedules works!
-</p>
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" *ngIf="caregiver && schedules">
+  <div class="row">
+    <ol class="breadcrumb">
+      <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+      <li class="active">Data Perawat / Jadwal Perawat</li>
+    </ol>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Jadwal Perawat</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <table class="table table-hover">
+            <tr>
+              <td class="align-middle">Nama Perawat</td>
+              <td class="align-middle">{{caregiver.frontName}} {{caregiver.middleName}} {{caregiver.lastName}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">STR</td>
+              <td class="align-middle">{{caregiver.registerNurseNumber}}
+              </td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">SIPP</td>
+              <td class="align-middle">{{caregiver.sipp}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Kontak</td>
+              <td class="align-middle">{{caregiver.phoneNumber}}</td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <table class="table table-hover">
+
+            <tr class="table-info">
+              <th>Tanggal</th>
+              <th>Hari</th>
+              <th>Shift 1</th>
+              <th>Shift 2</th>
+              <th>Status</th>
+            </tr>
+
+            <tr *ngFor="let schedule of schedules;">
+              <td class="align-middle">{{schedule.date}}</td>
+              <td class="align-middle">{{schedule.day}}</td>
+              <td class="align-middle">{{schedule.startTime}}-{{schedule.endTime}}</td>
+              <td class="align-middle">{{schedule.startTime2}}-{{schedule.endTime2}}</td>
+              <td class="align-middle">{{caregiver.status}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

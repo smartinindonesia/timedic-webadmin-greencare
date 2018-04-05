@@ -40,6 +40,13 @@ export class CaregiverlistService {
     return this.http.delete('https://timedic.id:8443/api/caregiver/' + params.id, {headers: headers}).map(res => res.json());
   }
 
+  fetchCaregiverSchedule(id:number){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    return this.http.get('https://timedic.id:8443/api/SchedulleByIdCaregiver/' + id, {headers: headers}).map(res => res.json());
+  }
+
   loadToken() {
     const token = localStorage.getItem('id_token');
     this.authToken = token;
