@@ -48,6 +48,27 @@ export class CaregiverlistService {
     return this.http.get(environment.origin_host+'api/SchedulleByIdCaregiver/' + id, {headers: headers}).map(res => res.json());
   }
 
+  caregiverAssignSchedule(body:Object, id:number){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    return this.http.post(environment.origin_host+'api/caregiverTrxList/' + id, body, {headers: headers}).map(res => res.json());
+  }
+
+  caregiverEditSchedule(body:Object, id:number){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    return this.http.put(environment.origin_host+'api/caregiverTrxList/' + id, body, {headers: headers}).map(res => res.json());
+  }
+
+  caregiverDeleteSchedule(id:number){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    return this.http.delete(environment.origin_host+'api/caregiverTrxList/' + id, {headers: headers}).map(res => res.json());
+  }
+
   loadToken() {
     const token = localStorage.getItem('id_token');
     this.authToken = token;
