@@ -37,15 +37,9 @@ export class AssignperawatComponent implements OnInit {
           {
             'caregiverName': arrayItem['frontName'] + ' ' + arrayItem['middleName'] + ' ' + arrayItem['lastName'],
             'registerNurseNumber': arrayItem['registerNurseNumber'],
-            'idHomecareClinic': {
-              'id': 1,
-            },
-            'idServiceTransaction': {
-              'id': that.orderObject['id']
-            },
-            'idCaregiver': {
-              'id': arrayItem['id']
-            },
+            'idHomecareClinic': 1,
+            'idServiceTransaction': that.orderObject['id'],
+            'idCaregiver': arrayItem['id'],
             'rateStatus': false
           }
         insertlist.push(uploadItem);
@@ -55,15 +49,13 @@ export class AssignperawatComponent implements OnInit {
       {
         'homecareTransactionCaregiverlistList': insertlist
       };
-    var itemJSON = JSON.stringify(updateItem);
-    console.log(itemJSON);
-    /*
-    that.orderListService.updateOrder(itemJSON, this.orderObject['id']).subscribe(data => {
+
+    that.orderListService.updateOrder(updateItem, this.orderObject['id']).subscribe(data => {
       console.log(data);
     }, error => {
       console.log(error);
     });
-    */
+
   }
 
   getCareGiverList() {

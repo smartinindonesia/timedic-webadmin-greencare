@@ -43,6 +43,11 @@ import {UserlistComponent} from './componets/userlist/userlist.component';
 import {CaregiverdetailsComponent} from './componets/caregiverdetails/caregiverdetails.component';
 import {OrderpriceeditorComponent} from './componets/orderpriceeditor/orderpriceeditor.component';
 import {CaregiverschedulesComponent} from './componets/caregiverschedules/caregiverschedules.component';
+import {UsersService} from './services/users.service'
+import {UsersComponent} from './componets/users/users.component';
+import { UserdetailsComponent } from './componets/userdetails/userdetails.component';
+import { PatientdetailsComponent } from './componets/patientdetails/patientdetails.component';
+import { UserpatientsComponent } from './componets/userpatients/userpatients.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -62,9 +67,12 @@ const appRoutes: Routes = [
   {path: 'ordermap', component: OrdermapComponent, canActivate: [AuthGuard]},
   {path: 'orderdetails', component: OrderdetailsComponent, canActivate: [AuthGuard]},
   {path: 'caredetails', component: CaregiverdetailsComponent, canActivate: [AuthGuard]},
-  {path: 'userlist', component: UserlistComponent, canActivate: [AuthGuard]},
+  {path: 'userlist', component: UsersComponent, canActivate: [AuthGuard]},
   {path: 'orderpriceeditor', component: OrderpriceeditorComponent, canActivate: [AuthGuard]},
-  {path: 'caregiverschedules', component: CaregiverschedulesComponent, canActivate: [AuthGuard]}
+  {path: 'caregiverschedules', component: CaregiverschedulesComponent, canActivate: [AuthGuard]},
+  {path: 'userdetails', component: UserdetailsComponent, canActivate: [AuthGuard]},
+  {path: 'patientdetails', component: PatientdetailsComponent, canActivate: [AuthGuard]},
+  {path: 'userpatients', component: UserpatientsComponent, canActivate: [AuthGuard]}
 ];
 
 const googleMapsCore = AgmCoreModule.forRoot({
@@ -94,10 +102,13 @@ const googleMapsCore = AgmCoreModule.forRoot({
     ChangeorderstatusComponent,
     OrdermapComponent,
     OrderdetailsComponent,
-    UserlistComponent,
+    UsersComponent,
     CaregiverdetailsComponent,
     OrderpriceeditorComponent,
-    CaregiverschedulesComponent
+    CaregiverschedulesComponent,
+    UserdetailsComponent,
+    PatientdetailsComponent,
+    UserpatientsComponent
   ],
   imports: [
     BrowserModule,
@@ -117,7 +128,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     ProfileService,
     CaregiverlistService,
     ModalService,
-    DatatransferService
+    DatatransferService,
+    UsersService
   ],
   bootstrap: [AppComponent]
 })

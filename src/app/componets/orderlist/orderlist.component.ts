@@ -75,8 +75,8 @@ export class OrderlistComponent implements OnInit {
       that.stompClient.subscribe('/notification', (message) => {
         if (message.body) {
           let msj = JSON.parse(message.body);
-          console.log('BODY ', msj.toString());
-          that.addNotification('Pemesanan Jasa Perawat', msj);
+          //console.log('BODY ', msj.toString());
+          //that.addNotification('Pemesanan Jasa Perawat', msj);
         }
       });
     });
@@ -162,8 +162,8 @@ export class OrderlistComponent implements OnInit {
         this.orderList = data;
         console.log(data);
       }, error => {
+        console.log("ini sedang error");
         console.log(error);
-        return false;
       }
     );
 

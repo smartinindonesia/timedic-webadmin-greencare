@@ -1,35 +1,39 @@
 import {Component, OnInit} from '@angular/core';
-import {PatientlistService} from '../../services/patientlist.service';
 import {DatatransferService} from '../../services/datatransfer.service';
+import {PatientlistService} from '../../services/patientlist.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-patient-list',
-  templateUrl: './patient-list.component.html',
-  styleUrls: ['./patient-list.component.css']
+  selector: 'app-userpatients',
+  templateUrl: './userpatients.component.html',
+  styleUrls: ['./userpatients.component.css']
 })
-export class PatientListComponent implements OnInit {
+export class UserpatientsComponent implements OnInit {
 
-  patienstList: Object;
+  user: Object;
+  patientstList: Object;
 
-  constructor(private dataTransferService:DatatransferService,
-              private patientlistService: PatientlistService,
-              private router: Router) {
+  constructor(private dataTransferServices: DatatransferService,
+              private router:Router,
+              private patientServices:PatientlistService) {
+
   }
 
   ngOnInit() {
-    this.patientlistService.getPatientList().subscribe(patients => {
+    this.user = this.dataTransferServices.getDataTransfer();
+    this.getPatientByUserId();
+  }
 
+  getPatientByUserId() {
+    this.patientServices.getPatientByUserId(this.user['id']).subscribe(patients => {
       for(var i = 0; i < patients.length; i++){
         let time = new Date(patients[i].dateOfBirth);
         patients[i].dateOfBirth = formatDate(time);
       }
-      this.patienstList = patients;
+      this.patientstList = patients;
     }, err => {
       console.log(err);
-      return false;
     });
-
     function formatDate(date) {
       var monthNames = [
         'January', 'February', 'March',
@@ -49,11 +53,10 @@ export class PatientListComponent implements OnInit {
 
       return dayName + ', ' + day + ' ' + monthNames[monthIndex] + ' ' + year;
     }
-
   }
 
-  gotoDetails(patient:Object){
-    this.dataTransferService.setDataTransfer(patient);
+  gotoDetails(patient: Object) {
+    this.dataTransferServices.setDataTransfer(patient);
     this.router.navigate(['patientdetails']);
   }
 

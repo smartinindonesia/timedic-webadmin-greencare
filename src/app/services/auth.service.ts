@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 import {tokenNotExpired} from 'angular2-jwt';
 import * as CryptoJS from 'crypto-js';
 import {Observable} from 'rxjs/Observable';
+import {environment} from '../../environments/environment'
 
 @Injectable()
 export class AuthService {
@@ -20,16 +21,16 @@ export class AuthService {
     let headers = new Headers();
     var exchange = user.password;
     user.password = this.encryptedText(exchange);
-    return this.http.post('https://timedic.id:8443/register/user', user, {headers: headers}).map(res => res.json());
+    return this.http.post(environment.origin_host + 'register/user', user, {headers: headers}).map(res => res.json());
   }
 
   encryptedText = function (text) {
     var iterationCount = 1000;
     var keySize = 128;
-    var passPhrase = 'timedictimedic18';
+    var passPhrase = environment.passPhrase;
     var dataToDecrypt = text; //The base64 encoded string output from Java;
-    var iv = 'dc0da04af8fee58593442bf834b30739';
-    var salt = 'dc0da04af8fee58593442bf834b30739';
+    var iv = environment.iv;
+    var salt = environment.salt;
 
     var AesUtil = function (keySize, iterationCount) {
       this.keySize = keySize / 32;
@@ -62,7 +63,7 @@ export class AuthService {
     var body = 'username=' + user.username + '&password=' + this.encryptedText(user.password);
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    return this.http.post('https://timedic.id:8443/authenticate/user', body, {headers: headers}).map(res => res.json());
+    return this.http.post(environment.origin_host + 'authenticate/user', body, {headers: headers}).map(res => res.json());
   }
 
   storeUserData(token, user) {

@@ -3,6 +3,7 @@ import {Http, Headers} from '@angular/http';
 import '../../route_config'
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import {environment} from '../../environments/environment'
 
 @Injectable()
 export class OrderlistService {
@@ -17,14 +18,14 @@ export class OrderlistService {
     let headers = new Headers();
     this.loadToken();
     headers.append('Authorization', this.authToken);
-    return this.http.get('https://timedic.id:8443/api/transactions/homecare/' , {headers: headers}).map(res => res.json());
+    return this.http.get(environment.origin_host + 'api/transactions/homecare/', {headers: headers}).map(res => res.json());
   }
 
-  updateOrder(input, id){
+  updateOrder(input, id) {
     let headers = new Headers();
     this.loadToken();
     headers.append('Authorization', this.authToken);
-    return this.http.put('https://timedic.id:8443/api/transactions/homecare/'+id, input,{headers: headers});
+    return this.http.put(environment.origin_host + 'api/transactions/homecare/' + id, input, {headers: headers});
   }
 
   loadToken() {

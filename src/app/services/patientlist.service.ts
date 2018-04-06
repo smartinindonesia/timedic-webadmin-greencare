@@ -3,6 +3,7 @@ import {Http, Headers} from '@angular/http';
 import '../../route_config'
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class PatientlistService {
@@ -17,7 +18,15 @@ export class PatientlistService {
     this.loadToken();
     console.log(this.authToken);
     headers.append('Authorization', this.authToken);
-    return this.http.get('https://timedic.id:8443/api/patients' , {headers: headers}).map(res => res.json());
+    return this.http.get(environment.origin_host+'api/patients', {headers: headers}).map(res => res.json());
+  }
+
+  getPatientByUserId(id: number) {
+    let headers = new Headers();
+    this.loadToken();
+    console.log(this.authToken);
+    headers.append('Authorization', this.authToken);
+    return this.http.get(environment.origin_host+'api/patients/findbyiduser/' + id, {headers: headers}).map(res => res.json());
   }
 
   loadToken() {

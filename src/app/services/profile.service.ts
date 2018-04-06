@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
+import {environment} from '../../environments/environment'
 
 @Injectable()
 export class ProfileService {
@@ -15,7 +16,7 @@ export class ProfileService {
     this.loadToken();
     this.loadUser();
     headers.append('Authorization', this.authToken);
-    return this.http.get('https://timedic.id:8443/api/user/' + this.user.id, {headers: headers}).map(res => res.json());
+    return this.http.get(environment.origin_host+'api/user/' + this.user.id, {headers: headers}).map(res => res.json());
   }
 
   loadToken() {

@@ -60,12 +60,13 @@
             </tr>
 
             <tr *ngFor="let schedule of schedules;">
-              <td class="align-middle">{{schedule.date}}</td>
+              <td class="align-middle">{{schedule.dateConv}}</td>
               <td class="align-middle">{{schedule.day}}</td>
               <td class="align-middle">{{schedule.startTime}}-{{schedule.endTime}}</td>
               <td class="align-middle">{{schedule.startTime2}}-{{schedule.endTime2}}</td>
-              <td class="align-middle">{{caregiver.status}}</td>
+              <td class="align-middle">{{schedule.statConv}}</td>
             </tr>
+
           </table>
         </div>
       </div>

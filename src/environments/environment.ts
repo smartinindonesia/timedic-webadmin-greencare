@@ -5,5 +5,9 @@
 
 export const environment = {
   production: false,
-  origin: 'http://localhost:8080/api'
+  origin_host: 'https://timedic.id:8443/',
+  //crypt
+  passPhrase : 'timedictimedic18',
+  iv : 'dc0da04af8fee58593442bf834b30739',
+  salt : 'dc0da04af8fee58593442bf834b30739'
 };

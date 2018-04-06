@@ -1,0 +1,57 @@
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" *ngIf="patient">
+  <div class="row">
+    <ol class="breadcrumb">
+      <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+      <li class="active"> Detail Pasien </li>
+    </ol>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Detail Pasien</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <table class="table table-hover">
+            <tr>
+              <td class="align-middle">Nama</td>
+              <td class="align-middle">{{patient.name}} </td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Agama</td>
+              <td class="align-middle">{{patient.religion}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Tempat Lahir</td>
+              <td class="align-middle">{{patient.placeOfBirth}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Tanggal Lahir</td>
+              <td class="align-middle">{{patient.placeOfBirth}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Tinggi Badan</td>
+              <td class="align-middle">{{patient.height}} cm</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Berat Badan</td>
+              <td class="align-middle">{{patient.weight}} kg</td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -7,9 +7,21 @@
   </div>
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Daftar Pasien</h1>
+      <h1 class="page-header">Daftar Pasien Keluarga</h1>
     </div>
   </div>
+
+  <div class="row" *ngIf="user">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          Pasien berikut terdaftar sebagai keluarga dari <b> {{user.frontName}} {{user.middleName}} {{user.lastName}} </b>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-lg-12">
       <div class="panel panel-default">
@@ -23,7 +35,7 @@
               <th scope="col">Aksi</th>
             </tr>
             <tbody>
-            <tr *ngFor="let patient of patienstList;">
+            <tr *ngFor="let patient of patientstList;">
               <td>{{patient.name}}</td>
               <td>{{patient.religion}}</td>
               <td>{{patient.placeOfBirth}}</td>
