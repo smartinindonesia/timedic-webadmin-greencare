@@ -75,8 +75,8 @@ export class OrderlistComponent implements OnInit {
       that.stompClient.subscribe('/notification', (message) => {
         if (message.body) {
           let msj = JSON.parse(message.body);
-          //console.log('BODY ', msj.toString());
-          //that.addNotification('Pemesanan Jasa Perawat', msj);
+          console.log('BODY ', msj.toString());
+          that.addNotification('Pemesanan Jasa Perawat', msj);
         }
       });
     });
@@ -109,7 +109,7 @@ export class OrderlistComponent implements OnInit {
     this.router.navigate(['assessmentorder']);
   }
 
-  goToOrderPrice(data: Object){
+  goToOrderPrice(data: Object) {
     this.dataTransferService.setDataTransfer(data);
     this.router.navigate(['orderpriceeditor']);
   }
@@ -156,39 +156,40 @@ export class OrderlistComponent implements OnInit {
     this.orderListService.getOderList().subscribe(
       data => {
         for (var i = 0; i < data.length; i++) {
-          let time = new Date(data[i].expiredTransactionTime);
-          data[i]['expiredTransactionTimeConv'] = formatDate(time);
+          let time = new Date(data[i].date);
+          var date = this.formatDate(time);
+          data[i].dateConv = date;
         }
         this.orderList = data;
         console.log(data);
       }, error => {
-        console.log("ini sedang error");
+        console.log('ini sedang error');
         console.log(error);
       }
     );
 
-    function formatDate(date) {
-      var monthNames = [
-        'January', 'February', 'March',
-        'April', 'May', 'June', 'July',
-        'August', 'September', 'October',
-        'November', 'December'
-      ];
-
-      var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-      var day = date.getDate();
-      var monthIndex = date.getMonth();
-      var year = date.getFullYear();
-
-      var d = new Date(date);
-      var dayName = days[d.getDay()];
-      var time = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
-
-      return dayName + ', ' + day + ' ' + monthNames[monthIndex] + ' ' + year + ' : ' + time;
-    }
 
   }
 
+  formatDate(date) {
+    var monthNames = [
+      'January', 'February', 'March',
+      'April', 'May', 'June', 'July',
+      'August', 'September', 'October',
+      'November', 'December'
+    ];
+
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+    var day = date.getDate();
+    var monthIndex = date.getMonth();
+    var year = date.getFullYear();
+
+    var d = new Date(date);
+    var dayName = days[d.getDay()];
+    var time = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+
+    return dayName + ', ' + day + ' ' + monthNames[monthIndex] + ' ' + year + ' : ' + time;
+  }
 
 }

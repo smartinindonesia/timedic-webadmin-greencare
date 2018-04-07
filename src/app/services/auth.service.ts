@@ -21,7 +21,7 @@ export class AuthService {
     let headers = new Headers();
     var exchange = user.password;
     user.password = this.encryptedText(exchange);
-    return this.http.post(environment.origin_host + 'register/user', user, {headers: headers}).map(res => res.json());
+    return this.http.post(environment.origin_host + 'register/clinic', user, {headers: headers}).map(res => res.json());
   }
 
   encryptedText = function (text) {
@@ -63,7 +63,7 @@ export class AuthService {
     var body = 'username=' + user.username + '&password=' + this.encryptedText(user.password);
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    return this.http.post(environment.origin_host + 'authenticate/user', body, {headers: headers}).map(res => res.json());
+    return this.http.post(environment.origin_host + 'authenticate/clinic', body, {headers: headers}).map(res => res.json());
   }
 
   storeUserData(token, user) {

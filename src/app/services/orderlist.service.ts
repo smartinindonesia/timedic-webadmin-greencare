@@ -21,6 +21,13 @@ export class OrderlistService {
     return this.http.get(environment.origin_host + 'api/transactions/homecare/', {headers: headers}).map(res => res.json());
   }
 
+  getOrderById(idOrder: number) {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    return this.http.get(environment.origin_host + 'api/transactions/homecare/' + idOrder, {headers: headers}).map(res => res.json());
+  }
+
   updateOrder(input, id) {
     let headers = new Headers();
     this.loadToken();

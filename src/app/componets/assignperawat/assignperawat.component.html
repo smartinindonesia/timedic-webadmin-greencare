@@ -41,7 +41,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-8">
+    <div class="col-lg-6">
 
       <div class="panel panel-default">
         <div class="panel-heading">Daftar Perawat</div>
@@ -53,17 +53,19 @@
               <th>Ceklist</th>
             </tr>
 
-            <tr *ngFor="let record of careGiverList;">
-              <td class="align-middle">{{record.frontName}} {{record.middleName}} {{record.lastName}}</td>
-              <td class="align-middle">{{record.registerNurseNumber}}</td>
-              <td class="align-middle"><input type="checkbox" (change)="record.readysubmit = !record.readysubmit;" [checked]="record.readysubmit"/></td>
+            <tr *ngFor="let record1 of careGiverList;">
+              <td class="align-middle">{{record1.frontName}} {{record1.middleName}} {{record1.lastName}}</td>
+              <td class="align-middle">{{record1.registerNurseNumber}}</td>
+              <td class="align-middle"><input type="checkbox"
+                                              (change)="record1.readysubmit = !record1.readysubmit;onSubmitCaregiverItem(record1);"
+                                              [checked]="record1.readysubmit"/></td>
             </tr>
           </table>
-          <input type="button" class="btn-primary" value="Submit Perawat" (click)="onSubmitCaregiver()">
+          <!--<input type="button" class="btn-primary" value="Submit Perawat" (click)="onSubmitCaregiver()">-->
         </div>
       </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-6">
       <div class="panel panel-default">
         <div class="panel-heading">Perawat Terpilih</div>
         <div class="panel-body">
@@ -71,10 +73,17 @@
             <tr class="table-info">
               <th>Nama Perawat</th>
               <th>Surat Tanda Registrasi</th>
+              <th>Aksi</th>
             </tr>
-            <tr *ngFor="let record of orderObject.homecareTransactionCaregiverlistList;">
-              <td class="align-middle">{{record.caregiverName}}</td>
-              <td class="align-middle">{{record.registerNurseNumber}}</td>
+            <tr *ngFor="let record2 of orderObject.homecareTransactionCaregiverlistList;">
+              <td class="align-middle">{{record2.caregiverName}}</td>
+              <td class="align-middle">{{record2.registerNurseNumber}}</td>
+              <td>
+                <div class="btn-group-vertical btn-group-xs align-middle">
+                  <input type="button" value="Delete" class="btn btn-warning"
+                         (click)="deleteAssignedCaregiver(record2)"/>
+                </div>
+              </td>
             </tr>
           </table>
 
