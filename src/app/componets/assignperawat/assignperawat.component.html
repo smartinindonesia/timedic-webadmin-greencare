@@ -56,9 +56,11 @@
             <tr *ngFor="let record1 of careGiverList;">
               <td class="align-middle">{{record1.frontName}} {{record1.middleName}} {{record1.lastName}}</td>
               <td class="align-middle">{{record1.registerNurseNumber}}</td>
-              <td class="align-middle"><input type="checkbox"
-                                              (change)="record1.readysubmit = !record1.readysubmit;onSubmitCaregiverItem(record1);"
-                                              [checked]="record1.readysubmit"/></td>
+              <td class="align-middle">
+                <input type="checkbox"
+                       (change)="record1.readysubmit = !record1.readysubmit;onSubmitCaregiverItem(record1);"
+                       [checked]="record1.readysubmit"/>
+              </td>
             </tr>
           </table>
           <!--<input type="button" class="btn-primary" value="Submit Perawat" (click)="onSubmitCaregiver()">-->

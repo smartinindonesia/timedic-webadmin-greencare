@@ -48,6 +48,7 @@ import {UsersComponent} from './componets/users/users.component';
 import { UserdetailsComponent } from './componets/userdetails/userdetails.component';
 import { PatientdetailsComponent } from './componets/patientdetails/patientdetails.component';
 import { UserpatientsComponent } from './componets/userpatients/userpatients.component';
+import { CaregivereditComponent } from './componets/caregiveredit/caregiveredit.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -72,7 +73,8 @@ const appRoutes: Routes = [
   {path: 'caregiverschedules', component: CaregiverschedulesComponent, canActivate: [AuthGuard]},
   {path: 'userdetails', component: UserdetailsComponent, canActivate: [AuthGuard]},
   {path: 'patientdetails', component: PatientdetailsComponent, canActivate: [AuthGuard]},
-  {path: 'userpatients', component: UserpatientsComponent, canActivate: [AuthGuard]}
+  {path: 'userpatients', component: UserpatientsComponent, canActivate: [AuthGuard]},
+  {path: 'caregiveredit', component: CaregivereditComponent, canActivate: [AuthGuard]}
 ];
 
 const googleMapsCore = AgmCoreModule.forRoot({
@@ -108,7 +110,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     CaregiverschedulesComponent,
     UserdetailsComponent,
     PatientdetailsComponent,
-    UserpatientsComponent
+    UserpatientsComponent,
+    CaregivereditComponent
   ],
   imports: [
     BrowserModule,

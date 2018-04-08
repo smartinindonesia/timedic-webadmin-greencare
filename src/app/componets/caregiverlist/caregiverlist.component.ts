@@ -136,6 +136,11 @@ export class CaregiverlistComponent implements OnInit {
 
   }
 
+  gotoEditCaregiver(item:any){
+    this.dataTransferService.setDataTransfer(item);
+    this.router.navigate(['caregiveredit']);
+  }
+
   onItemEditStatus(obj: any, input: number) {
     let param = {
       'idCaregiverStatus': {
