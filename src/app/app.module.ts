@@ -15,6 +15,7 @@ import {DashboardComponent} from './componets/dashboard/dashboard.component';
 import {ProfileComponent} from './componets/profile/profile.component';
 import {CaregiverlistComponent} from './componets/caregiverlist/caregiverlist.component';
 
+import {ConstantsvariablesService} from './services/constantsvariables.service';
 import {ValidateService} from './services/validate.service';
 import {AuthService} from './services/auth.service';
 import {PatientlistService} from './services/patientlist.service';
@@ -45,10 +46,10 @@ import {OrderpriceeditorComponent} from './componets/orderpriceeditor/orderprice
 import {CaregiverschedulesComponent} from './componets/caregiverschedules/caregiverschedules.component';
 import {UsersService} from './services/users.service'
 import {UsersComponent} from './componets/users/users.component';
-import { UserdetailsComponent } from './componets/userdetails/userdetails.component';
-import { PatientdetailsComponent } from './componets/patientdetails/patientdetails.component';
-import { UserpatientsComponent } from './componets/userpatients/userpatients.component';
-import { CaregivereditComponent } from './componets/caregiveredit/caregiveredit.component';
+import {UserdetailsComponent} from './componets/userdetails/userdetails.component';
+import {PatientdetailsComponent} from './componets/patientdetails/patientdetails.component';
+import {UserpatientsComponent} from './componets/userpatients/userpatients.component';
+import {CaregivereditComponent} from './componets/caregiveredit/caregiveredit.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -132,7 +133,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     CaregiverlistService,
     ModalService,
     DatatransferService,
-    UsersService
+    UsersService,
+    ConstantsvariablesService
   ],
   bootstrap: [AppComponent]
 })

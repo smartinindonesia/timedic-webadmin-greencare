@@ -18,6 +18,10 @@
           <div class="col-md-12">
             <form (submit)="onEditSubmit()">
               <div class="form-group">
+                <label>Username</label>
+                <input type="text" [(ngModel)]="caregiver.username" name="username" class="form-control" disabled>
+              </div>
+              <div class="form-group">
                 <label>Front Name</label>
                 <input type="text" [(ngModel)]="caregiver.frontName" name="frontName" class="form-control">
               </div>
@@ -30,16 +34,24 @@
                 <input type="text" [(ngModel)]="caregiver.lastName" name="LastName" class="form-control">
               </div>
               <div class="form-group">
+                <label>Agama</label>
+                <select class="form-control" [(ngModel)]="religionsel" name="religionsel">
+                  <option *ngFor="let relig of religionList;" [value]="relig.name">{{relig.name}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Jenis Kelamin</label>
+                <select class="form-control" [(ngModel)]="gendersel" name="gendersel">
+                  <option *ngFor="let gend of genderList;" [value]="gend.name">{{gend.name}}</option>
+                </select>
+              </div>
+              <div class="form-group">
                 <label>Email</label>
                 <input type="text" [(ngModel)]="caregiver.email" name="email" class="form-control">
               </div>
               <div class="form-group">
                 <label>Mobile Phone</label>
                 <input type="text" [(ngModel)]="caregiver.phoneNumber" name="phoneNumber" class="form-control">
-              </div>
-              <div class="form-group">
-                <label>Username</label>
-                <input type="text" [(ngModel)]="caregiver.username" name="username" class="form-control" disabled>
               </div>
               <div class="form-group">
                 <label>Nomor STR</label>
