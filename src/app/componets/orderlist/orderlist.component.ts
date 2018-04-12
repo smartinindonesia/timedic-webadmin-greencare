@@ -26,6 +26,10 @@ export class OrderlistComponent implements OnInit {
   orderList: Object;
   audio: any;
 
+  page: number; //current page number
+  size: number; //number of item per page
+  maxpage: number; //maximum page of table view
+
   constructor(@Inject(PLATFORM_ID) platformId: string,
               private _pushNotifications: PushNotificationsService,
               private injector: Injector,
@@ -42,10 +46,35 @@ export class OrderlistComponent implements OnInit {
 
   ngOnInit() {
     this._pushNotifications.requestPermission();
+
+    this.page = 0;
+    this.size = 2;
     this.getOrderList();
+
     this.initAudio();
     this.loadAudio();
     this.connectWebSocket();
+  }
+
+  onClickNext() {
+    if (this.page < (this.maxpage - 1)) {
+      this.page++;
+      this.getOrderList();
+    }
+  }
+
+  onClickSelectedPage(input) {
+    if (input > 0 && input < (this.maxpage - 1)) {
+      this.page = input - 1;
+      this.getOrderList();
+    }
+  }
+
+  onClickPrevious() {
+    if (this.page > 0) {
+      this.page--;
+      this.getOrderList();
+    }
   }
 
   initAudio() {
@@ -153,14 +182,15 @@ export class OrderlistComponent implements OnInit {
   }
 
   getOrderList() {
-    this.orderListService.getOderList().subscribe(
+    this.orderListService.getOrderListWithPagination(this.page, this.size, 'ASC', 'id').subscribe(
       data => {
-        for (var i = 0; i < data.length; i++) {
-          let time = new Date(data[i].date);
+        for (var i = 0; i < data[0].length; i++) {
+          let time = new Date(data[0][i].date);
           var date = this.formatDate(time);
-          data[i].dateConv = date;
+          data[0][i].dateConv = date;
         }
-        this.orderList = data;
+        this.maxpage = Math.ceil(data[1].numOfRows / this.size);
+        this.orderList = data[0];
         console.log(data);
       }, error => {
         console.log('ini sedang error');

@@ -28,6 +28,14 @@ export class OrderlistService {
     return this.http.get(environment.origin_host + 'api/transactions/homecare/' + idOrder, {headers: headers}).map(res => res.json());
   }
 
+  getOrderListWithPagination(page, sze, srt, srtFld) {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    let strpar = '?page=' + page + '&size=' + sze + '&sort=' + srt + '&sortField=' + srtFld;
+    return this.http.get(environment.origin_host + 'api/transactionWithPagination/homecare' + strpar, {headers: headers}).map(res => res.json());
+  }
+
   updateOrder(input, id) {
     let headers = new Headers();
     this.loadToken();

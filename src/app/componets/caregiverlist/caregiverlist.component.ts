@@ -76,7 +76,6 @@ export class CaregiverlistComponent implements OnInit {
       console.log(data);
     }, error => {
       console.log(error);
-      return false;
     });
 
     function formatDate(date) {
