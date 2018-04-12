@@ -39,7 +39,7 @@ export class AssignperawatComponent implements OnInit {
       var uploadItem =
         {
           'caregiverName': item['frontName'] + ' ' + item['middleName'] + ' ' + item['lastName'],
-          //'registerNurseNumber': item['registerNurseNumber'],
+          'registerNurseNumber': item['registerNurseNumber'],
           'idHomecareClinic': {'id': 1},
           'idTransaction': that.orderObject['id'],
           'idCaregiver': item['id'],
