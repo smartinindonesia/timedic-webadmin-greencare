@@ -20,6 +20,15 @@ export class CaregiverlistService {
     return this.http.get(environment.origin_host + 'api/caregiversWithPagination' + strpar, {headers: headers}).map(res => res.json());
   }
 
+  getCareGiversBySearchField(page, sze, srt, srtFld, searchFields, searchValue) {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    let strpar = '?page=' + page + '&size=' + sze + '&sort=' + srt + '&sortField=' + srtFld + '&searchField=' + searchFields + '&value=' + searchValue;
+    console.log(strpar);
+    return this.http.get(environment.origin_host + 'api/caregiversWithPaginationByField' + strpar, {headers: headers}).map(res => res.json());
+  }
+
   registerCareGivers(params) {
     let headers = new Headers();
     this.loadToken();

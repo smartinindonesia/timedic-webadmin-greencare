@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import {ModalService} from '../../services/modal.service';
 import {DatatransferService} from '../../services/datatransfer.service';
+import {ConstantsvariablesService} from '../../services/constantsvariables.service';
 
 @Component({
   selector: 'app-caregiverlist',
@@ -16,24 +17,44 @@ export class CaregiverlistComponent implements OnInit {
   careGiverList: Object;
   page: number; //current page number
   size: number; //number of item per page
+  sizeOpt: any;
   maxpage: number; //maximum page of table view
   registerFeedback: Object;
 
   caregiverObj: Object;
   dist: boolean;
 
+  searchField: any;
+  searchFieldSel: string;
+  filterState: boolean;
+  filterValue: string;
+
   constructor(private modalService: ModalService,
               private caregiverListSvc: CaregiverlistService,
               private router: Router,
               private dataTransferService: DatatransferService,
+              private constantService: ConstantsvariablesService,
               private flashMessage: FlashMessagesService) {
   }
 
   ngOnInit() {
+    this.filterState = false;
+    this.searchField = this.constantService.getCaregiverSearchField();
+    this.sizeOpt = this.constantService.getPagesOption();
     this.page = 0;
-    this.size = 2;
+    this.size = 10;
     this.getCareGiverList();
     this.dist = false;
+  }
+
+  searchWithFilter() {
+    this.filterState = true;
+    this.getCareGiverList();
+  }
+
+  searchWithoutFilter() {
+    this.filterState = false;
+    this.getCareGiverList();
   }
 
   openModal(id: string, caregiver: Object) {
@@ -67,17 +88,29 @@ export class CaregiverlistComponent implements OnInit {
   }
 
   getCareGiverList() {
-    this.caregiverListSvc.getCareGivers(this.page, this.size, 'ASC', 'id').subscribe(data => {
-      for (var i = 0; i < data[0].length; i++) {
-        data[0][i].dobtext = formatDate(new Date(data[0][i].dateOfBirth));
-      }
-      this.maxpage = Math.ceil(data[1].numOfRows / this.size);
-      this.careGiverList = data[0];
-      console.log(data);
-    }, error => {
-      console.log(error);
-    });
-
+    if (!this.filterState) {
+      this.caregiverListSvc.getCareGivers(this.page, this.size, 'ASC', 'id').subscribe(data => {
+        for (var i = 0; i < data[0].length; i++) {
+          data[0][i].dobtext = formatDate(new Date(data[0][i].dateOfBirth));
+        }
+        this.maxpage = Math.ceil(data[1].numOfRows / this.size);
+        this.careGiverList = data[0];
+        console.log(data);
+      }, error => {
+        console.log(error);
+      });
+    } else {
+      this.caregiverListSvc.getCareGiversBySearchField(this.page, this.size, 'ASC', 'id', this.searchFieldSel, this.filterValue).subscribe(data => {
+        console.log(data);
+        for (var i = 0; i < data[0].length; i++) {
+          data[0][i].dobtext = formatDate(new Date(data[0][i].dateOfBirth));
+        }
+        this.maxpage = Math.ceil(data[1].numOfRows / this.size);
+        this.careGiverList = data[0];
+      }, error => {
+        console.log(error);
+      });
+    }
     function formatDate(date) {
       var monthNames = [
         'January', 'February', 'March',
@@ -100,7 +133,7 @@ export class CaregiverlistComponent implements OnInit {
     }
   }
 
-  gotoCaregiverSchedule(item:Object){
+  gotoCaregiverSchedule(item: Object) {
     this.dataTransferService.setDataTransfer(item);
     this.router.navigate(['caregiverschedules']);
   }
@@ -135,7 +168,7 @@ export class CaregiverlistComponent implements OnInit {
 
   }
 
-  gotoEditCaregiver(item:any){
+  gotoEditCaregiver(item: any) {
     this.dataTransferService.setDataTransfer(item);
     this.router.navigate(['caregiveredit']);
   }
@@ -159,7 +192,7 @@ export class CaregiverlistComponent implements OnInit {
     });
   }
 
-  goToCaregiverDetails(caregiver:Object){
+  goToCaregiverDetails(caregiver: Object) {
     this.dataTransferService.setDataTransfer(caregiver);
     this.router.navigate(['caredetails']);
   }
