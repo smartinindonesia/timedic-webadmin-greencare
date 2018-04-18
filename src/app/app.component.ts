@@ -8,7 +8,7 @@ import {Http, HttpModule} from '@angular/http';
 })
 export class AppComponent {
 
-  constructor(private http:Http, private authService: AuthService) {
+  constructor(private http:Http, public authService: AuthService) {
   }
 
 

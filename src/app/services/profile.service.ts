@@ -16,7 +16,7 @@ export class ProfileService {
     this.loadToken();
     this.loadUser();
     headers.append('Authorization', this.authToken);
-    return this.http.get(environment.origin_host+'api/user/' + this.user.id, {headers: headers}).map(res => res.json());
+    return this.http.get(environment.origin_host+'api/clinicAdmin/' + this.user.id, {headers: headers}).map(res => res.json());
   }
 
   loadToken() {

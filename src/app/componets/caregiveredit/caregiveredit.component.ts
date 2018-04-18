@@ -12,7 +12,7 @@ import {ConstantsvariablesService} from '../../services/constantsvariables.servi
 })
 export class CaregivereditComponent implements OnInit {
 
-  private caregiver: any;
+  public caregiver: any;
   religionsel: String;
   gendersel: String;
 

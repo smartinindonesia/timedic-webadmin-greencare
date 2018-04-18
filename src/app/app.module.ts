@@ -40,7 +40,6 @@ import {ChangeorderstatusComponent} from './componets/changeorderstatus/changeor
 import {OrdermapComponent} from './componets/ordermap/ordermap.component';
 import {PushNotificationsModule} from 'ng-push';
 import {OrderdetailsComponent} from './componets/orderdetails/orderdetails.component';
-import {UserlistComponent} from './componets/userlist/userlist.component';
 import {CaregiverdetailsComponent} from './componets/caregiverdetails/caregiverdetails.component';
 import {OrderpriceeditorComponent} from './componets/orderpriceeditor/orderpriceeditor.component';
 import {CaregiverschedulesComponent} from './componets/caregiverschedules/caregiverschedules.component';
@@ -53,7 +52,8 @@ import {CaregivereditComponent} from './componets/caregiveredit/caregiveredit.co
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'register', component: RegisterComponent},
+  //{path: 'register', component: RegisterComponent},
+  //{path: 'register', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},

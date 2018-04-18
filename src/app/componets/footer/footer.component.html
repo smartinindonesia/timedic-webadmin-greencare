@@ -4,17 +4,17 @@
 			<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/dashboard']"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
 			<li class="parent " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
 				<a >
-					<span class="glyphicon glyphicon-list"></span> Data Pasien <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+					<span class="glyphicon glyphicon-list"></span> Data Master <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-1">
           <li>
             <a class="" [routerLink]="['/userlist']">
-              <span class="glyphicon glyphicon-share-alt"></span> Daftar Pengguna
+              <span class="glyphicon glyphicon-share-alt"></span> Data Pelanggan
             </a>
           </li>
 					<li>
 						<a class="" [routerLink]="['/patients']">
-							<span class="glyphicon glyphicon-share-alt"></span> Daftar Pasien
+							<span class="glyphicon glyphicon-share-alt"></span> Data Pasien dari pelanggan
 						</a>
 					</li>
 				</ul>
@@ -26,7 +26,7 @@
 				<ul class="children collapse" id="sub-item-2">
 					<li>
 						<a class="" [routerLink]="['/clinic']">
-							<span class="glyphicon glyphicon-share-alt"></span> Daftar Klinik
+							<span class="glyphicon glyphicon-share-alt"></span> Klinik Green Care
 						</a>
 					</li>
 				</ul>
@@ -38,7 +38,7 @@
         <ul class="children collapse" id="sub-item-3">
           <li>
             <a class="" [routerLink]="['/orderlist']">
-              <span class="glyphicon glyphicon-share-alt"></span> Daftar Pemesanan
+              <span class="glyphicon glyphicon-share-alt"></span> Data Order Masuk
             </a>
           </li>
         </ul>
@@ -50,7 +50,7 @@
         <ul class="children collapse" id="sub-item-4">
           <li>
             <a class="" [routerLink]="['/caregiverlist']">
-              <span class="glyphicon glyphicon-share-alt"></span> Daftar Perawat
+              <span class="glyphicon glyphicon-share-alt"></span> Perawat
             </a>
           </li>
           <li>
