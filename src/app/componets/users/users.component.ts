@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import {ModalService} from '../../services/modal.service';
 import {DatatransferService} from '../../services/datatransfer.service';
+import {ConstantsvariablesService} from '../../services/constantsvariables.service';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -13,23 +14,44 @@ export class UsersComponent implements OnInit {
   userList: Object;
   page: number; //current page number
   size: number; //number of item per page
+  sizeOpt: any;
   maxpage: number; //maximum page of table view
   registerFeedback: Object;
 
   userObj: Object;
   dist: boolean;
 
+  searchField: any;
+  searchFieldSel: string;
+  filterState: boolean;
+  filterValue: string;
+
   constructor(private modalService: ModalService,
               private userListSvc: UsersService,
               private router: Router,
               private dataTransferService: DatatransferService,
-              private flashMessage: FlashMessagesService) { }
+              private flashMessage: FlashMessagesService,
+              private constantService: ConstantsvariablesService) {
+  }
 
   ngOnInit() {
+    this.filterState = false;
+    this.searchField = this.constantService.getUserSearchField();
+    this.sizeOpt = this.constantService.getPagesOption();
     this.page = 0;
-    this.size = 2;
+    this.size = 10;
     this.getUserList();
     this.dist = false;
+  }
+
+  searchWithFilter() {
+    this.filterState = true;
+    this.getUserList();
+  }
+
+  searchWithoutFilter() {
+    this.filterState = false;
+    this.getUserList();
   }
 
   onClickNext() {
@@ -54,17 +76,33 @@ export class UsersComponent implements OnInit {
   }
 
   getUserList() {
-    this.userListSvc.getUserList(this.page, this.size, 'ASC', 'id').subscribe(data => {
-      for (var i = 0; i < data[0].length; i++) {
-        data[0][i].dobtext = formatDate(new Date(data[0][i].dateBirth));
-      }
-      this.maxpage = Math.ceil(data[1].numOfRows / this.size);
-      this.userList = data[0];
-      console.log(data);
-    }, error => {
-      console.log(error);
-      return false;
-    });
+    if (!this.filterState) {
+      this.userListSvc.getUserList(this.page, this.size, 'ASC', 'id').subscribe(data => {
+        console.log(data);
+        for (var i = 0; i < data[0].length; i++) {
+          data[0][i].dobtext = formatDate(new Date(data[0][i].dateBirth));
+        }
+        this.maxpage = Math.ceil(data[1].numOfRows / this.size);
+        this.userList = data[0];
+
+      }, error => {
+        console.log(error);
+        return false;
+      });
+    } else {
+      this.userListSvc.getUserListBySearchField(this.page, this.size, 'ASC', 'id', this.searchFieldSel, this.filterValue).subscribe(data => {
+        console.log(data);
+        for (var i = 0; i < data[0].length; i++) {
+          data[0][i].dobtext = formatDate(new Date(data[0][i].dateBirth));
+        }
+        this.maxpage = Math.ceil(data[1].numOfRows / this.size);
+        this.userList = data[0];
+
+      }, error => {
+        console.log(error);
+        return false;
+      });
+    }
 
     function formatDate(date) {
       var monthNames = [
@@ -88,7 +126,7 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  gotoDetails(userdetails:Object){
+  gotoDetails(userdetails: Object) {
     this.dataTransferService.setDataTransfer(userdetails);
     this.router.navigate(['userdetails']);
   }
