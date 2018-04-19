@@ -6,6 +6,7 @@ import {FlashMessagesService} from 'angular2-flash-messages';
 import {DatatransferService} from '../../services/datatransfer.service';
 import {forEach} from '@angular/router/src/utils/collection';
 import {PushNotificationsService} from 'ng-push';
+import {environment} from 'environments/environment'
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import {ConstantsvariablesService} from '../../services/constantsvariables.service';
@@ -20,7 +21,7 @@ export class OrderlistComponent implements OnInit {
 
   private stompClient;
   private connected: boolean = false;
-  private serverUrl = 'https://timedic.id:8443/socket';
+  private serverUrl = environment.origin_host + 'socket';
   private title = 'WebSockets chat';
 
   private _push: PushNotificationsService;
