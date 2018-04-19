@@ -51,7 +51,7 @@ export class ConstantsvariablesService {
     return searchField;
   }
 
-  getPagesOption(){
+  getPagesOption() {
     let opt = [
       {'id': 1, 'value': 10},
       {'id': 2, 'value': 15},
@@ -61,4 +61,12 @@ export class ConstantsvariablesService {
     return opt;
   }
 
+  getOrderSearchField() {
+    let searchField = [
+      {'id': 1, 'name': 'Tanggal', 'value': 'date', 'type': 'date'},
+      {'id': 2, 'name': 'Username', 'value': 'username', 'type': 'text'},
+      {'id': 3, 'name': 'ID Pengguna', 'value': 'idUser', 'type': 'text'}
+    ];
+    return searchField;
+  }
 }

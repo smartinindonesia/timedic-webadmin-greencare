@@ -8,6 +8,7 @@ import {forEach} from '@angular/router/src/utils/collection';
 import {PushNotificationsService} from 'ng-push';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
+import {ConstantsvariablesService} from '../../services/constantsvariables.service';
 
 @Component({
   selector: 'app-orderlist',
@@ -28,7 +29,14 @@ export class OrderlistComponent implements OnInit {
 
   page: number; //current page number
   size: number; //number of item per page
+  sizeOpt: any;
   maxpage: number; //maximum page of table view
+
+  searchField: any;
+  searchFieldSel: any;
+  filterState: boolean;
+  filterValue: any;
+  editedFilterValue: any;
 
   constructor(@Inject(PLATFORM_ID) platformId: string,
               private _pushNotifications: PushNotificationsService,
@@ -36,6 +44,7 @@ export class OrderlistComponent implements OnInit {
               private dataTransferService: DatatransferService,
               private orderListService: OrderlistService,
               private router: Router,
+              private constantService: ConstantsvariablesService,
               private flashMessage: FlashMessagesService) {
 
     if (isPlatformBrowser(platformId)) {
@@ -47,13 +56,35 @@ export class OrderlistComponent implements OnInit {
   ngOnInit() {
     this._pushNotifications.requestPermission();
 
+    this.filterState = false;
+    this.searchField = this.constantService.getOrderSearchField();
+    this.sizeOpt = this.constantService.getPagesOption();
     this.page = 0;
-    this.size = 2;
+    this.size = 10;
     this.getOrderList();
 
     this.initAudio();
     this.loadAudio();
     this.connectWebSocket();
+  }
+
+  searchWithFilter() {
+    if (this.searchFieldSel == 'date') {
+      this.editedFilterValue = this.filterValue + ' 00:00:00';
+    } else {
+      this.editedFilterValue = this.filterValue;
+    }
+    this.filterState = true;
+    this.getOrderList();
+  }
+
+  getDate() {
+    var mydate = this.filterValue + ' 00:00:00';
+  }
+
+  searchWithoutFilter() {
+    this.filterState = false;
+    this.getOrderList();
   }
 
   onClickNext() {
@@ -182,23 +213,39 @@ export class OrderlistComponent implements OnInit {
   }
 
   getOrderList() {
-    this.orderListService.getOrderListWithPagination(this.page, this.size, 'ASC', 'id').subscribe(
-      data => {
-        for (var i = 0; i < data[0].length; i++) {
-          let time = new Date(data[0][i].date);
-          var date = this.formatDate(time);
-          data[0][i].dateConv = date;
+    if (!this.filterState) {
+      this.orderListService.getOrderListWithPagination(this.page, this.size, 'ASC', 'id').subscribe(
+        data => {
+          for (var i = 0; i < data[0].length; i++) {
+            let time = new Date(data[0][i].date);
+            var date = this.formatDate(time);
+            data[0][i].dateConv = date;
+          }
+          this.maxpage = Math.ceil(data[1].numOfRows / this.size);
+          this.orderList = data[0];
+          console.log(data);
+        }, error => {
+          console.log('ini sedang error');
+          console.log(error);
         }
-        this.maxpage = Math.ceil(data[1].numOfRows / this.size);
-        this.orderList = data[0];
-        console.log(data);
-      }, error => {
-        console.log('ini sedang error');
-        console.log(error);
-      }
-    );
-
-
+      );
+    } else {
+      this.orderListService.getOrderListWithPaginationByField(this.page, this.size, 'ASC', 'id', this.searchFieldSel, this.editedFilterValue).subscribe(
+        data => {
+          for (var i = 0; i < data[0].length; i++) {
+            let time = new Date(data[0][i].date);
+            var date = this.formatDate(time);
+            data[0][i].dateConv = date;
+          }
+          this.maxpage = Math.ceil(data[1].numOfRows / this.size);
+          this.orderList = data[0];
+          console.log(data);
+        }, error => {
+          console.log('ini sedang error');
+          console.log(error);
+        }
+      );
+    }
   }
 
   formatDate(date) {

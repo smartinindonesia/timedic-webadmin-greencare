@@ -36,6 +36,14 @@ export class OrderlistService {
     return this.http.get(environment.origin_host + 'api/transactionWithPagination/homecare' + strpar, {headers: headers}).map(res => res.json());
   }
 
+  getOrderListWithPaginationByField(page, sze, srt, srtFld, searchFields, searchValue) {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    let strpar = '?page=' + page + '&size=' + sze + '&sort=' + srt + '&sortField=' + srtFld + '&searchField=' + searchFields + '&value=' + searchValue;
+    return this.http.get(environment.origin_host + 'api/transactionWithPaginationByField' + strpar, {headers: headers}).map(res => res.json());
+  }
+
   updateOrder(input, id) {
     let headers = new Headers();
     this.loadToken();
