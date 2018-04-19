@@ -144,9 +144,7 @@ export class OrderlistComponent implements OnInit {
   }
 
   addNotification(title: string, messagebody: any): any {
-    let notif = messagebody.homecarePatientId.idAppUser.frontName +
-      ' ' + messagebody.homecarePatientId.idAppUser.middleName +
-      ' ' + messagebody.homecarePatientId.idAppUser.lastName +
+    let notif = messagebody.homecarePatientId.name + ' dengan kode pemesanan ' + messagebody.orderNumber +
       ' telah memesan layanan perawat. Klik notifikasi ini untuk melihat detail pemesanan';
     let bd = {
       body: notif,
