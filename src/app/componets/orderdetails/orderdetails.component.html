@@ -63,7 +63,8 @@
 
             <tr>
               <td class="align-middle">Harga DP</td>
-              <td class="align-middle">{{order.prepaidPrice}}</td>
+              <td class="align-middle">{{order.prepaidPrice}}
+                <label *ngIf="order.paymentPrepaidPriceStatusId" class="btn-xs btn-info"> Status Transaksi : {{order.paymentPrepaidPriceStatusId.status}}</label></td>
             </tr>
 
             <tr>
@@ -76,6 +77,7 @@
               <td class="align-middle">Harga Tetap</td>
               <td class="align-middle">{{order.fixedPrice}}<br>
                 <input type="button" value="Input Harga" class="btn btn-warning btn-xs" (click)="goToOrderPrice(order)"/>
+                <label *ngIf="order.paymentFixedPriceStatusId" class="btn-xs btn-info"> Status Transaksi {{order.paymentFixedPriceStatusId.status}}</label>
               </td>
             </tr>
 
