@@ -20,5 +20,4 @@ export class CaregiverdetailsComponent implements OnInit {
     this.caregiver = this.dataTransferService.getDataTransfer();
   }
 
-
 }

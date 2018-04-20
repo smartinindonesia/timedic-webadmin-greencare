@@ -50,12 +50,14 @@
             <tr class="table-info">
               <th>Nama Perawat</th>
               <th>Surat Tanda Registrasi</th>
+              <th>Detail</th>
               <th>Ceklist</th>
             </tr>
 
             <tr *ngFor="let record1 of careGiverList;">
               <td class="align-middle">{{record1.frontName}} {{record1.middleName}} {{record1.lastName}}</td>
               <td class="align-middle">{{record1.registerNurseNumber}}</td>
+              <td class="align-middle"><input type="button" value="detail" (click)="goToDetail(record1)"></td>
               <td class="align-middle">
                 <input type="checkbox"
                        (change)="record1.readysubmit = !record1.readysubmit;onSubmitCaregiverItem(record1);"

@@ -67,6 +67,11 @@ export class AssignperawatComponent implements OnInit {
     this.orderObject = data;
   }
 
+  goToDetail(data:object){
+    this.dataTransferService.setDataTransfer(data);
+    this.router.navigate(['caredetails']);
+  }
+
   getCareGiverList() {
     let that = this;
     this.careGiverList = new Array();

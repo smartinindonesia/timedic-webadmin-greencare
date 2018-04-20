@@ -192,6 +192,11 @@ export class CaregiverlistComponent implements OnInit {
     });
   }
 
+  goToCaregiverStatus(caregiver: Object){
+    this.dataTransferService.setDataTransfer(caregiver);
+    this.router.navigate(['caregiverstatus']);
+  }
+
   goToCaregiverDetails(caregiver: Object) {
     this.dataTransferService.setDataTransfer(caregiver);
     this.router.navigate(['caredetails']);

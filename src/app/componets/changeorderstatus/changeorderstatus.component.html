@@ -48,22 +48,18 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="btn-group-vertical btn-group-lg align-middle">
-            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 2)}" class="btn btn-warning"
-                   value="Unpaid" (click)="updateOrder(order,2)"/>
-            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 3)}" class="btn btn-danger"
+            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 3)}" class="btn btn-success"
                    value="Failed" (click)="updateOrder(order,3)"/>
-            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 4)}" class="btn btn-danger"
+            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 4)}" class="btn btn-success"
                    value="Cancelled" (click)="updateOrder(order,4)"/>
-            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 5)}" class="btn btn-danger"
+            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 5)}" class="btn btn-success"
                    value="Expired" (click)="updateOrder(order,5)"/>
           </div>
           <div class="btn-group-vertical btn-group-lg align-middle">
             <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 6)}" class="btn btn-success"
                    value="Finish" (click)="updateOrder(order,6)"/>
-            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 7)}" class="btn btn-danger"
-                   value="DP" (click)="updateOrder(order,7)"/>
-            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 1)}" class="btn btn-success"
-                   value="Paid" (click)="updateOrder(order,1)"/>
+            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 8)}" class="btn btn-success"
+                   value="On Proses" (click)="updateOrder(order,8)"/>
           </div>
         </div>
       </div>
