@@ -63,7 +63,7 @@
 
             <tr>
               <td class="align-middle">Harga DP</td>
-              <td class="align-middle">{{order.prepaidPrice}}
+              <td class="align-middle">{{convertToRupiah(order.prepaidPrice)}}
                 <div *ngIf="order.paymentPrepaidPriceStatusId">
                   <label *ngIf="order.paymentPrepaidPriceStatusId.id==1" class="btn-xs btn-success"> Status :
                     {{order.paymentPrepaidPriceStatusId.status}}</label>
@@ -81,7 +81,7 @@
 
             <tr>
               <td class="align-middle">Harga Tetap</td>
-              <td class="align-middle">{{order.fixedPrice}}<br>
+              <td class="align-middle">{{convertToRupiah(order.fixedPrice)}}<br>
                 <input type="button" value="Input Harga" class="btn btn-warning btn-xs"
                        (click)="goToOrderPrice(order)"/>
                 <div *ngIf="order.paymentFixedPriceStatusId">

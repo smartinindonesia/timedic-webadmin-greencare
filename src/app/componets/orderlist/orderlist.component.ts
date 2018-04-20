@@ -10,6 +10,7 @@ import {environment} from 'environments/environment'
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import {ConstantsvariablesService} from '../../services/constantsvariables.service';
+import {UtilityService} from '../../services/utility.service';
 
 @Component({
   selector: 'app-orderlist',
@@ -46,6 +47,7 @@ export class OrderlistComponent implements OnInit {
               private orderListService: OrderlistService,
               private router: Router,
               private constantService: ConstantsvariablesService,
+              private utilityService: UtilityService,
               private flashMessage: FlashMessagesService) {
 
     if (isPlatformBrowser(platformId)) {
@@ -253,25 +255,12 @@ export class OrderlistComponent implements OnInit {
     }
   }
 
+  convertToRupiah(val:number){
+    return this.utilityService.convertNumberToRupiah(val);
+  }
+
   formatDate(date) {
-    var monthNames = [
-      'January', 'February', 'March',
-      'April', 'May', 'June', 'July',
-      'August', 'September', 'October',
-      'November', 'December'
-    ];
-
-    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-    var day = date.getDate();
-    var monthIndex = date.getMonth();
-    var year = date.getFullYear();
-
-    var d = new Date(date);
-    var dayName = days[d.getDay()];
-    var time = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
-
-    return dayName + ', ' + day + ' ' + monthNames[monthIndex] + ' ' + year + ' : ' + time;
+    return this.utilityService.milisToDateText(date);
   }
 
 }

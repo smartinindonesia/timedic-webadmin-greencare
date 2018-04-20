@@ -4,6 +4,7 @@ import {DatatransferService} from '../../services/datatransfer.service';
 import {OrderlistService} from '../../services/orderlist.service';
 import {Router} from '@angular/router';
 import {FlashMessagesService} from 'angular2-flash-messages';
+import {UtilityService} from '../../services/utility.service';
 
 @Component({
   selector: 'app-orderdetails',
@@ -13,7 +14,11 @@ import {FlashMessagesService} from 'angular2-flash-messages';
 export class OrderdetailsComponent implements OnInit {
   order: Object;
 
-  constructor(private router: Router, private dataTransferService: DatatransferService, private orderListService: OrderlistService, private flashMessage: FlashMessagesService) {
+  constructor(private router: Router,
+              private dataTransferService: DatatransferService,
+              private orderListService: OrderlistService,
+              private flashMessage: FlashMessagesService,
+              private utilityService:UtilityService ) {
 
   }
 
@@ -36,4 +41,7 @@ export class OrderdetailsComponent implements OnInit {
     this.router.navigate(['orderpriceeditor']);
   }
 
+  convertToRupiah(val:number){
+    return this.utilityService.convertNumberToRupiah(val);
+  }
 }

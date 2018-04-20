@@ -50,6 +50,7 @@ import {PatientdetailsComponent} from './componets/patientdetails/patientdetails
 import {UserpatientsComponent} from './componets/userpatients/userpatients.component';
 import {CaregivereditComponent} from './componets/caregiveredit/caregiveredit.component';
 import { CaregiverstatusComponent } from './componets/caregiverstatus/caregiverstatus.component';
+import {UtilityService} from './services/utility.service';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -137,7 +138,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     ModalService,
     DatatransferService,
     UsersService,
-    ConstantsvariablesService
+    ConstantsvariablesService,
+    UtilityService
   ],
   bootstrap: [AppComponent]
 })

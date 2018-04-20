@@ -7,6 +7,13 @@ export class UtilityService {
   constructor() {
   }
 
+  convertNumberToRupiah(angka: number) {
+    var rupiah = '';
+    var angkarev = angka.toString().split('').reverse().join('');
+    for (var i = 0; i < angkarev.length; i++) if (i % 3 == 0) rupiah += angkarev.substr(i, 3) + '.';
+    return 'Rp ' + rupiah.split('', rupiah.length - 1).reverse().join('');
+  }
+
   milisToDateText(date) {
     var monthNames = [
       'January', 'February', 'March',
@@ -27,4 +34,5 @@ export class UtilityService {
 
     return dayName + ', ' + day + ' ' + monthNames[monthIndex] + ' ' + year + ' : ' + time;
   }
+
 }

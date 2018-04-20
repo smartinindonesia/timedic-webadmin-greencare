@@ -66,7 +66,7 @@
               </td>
               <td>{{order.homecarePatientId.idAppUser.phoneNumber}}</td>
               <td>{{order.orderNumber}}</td>
-              <td>{{order.predictionPrice}}</td>
+              <td>{{convertToRupiah(order.predictionPrice)}}</td>
               <td><!--({{order.locationLatitude}},{{order.locationLongitude}})--><input type="button" value="Lihat Lokasi"
                                                                                  class="btn btn-info btn-xs"
                                                                                  (click)="goToOrderMap(order)"/></td>

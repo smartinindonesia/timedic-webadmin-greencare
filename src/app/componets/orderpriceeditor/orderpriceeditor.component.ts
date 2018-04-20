@@ -3,6 +3,7 @@ import {DatatransferService} from '../../services/datatransfer.service';
 import {Router} from '@angular/router';
 import {OrderlistService} from '../../services/orderlist.service';
 import {FlashMessagesService} from 'angular2-flash-messages';
+import {UtilityService} from '../../services/utility.service';
 
 @Component({
   selector: 'app-orderpriceeditor',
@@ -13,13 +14,14 @@ export class OrderpriceeditorComponent implements OnInit {
 
   order: Object;
   fixedPrice: number;
-
+  function: any;
 
 
   constructor(private orderListService: OrderlistService,
               private flashMessage: FlashMessagesService,
               private router: Router,
-              private dataTransferService: DatatransferService) {
+              private dataTransferService: DatatransferService,
+              private utilityService: UtilityService) {
   }
 
   updatePrice() {
@@ -41,11 +43,8 @@ export class OrderpriceeditorComponent implements OnInit {
     this.fixedPrice = this.order['fixedPrice'];
   }
 
-  convertToRupiah(angka: number) {
-    var rupiah = '';
-    var angkarev = angka.toString().split('').reverse().join('');
-    for (var i = 0; i < angkarev.length; i++) if (i % 3 == 0) rupiah += angkarev.substr(i, 3) + '.';
-    return 'Rp. ' + rupiah.split('', rupiah.length - 1).reverse().join('');
+  convertToRupiah(val:number){
+    return this.utilityService.convertNumberToRupiah(val);
   }
 
 }
