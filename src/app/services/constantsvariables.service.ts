@@ -70,4 +70,12 @@ export class ConstantsvariablesService {
     ];
     return searchField;
   }
+
+  getPatientSearchField() {
+    let searchField = [
+      {'id': 1, 'name': 'Nama', 'value': 'name'},
+      {'id': 2, 'name': 'ID Pengguna', 'value': 'idUser'}
+    ];
+    return searchField;
+  }
 }

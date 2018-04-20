@@ -18,7 +18,7 @@ export class PatientlistService {
     this.loadToken();
     console.log(this.authToken);
     headers.append('Authorization', this.authToken);
-    return this.http.get(environment.origin_host+'api/patients', {headers: headers}).map(res => res.json());
+    return this.http.get(environment.origin_host + 'api/patients', {headers: headers}).map(res => res.json());
   }
 
   getPatientByUserId(id: number) {
@@ -26,7 +26,25 @@ export class PatientlistService {
     this.loadToken();
     console.log(this.authToken);
     headers.append('Authorization', this.authToken);
-    return this.http.get(environment.origin_host+'api/patients/findbyiduser/' + id, {headers: headers}).map(res => res.json());
+    return this.http.get(environment.origin_host + 'api/patients/findbyiduser/' + id, {headers: headers}).map(res => res.json());
+  }
+
+  getPatientWithPaginationBySearchField(page, sze, srt, srtFld, searchFields, searchValue) {
+    let headers = new Headers();
+    this.loadToken();
+    let strpar = '?page=' + page + '&size=' + sze + '&sort=' + srt + '&sortField=' + srtFld + '&searchField=' + searchFields + '&value=' + searchValue;
+    console.log(this.authToken);
+    headers.append('Authorization', this.authToken);
+    return this.http.get(environment.origin_host + 'api/patientsWithPaginationByField' + strpar, {headers: headers}).map(res => res.json());
+  }
+
+  getPatientWithPagination(page, sze, srt, srtFld) {
+    let headers = new Headers();
+    this.loadToken();
+    let strpar = '?page=' + page + '&size=' + sze + '&sort=' + srt + '&sortField=' + srtFld;
+    console.log(this.authToken);
+    headers.append('Authorization', this.authToken);
+    return this.http.get(environment.origin_host + 'api/patiensWithPagination' + strpar, {headers: headers}).map(res => res.json());
   }
 
   loadToken() {
