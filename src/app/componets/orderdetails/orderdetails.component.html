@@ -64,7 +64,13 @@
             <tr>
               <td class="align-middle">Harga DP</td>
               <td class="align-middle">{{order.prepaidPrice}}
-                <label *ngIf="order.paymentPrepaidPriceStatusId" class="btn-xs btn-info"> Status Transaksi : {{order.paymentPrepaidPriceStatusId.status}}</label></td>
+                <div *ngIf="order.paymentPrepaidPriceStatusId">
+                  <label *ngIf="order.paymentPrepaidPriceStatusId.id==1" class="btn-xs btn-success"> Status :
+                    {{order.paymentPrepaidPriceStatusId.status}}</label>
+                  <label *ngIf="order.paymentPrepaidPriceStatusId.id==2" class="btn-xs btn-danger"> Status :
+                    {{order.paymentPrepaidPriceStatusId.status}}</label>
+                </div>
+              </td>
             </tr>
 
             <tr>
@@ -76,8 +82,14 @@
             <tr>
               <td class="align-middle">Harga Tetap</td>
               <td class="align-middle">{{order.fixedPrice}}<br>
-                <input type="button" value="Input Harga" class="btn btn-warning btn-xs" (click)="goToOrderPrice(order)"/>
-                <label *ngIf="order.paymentFixedPriceStatusId" class="btn-xs btn-info"> Status Transaksi {{order.paymentFixedPriceStatusId.status}}</label>
+                <input type="button" value="Input Harga" class="btn btn-warning btn-xs"
+                       (click)="goToOrderPrice(order)"/>
+                <div *ngIf="order.paymentFixedPriceStatusId">
+                  <label *ngIf="order.paymentFixedPriceStatusId.id==1 && order.fixedPrice > 0"
+                         class="btn-xs btn-success"> Status : {{order.paymentFixedPriceStatusId.status}}</label>
+                  <label *ngIf="order.paymentFixedPriceStatusId.id==2 && order.fixedPrice > 0"
+                         class="btn-xs btn-danger"> Status : {{order.paymentFixedPriceStatusId.status}}</label>
+                </div>
               </td>
             </tr>
 
