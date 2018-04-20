@@ -19,6 +19,11 @@
           <table class="table table-hover">
 
             <tr>
+              <td class="align-middle">Nomor Pemesanan (Kode)</td>
+              <td class="align-middle">{{order.orderNumber}}</td>
+            </tr>
+
+            <tr>
               <td class="align-middle">Nama Pasien</td>
               <td class="align-middle">{{order.homecarePatientId.name}}</td>
             </tr>
@@ -39,6 +44,11 @@
             <tr>
               <td class="align-middle">Tanggal Pelayanan</td>
               <td class="align-middle">{{order.dateConv}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Tanggal Pemesanan</td>
+              <td class="align-middle">{{order.homecarePatientId.idAppUser.phoneNumber}}</td>
             </tr>
 
             <tr>
@@ -90,6 +100,13 @@
               <td class="align-middle">
                 <input type="button" value="Lihat Assessmen" class="btn btn-info btn-xs"
                        (click)="goToAssesmentOrder(order)"/>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Status Transaksi</td>
+              <td class="align-middle">
+                {{order.transactionStatusId.status}}
               </td>
             </tr>
 
