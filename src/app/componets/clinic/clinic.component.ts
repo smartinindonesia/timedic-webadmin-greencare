@@ -9,12 +9,18 @@ import {Router} from '@angular/router';
 })
 export class ClinicComponent implements OnInit {
 
-  user: Object;
+  user: any;
 
   constructor(private authService:AuthService, private router:Router) { }
 
   ngOnInit() {
-    this.user = "Coba"
+    this.getProfile();
+  }
+
+  getProfile(){
+    this.user = this.authService.getUserData();
+    var ok = this.user;
+    console.log(ok['idHomecareClinic'] + "PROFILE");
   }
 
 }
