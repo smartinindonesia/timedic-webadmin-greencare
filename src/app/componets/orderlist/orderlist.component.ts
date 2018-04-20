@@ -217,8 +217,11 @@ export class OrderlistComponent implements OnInit {
         data => {
           for (var i = 0; i < data[0].length; i++) {
             let time = new Date(data[0][i].date);
+            let time2 = new Date(data[0][i].dateOrderIn);
             var date = this.formatDate(time);
+            var date2 = this.formatDate(time2);
             data[0][i].dateConv = date;
+            data[0][i].dateOrderConv = date2;
           }
           this.maxpage = Math.ceil(data[1].numOfRows / this.size);
           this.orderList = data[0];
@@ -233,8 +236,11 @@ export class OrderlistComponent implements OnInit {
         data => {
           for (var i = 0; i < data[0].length; i++) {
             let time = new Date(data[0][i].date);
+            let time2 = new Date(data[0][i].dateOrderIn);
             var date = this.formatDate(time);
+            var date2 = this.formatDate(time2);
             data[0][i].dateConv = date;
+            data[0][i].dateOrderConv = date2;
           }
           this.maxpage = Math.ceil(data[1].numOfRows / this.size);
           this.orderList = data[0];
