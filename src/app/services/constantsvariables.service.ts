@@ -68,7 +68,8 @@ export class ConstantsvariablesService {
       {'id': 1, 'name': 'Tanggal', 'value': 'date', 'type': 'date'},
       {'id': 2, 'name': 'Username', 'value': 'username', 'type': 'text'},
       {'id': 3, 'name': 'ID Pengguna', 'value': 'idUser', 'type': 'text'},
-      {'id': 4, 'name': 'Nomor Order', 'value': 'noOrder', 'type': 'text'}
+      {'id': 4, 'name': 'Nomor Order', 'value': 'noOrder', 'type': 'text'},
+      {'id': 4, 'name': 'Kode User', 'value': 'userCode', 'type': 'text'}
     ];
     return searchField;
   }
@@ -80,5 +81,43 @@ export class ConstantsvariablesService {
       {'id': 3, 'name': 'Kode User', 'value': 'userCode'}
     ];
     return searchField;
+  }
+
+  getSortType(){
+    let sortType = [
+      {'id': 1, 'name': 'A-Z', 'value': 'ASC'},
+      {'id': 2, 'name': 'Z-A', 'value': 'DESC'},
+    ];
+    return sortType;
+  }
+
+  getUserField(){
+    let userField = [
+
+    ];
+    return userField;
+  }
+
+  getPatientField(){
+    let patientField = [
+
+    ];
+    return patientField;
+  }
+
+  getOrderField(){
+    let orderField = [
+
+    ];
+    return orderField;
+  }
+
+  getCaregiverField(){
+    let caregiverField = [
+      {'id': 1, 'name': 'Nama Depan', 'value': 'frontName'},
+      {'id': 2, 'name': 'ID Pengguna', 'value': 'idUser'},
+      {'id': 3, 'name': 'Nomor', 'value': 'userCode'}
+    ];
+    return caregiverField;
   }
 }
