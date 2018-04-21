@@ -93,21 +93,31 @@ export class ConstantsvariablesService {
 
   getUserField(){
     let userField = [
-
+      {'id': 1, 'name': 'Nama Depan', 'value': 'frontName'},
+      {'id': 2, 'name': 'Kode User', 'value': 'userCode'},
+      {'id': 3, 'name': 'Username', 'value': 'username'},
+      {'id': 4, 'name': 'ID User', 'value': 'id'}
     ];
     return userField;
   }
 
   getPatientField(){
     let patientField = [
-
+      {'id': 1, 'name': 'Nama Pasien', 'value': 'name'},
+      {'id': 2, 'name': 'Tanggal Lahir', 'value': 'dateOfBirth'},
+      {'id': 3, 'name': 'ID Pasien', 'value': 'id'}
     ];
     return patientField;
   }
 
   getOrderField(){
     let orderField = [
-
+      {'id': 1, 'name': 'Tanggal Kunjungan', 'value': 'date'},
+      {'id': 2, 'name': 'Tanggal Pesan', 'value': 'dateOrderIn'},
+      {'id': 3, 'name': 'Kode Pemesanan', 'value': 'orderNumber'},
+      {'id': 4, 'name': 'Layanan Terpilih', 'value': 'selectedService'},
+      {'id': 5, 'name': 'Status Transaksi', 'value': 'transactionStatusId'},
+      {'id': 6, 'name': 'ID Transaksi', 'value': 'id'}
     ];
     return orderField;
   }
@@ -115,8 +125,9 @@ export class ConstantsvariablesService {
   getCaregiverField(){
     let caregiverField = [
       {'id': 1, 'name': 'Nama Depan', 'value': 'frontName'},
-      {'id': 2, 'name': 'ID Pengguna', 'value': 'idUser'},
-      {'id': 3, 'name': 'Nomor', 'value': 'userCode'}
+      {'id': 2, 'name': 'Kode Perawat', 'value': 'caregiverCode'},
+      {'id': 3, 'name': 'Username', 'value': 'username'},
+      {'id': 4, 'name': 'ID Perawat', 'value': 'id'}
     ];
     return caregiverField;
   }
