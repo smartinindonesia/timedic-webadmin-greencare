@@ -3,6 +3,8 @@ import {Router} from '@angular/router';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import {ModalService} from '../../services/modal.service';
 import {DatatransferService} from '../../services/datatransfer.service';
+import * as Util from 'util';
+import {UtilityService} from '../../services/utility.service';
 
 @Component({
   selector: 'app-patientdetails',
@@ -11,15 +13,20 @@ import {DatatransferService} from '../../services/datatransfer.service';
 })
 export class PatientdetailsComponent implements OnInit {
 
-  patient:Object;
+  patient: Object;
 
   constructor(private modalService: ModalService,
               private router: Router,
               private dataTransferService: DatatransferService,
-              private flashMessage: FlashMessagesService) { }
+              private utilityService: UtilityService,
+              private flashMessage: FlashMessagesService) {
+  }
 
   ngOnInit() {
     this.patient = this.dataTransferService.getDataTransfer();
   }
 
+  formatDate(date: number) {
+    return this.utilityService.milisToDateText(new Date(date));
+  }
 }

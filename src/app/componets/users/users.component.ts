@@ -26,6 +26,10 @@ export class UsersComponent implements OnInit {
   searchFieldSel: string;
   filterState: boolean;
   filterValue: string;
+  sortType: any;
+  sortTypeSel: string;
+  sortParam: any;
+  sortParamSel: string;
 
   constructor(private modalService: ModalService,
               private userListSvc: UsersService,
@@ -40,6 +44,10 @@ export class UsersComponent implements OnInit {
     this.filterState = false;
     this.searchField = this.constantService.getUserSearchField();
     this.sizeOpt = this.constantService.getPagesOption();
+    this.sortType = this.constantService.getSortType();
+    this.sortTypeSel = 'ASC';
+    this.sortParam = this.constantService.getUserField();
+    this.sortParamSel = 'id';
     this.page = 0;
     this.size = 10;
     this.getUserList();
@@ -78,8 +86,8 @@ export class UsersComponent implements OnInit {
   }
 
   getUserList() {
-    if (!this.filterState) {
-      this.userListSvc.getUserList(this.page, this.size, 'ASC', 'id').subscribe(data => {
+    if (!this.filterState || this.filterValue === undefined || this.filterValue == "") {
+      this.userListSvc.getUserList(this.page, this.size, this.sortTypeSel, this.sortParamSel).subscribe(data => {
         console.log(data);
         this.maxpage = Math.ceil(data[1].numOfRows / this.size);
         this.userList = data[0];
@@ -89,7 +97,7 @@ export class UsersComponent implements OnInit {
         return false;
       });
     } else {
-      this.userListSvc.getUserListBySearchField(this.page, this.size, 'ASC', 'id', this.searchFieldSel, this.filterValue).subscribe(data => {
+      this.userListSvc.getUserListBySearchField(this.page, this.size, this.sortTypeSel, this.sortParamSel, this.searchFieldSel, this.filterValue).subscribe(data => {
         console.log(data);
         this.maxpage = Math.ceil(data[1].numOfRows / this.size);
         this.userList = data[0];

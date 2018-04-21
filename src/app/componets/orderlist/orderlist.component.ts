@@ -40,6 +40,11 @@ export class OrderlistComponent implements OnInit {
   filterValue: any;
   editedFilterValue: any;
 
+  sortType: any;
+  sortTypeSel: string;
+  sortParam: any;
+  sortParamSel: string;
+
   constructor(@Inject(PLATFORM_ID) platformId: string,
               private _pushNotifications: PushNotificationsService,
               private injector: Injector,
@@ -62,6 +67,10 @@ export class OrderlistComponent implements OnInit {
     this.filterState = false;
     this.searchField = this.constantService.getOrderSearchField();
     this.sizeOpt = this.constantService.getPagesOption();
+    this.sortType = this.constantService.getSortType();
+    this.sortTypeSel = 'DESC';
+    this.sortParam = this.constantService.getOrderField();
+    this.sortParamSel = 'date';
     this.page = 0;
     this.size = 10;
     this.getOrderList();
@@ -79,10 +88,6 @@ export class OrderlistComponent implements OnInit {
     }
     this.filterState = true;
     this.getOrderList();
-  }
-
-  getDate() {
-    var mydate = this.filterValue + ' 00:00:00';
   }
 
   searchWithoutFilter() {
@@ -214,8 +219,8 @@ export class OrderlistComponent implements OnInit {
   }
 
   getOrderList() {
-    if (!this.filterState) {
-      this.orderListService.getOrderListWithPagination(this.page, this.size, 'ASC', 'id').subscribe(
+    if (!this.filterState || this.filterValue === undefined || this.filterValue == "") {
+      this.orderListService.getOrderListWithPagination(this.page, this.size, this.sortTypeSel, this.sortParamSel).subscribe(
         data => {
           for (var i = 0; i < data[0].length; i++) {
             let time = new Date(data[0][i].date);
@@ -234,7 +239,7 @@ export class OrderlistComponent implements OnInit {
         }
       );
     } else {
-      this.orderListService.getOrderListWithPaginationByField(this.page, this.size, 'ASC', 'id', this.searchFieldSel, this.editedFilterValue).subscribe(
+      this.orderListService.getOrderListWithPaginationByField(this.page, this.size, this.sortTypeSel, this.sortParamSel, this.searchFieldSel, this.editedFilterValue).subscribe(
         data => {
           for (var i = 0; i < data[0].length; i++) {
             let time = new Date(data[0][i].date);

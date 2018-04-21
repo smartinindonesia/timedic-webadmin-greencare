@@ -29,6 +29,10 @@ export class CaregiverlistComponent implements OnInit {
   searchFieldSel: string;
   filterState: boolean;
   filterValue: string;
+  sortType: any;
+  sortTypeSel: string;
+  sortParam: any;
+  sortParamSel: string;
 
   constructor(private modalService: ModalService,
               private caregiverListSvc: CaregiverlistService,
@@ -43,6 +47,10 @@ export class CaregiverlistComponent implements OnInit {
     this.filterState = false;
     this.searchField = this.constantService.getCaregiverSearchField();
     this.sizeOpt = this.constantService.getPagesOption();
+    this.sortType = this.constantService.getSortType();
+    this.sortTypeSel = 'ASC';
+    this.sortParam = this.constantService.getCaregiverField();
+    this.sortParamSel = 'id';
     this.page = 0;
     this.size = 10;
     this.getCareGiverList();
@@ -90,8 +98,8 @@ export class CaregiverlistComponent implements OnInit {
   }
 
   getCareGiverList() {
-    if (!this.filterState) {
-      this.caregiverListSvc.getCareGivers(this.page, this.size, 'ASC', 'id').subscribe(data => {
+    if (!this.filterState || this.filterValue === undefined || this.filterValue == "") {
+      this.caregiverListSvc.getCareGivers(this.page, this.size, this.sortTypeSel, this.sortParamSel).subscribe(data => {
         this.maxpage = Math.ceil(data[1].numOfRows / this.size);
         this.careGiverList = data[0];
         console.log(data);
@@ -99,7 +107,7 @@ export class CaregiverlistComponent implements OnInit {
         console.log(error);
       });
     } else {
-      this.caregiverListSvc.getCareGiversBySearchField(this.page, this.size, 'ASC', 'id', this.searchFieldSel, this.filterValue).subscribe(data => {
+      this.caregiverListSvc.getCareGiversBySearchField(this.page, this.size, this.sortTypeSel, this.sortParamSel, this.searchFieldSel, this.filterValue).subscribe(data => {
         console.log(data);
         this.maxpage = Math.ceil(data[1].numOfRows / this.size);
         this.careGiverList = data[0];
@@ -168,7 +176,7 @@ export class CaregiverlistComponent implements OnInit {
     });
   }
 
-  goToCaregiverStatus(caregiver: Object){
+  goToCaregiverStatus(caregiver: Object) {
     this.dataTransferService.setDataTransfer(caregiver);
     this.router.navigate(['caregiverstatus']);
   }
@@ -191,7 +199,7 @@ export class CaregiverlistComponent implements OnInit {
     });
   }
 
-  convertDateTime(date:number){
+  convertDateTime(date: number) {
     return this.utilityService.milisToDateText(new Date(date));
   }
 }

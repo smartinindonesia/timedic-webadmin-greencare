@@ -14,9 +14,21 @@
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-body">
-          <div class="col-md-4">
+          <div class="col-md-2">
             <label>Kata kunci pencarian</label>
             <input type="text" class="form-control" [(ngModel)]="filterValue">
+          </div>
+          <div class="col-md-2">
+            <label>Urutan</label>
+            <select class="form-control" [(ngModel)]="sortTypeSel" name="gendersel">
+              <option *ngFor="let sf of sortType;" [value]="sf.value">{{sf.name}}</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <label>Urutkan Berdasar</label>
+            <select class="form-control" [(ngModel)]="sortParamSel" name="gendersel">
+              <option *ngFor="let sf of sortParam;" [value]="sf.value">{{sf.name}}</option>
+            </select>
           </div>
           <div class="col-md-2">
             <label>Cari berdasarkan</label>
@@ -24,15 +36,15 @@
               <option *ngFor="let sf of searchField;" [value]="sf.value">{{sf.name}}</option>
             </select>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-1">
             <label> </label>
-            <input type="button" value="Cari" class="form-control" (click)="searchWithFilter()"/>
+            <input type="button" value="Cari"  class="form-control" (click)="searchWithFilter()"/>
           </div>
           <div class="col-md-2">
             <label> </label>
             <input type="button" value="Tampilkan semua" class="form-control" (click)="searchWithoutFilter()"/>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-1">
             <label>Ukuran</label>
             <select class="form-control" [(ngModel)]="size" name="gendersel">
               <option *ngFor="let sz of sizeOpt;" [value]="sz.value">{{sz.value}}</option>
@@ -56,11 +68,11 @@
             </tr>
 
             <tr *ngFor="let user of userList;">
-              <td class="align-middle">{{user.frontName}} {{user.middleName}} {{user.lastName}}</td>
-              <td class="align-middle">{{user.address}}</td>
-              <td class="align-middle">{{convertDateTime(user.dateBirth)}}</td>
-              <td class="align-middle">{{user.email}}</td>
-              <td class="align-middle">
+              <td class="align-middle" *ngIf="user">{{user.frontName}} {{user.middleName}} {{user.lastName}}</td>
+              <td class="align-middle" *ngIf="user">{{user.address}}</td>
+              <td class="align-middle" *ngIf="user">{{convertDateTime(user.dateBirth)}}</td>
+              <td class="align-middle" *ngIf="user">{{user.email}}</td>
+              <td class="align-middle" *ngIf="user">
                 <div class="btn-group-vertical btn-group-xs align-middle">
                   <input type="button" class="btn btn-success"
                          value="Detail" (click)="gotoDetails(user)"/>

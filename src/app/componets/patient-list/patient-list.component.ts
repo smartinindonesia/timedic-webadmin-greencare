@@ -23,6 +23,10 @@ export class PatientListComponent implements OnInit {
   searchFieldSel: string;
   filterState: boolean;
   filterValue: string;
+  sortType: any;
+  sortTypeSel: string;
+  sortParam: any;
+  sortParamSel: string;
 
   constructor(private dataTransferService: DatatransferService,
               private patientlistService: PatientlistService,
@@ -35,6 +39,10 @@ export class PatientListComponent implements OnInit {
     this.filterState = false;
     this.searchField = this.constantService.getPatientSearchField();
     this.sizeOpt = this.constantService.getPagesOption();
+    this.sortType = this.constantService.getSortType();
+    this.sortTypeSel = 'ASC';
+    this.sortParam = this.constantService.getPatientField();
+    this.sortParamSel = 'id';
     this.page = 0;
     this.size = 10;
     this.getPatientList();
@@ -72,41 +80,20 @@ export class PatientListComponent implements OnInit {
   }
 
   getPatientList() {
-    /*
-     this.patientlistService.getPatientList().subscribe(patients => {
-
-     for (var i = 0; i < patients.length; i++) {
-     let time = new Date(patients[i].dateOfBirth);
-     patients[i].dateOfBirth = this.formatDate(time);
-     }
-     this.patienstList = patients;
-     }, err => {
-     console.log(err);
-     return false;
-     });
-     */
-    if (!this.filterState) {
-      this.patientlistService.getPatientWithPagination(this.page, this.size, 'ASC', 'id').subscribe(data => {
+    if (!this.filterState || this.filterValue === undefined || this.filterValue == "") {
+      this.patientlistService.getPatientWithPagination(this.page, this.size, this.sortTypeSel, this.sortParamSel).subscribe(data => {
         console.log(data);
-        for (var i = 0; i < data[0].length; i++) {
-          data[0][i].dateOfBirth = this.formatDate(new Date(data[0][i].dateOfBirth));
-        }
         this.maxpage = Math.ceil(data[1].numOfRows / this.size);
         this.patienstList = data[0];
-
       }, error => {
         console.log(error);
         return false;
       });
     } else {
-      this.patientlistService.getPatientWithPaginationBySearchField(this.page, this.size, 'ASC', 'id', this.searchFieldSel, this.filterValue).subscribe(data => {
+      this.patientlistService.getPatientWithPaginationBySearchField(this.page, this.size, this.sortTypeSel, this.sortParamSel, this.searchFieldSel, this.filterValue).subscribe(data => {
         console.log(data);
-        for (var i = 0; i < data[0].length; i++) {
-          data[0][i].dateOfBirth = this.formatDate(new Date(data[0][i].dateOfBirth));
-        }
         this.maxpage = Math.ceil(data[1].numOfRows / this.size);
         this.patienstList = data[0];
-
       }, error => {
         console.log(error);
         return false;
@@ -115,7 +102,7 @@ export class PatientListComponent implements OnInit {
   }
 
   formatDate(date) {
-    return this.utilityService.milisToDateText(date);
+    return this.utilityService.milisToDateText(new Date(date));
   }
 
   gotoDetails(patient: Object) {
