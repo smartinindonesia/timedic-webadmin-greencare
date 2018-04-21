@@ -80,8 +80,18 @@
                 </div>
               </td>
               <td>
-                <input type="button" class="btn btn-warning btn-xs"
-                       value="{{order.transactionStatusId.status}}" (click)="goToEditTransaction(order)"/>
+                <div *ngIf="order.transactionStatusId.id==6">
+                <input type="button" class="btn btn-xs btn-success"
+                       value="{{order.transactionStatusId.status}}" />
+                </div>
+                <div *ngIf="order.transactionStatusId.id==8">
+                  <input type="button" class="btn btn-xs btn-warning"
+                         value="{{order.transactionStatusId.status}}" (click)="goToEditTransaction(order)"/>
+                </div>
+                <div *ngIf="order.transactionStatusId.id == 3 || order.transactionStatusId.id==4 || order.transactionStatusId.id == 5">
+                  <input type="button" class="btn btn-xs btn-danger"
+                         value="{{order.transactionStatusId.status}}"/>
+                </div>
               </td>
             </tr>
           </table>
