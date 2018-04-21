@@ -48,11 +48,11 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="btn-group-vertical btn-group-lg align-middle">
-            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 3)}" class="btn btn-success"
+            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 3)}" class="btn btn-danger"
                    value="Failed" (click)="updateOrder(order,3)"/>
-            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 4)}" class="btn btn-success"
+            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 4)}" class="btn btn-danger"
                    value="Cancelled" (click)="updateOrder(order,4)"/>
-            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 5)}" class="btn btn-success"
+            <input type="button" [ngClass]="{disabled:(order.transactionStatusId.id == 5)}" class="btn btn-danger"
                    value="Expired" (click)="updateOrder(order,5)"/>
           </div>
           <div class="btn-group-vertical btn-group-lg align-middle">
