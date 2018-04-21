@@ -34,7 +34,8 @@ export class ConstantsvariablesService {
       {'id': 6, 'name': 'STR', 'value': 'nursenumber'},
       {'id': 7, 'name': 'Nama Depan', 'value': 'firstname'},
       {'id': 8, 'name': 'Nama Tengah', 'value': 'middlename'},
-      {'id': 9, 'name': 'Nama Belakang', 'value': 'lastname'}
+      {'id': 9, 'name': 'Nama Belakang', 'value': 'lastname'},
+      {'id': 9, 'name': 'Kode Perawat', 'value': 'caregiverCode'}
     ];
     return searchField;
   }
@@ -46,7 +47,8 @@ export class ConstantsvariablesService {
       {'id': 4, 'name': 'Email', 'value': 'email'},
       {'id': 7, 'name': 'Nama Depan', 'value': 'firstname'},
       {'id': 8, 'name': 'Nama Tengah', 'value': 'middlename'},
-      {'id': 9, 'name': 'Nama Belakang', 'value': 'lastname'}
+      {'id': 9, 'name': 'Nama Belakang', 'value': 'lastname'},
+      {'id': 9, 'name': 'Kode User', 'value': 'userCode'}
     ];
     return searchField;
   }

@@ -5,6 +5,7 @@ import {FlashMessagesService} from 'angular2-flash-messages';
 import {ModalService} from '../../services/modal.service';
 import {DatatransferService} from '../../services/datatransfer.service';
 import {ConstantsvariablesService} from '../../services/constantsvariables.service';
+import {UtilityService} from '../../services/utility.service';
 
 @Component({
   selector: 'app-caregiverlist',
@@ -34,6 +35,7 @@ export class CaregiverlistComponent implements OnInit {
               private router: Router,
               private dataTransferService: DatatransferService,
               private constantService: ConstantsvariablesService,
+              private utilityService: UtilityService,
               private flashMessage: FlashMessagesService) {
   }
 
@@ -90,9 +92,6 @@ export class CaregiverlistComponent implements OnInit {
   getCareGiverList() {
     if (!this.filterState) {
       this.caregiverListSvc.getCareGivers(this.page, this.size, 'ASC', 'id').subscribe(data => {
-        for (var i = 0; i < data[0].length; i++) {
-          data[0][i].dobtext = formatDate(new Date(data[0][i].dateOfBirth));
-        }
         this.maxpage = Math.ceil(data[1].numOfRows / this.size);
         this.careGiverList = data[0];
         console.log(data);
@@ -102,34 +101,11 @@ export class CaregiverlistComponent implements OnInit {
     } else {
       this.caregiverListSvc.getCareGiversBySearchField(this.page, this.size, 'ASC', 'id', this.searchFieldSel, this.filterValue).subscribe(data => {
         console.log(data);
-        for (var i = 0; i < data[0].length; i++) {
-          data[0][i].dobtext = formatDate(new Date(data[0][i].dateOfBirth));
-        }
         this.maxpage = Math.ceil(data[1].numOfRows / this.size);
         this.careGiverList = data[0];
       }, error => {
         console.log(error);
       });
-    }
-    function formatDate(date) {
-      var monthNames = [
-        'January', 'February', 'March',
-        'April', 'May', 'June', 'July',
-        'August', 'September', 'October',
-        'November', 'December'
-      ];
-
-      var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-      var day = date.getDate();
-      var monthIndex = date.getMonth();
-      var year = date.getFullYear();
-
-      var d = new Date(date);
-      var dayName = days[d.getDay()];
-      var time = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
-
-      return dayName + ', ' + day + ' ' + monthNames[monthIndex] + ' ' + year + ' : ' + time;
     }
   }
 
@@ -215,4 +191,7 @@ export class CaregiverlistComponent implements OnInit {
     });
   }
 
+  convertDateTime(date:number){
+    return this.utilityService.milisToDateText(new Date(date));
+  }
 }

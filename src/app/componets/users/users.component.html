@@ -58,7 +58,7 @@
             <tr *ngFor="let user of userList;">
               <td class="align-middle">{{user.frontName}} {{user.middleName}} {{user.lastName}}</td>
               <td class="align-middle">{{user.address}}</td>
-              <td class="align-middle">{{user.dobtext}}</td>
+              <td class="align-middle">{{convertDateTime(user.dateBirth)}}</td>
               <td class="align-middle">{{user.email}}</td>
               <td class="align-middle">
                 <div class="btn-group-vertical btn-group-xs align-middle">

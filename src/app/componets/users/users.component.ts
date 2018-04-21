@@ -5,6 +5,7 @@ import {FlashMessagesService} from 'angular2-flash-messages';
 import {ModalService} from '../../services/modal.service';
 import {DatatransferService} from '../../services/datatransfer.service';
 import {ConstantsvariablesService} from '../../services/constantsvariables.service';
+import {UtilityService} from '../../services/utility.service';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -31,7 +32,8 @@ export class UsersComponent implements OnInit {
               private router: Router,
               private dataTransferService: DatatransferService,
               private flashMessage: FlashMessagesService,
-              private constantService: ConstantsvariablesService) {
+              private constantService: ConstantsvariablesService,
+              private utilityService: UtilityService) {
   }
 
   ngOnInit() {
@@ -79,9 +81,6 @@ export class UsersComponent implements OnInit {
     if (!this.filterState) {
       this.userListSvc.getUserList(this.page, this.size, 'ASC', 'id').subscribe(data => {
         console.log(data);
-        for (var i = 0; i < data[0].length; i++) {
-          data[0][i].dobtext = formatDate(new Date(data[0][i].dateBirth));
-        }
         this.maxpage = Math.ceil(data[1].numOfRows / this.size);
         this.userList = data[0];
 
@@ -92,9 +91,6 @@ export class UsersComponent implements OnInit {
     } else {
       this.userListSvc.getUserListBySearchField(this.page, this.size, 'ASC', 'id', this.searchFieldSel, this.filterValue).subscribe(data => {
         console.log(data);
-        for (var i = 0; i < data[0].length; i++) {
-          data[0][i].dobtext = formatDate(new Date(data[0][i].dateBirth));
-        }
         this.maxpage = Math.ceil(data[1].numOfRows / this.size);
         this.userList = data[0];
 
@@ -103,32 +99,15 @@ export class UsersComponent implements OnInit {
         return false;
       });
     }
-
-    function formatDate(date) {
-      var monthNames = [
-        'January', 'February', 'March',
-        'April', 'May', 'June', 'July',
-        'August', 'September', 'October',
-        'November', 'December'
-      ];
-
-      var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-      var day = date.getDate();
-      var monthIndex = date.getMonth();
-      var year = date.getFullYear();
-
-      var d = new Date(date);
-      var dayName = days[d.getDay()];
-      var time = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
-
-      return dayName + ', ' + day + ' ' + monthNames[monthIndex] + ' ' + year + ' : ' + time;
-    }
   }
 
   gotoDetails(userdetails: Object) {
     this.dataTransferService.setDataTransfer(userdetails);
     this.router.navigate(['userdetails']);
+  }
+
+  convertDateTime(date: any) {
+    return this.utilityService.milisToDateText(new Date(date));
   }
 
 }
