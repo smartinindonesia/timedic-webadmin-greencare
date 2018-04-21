@@ -81,7 +81,7 @@ export class OrderlistComponent implements OnInit {
   }
 
   searchWithFilter() {
-    if (this.searchFieldSel == 'date') {
+    if (this.searchFieldSel == 'date' || this.searchFieldSel == 'dateOrderIn') {
       this.editedFilterValue = this.filterValue + ' 00:00:00';
     } else {
       this.editedFilterValue = this.filterValue;

@@ -16,8 +16,8 @@
         <div class="panel-body">
           <div class="col-md-2">
             <label>Kata kunci pencarian</label>
-            <input type="text" class="form-control" [(ngModel)]="filterValue" *ngIf="searchFieldSel !== 'date'">
-            <input type="date" class="form-control" [(ngModel)]="filterValue" *ngIf="searchFieldSel == 'date'">
+            <input type="text" class="form-control" [(ngModel)]="filterValue" *ngIf="(searchFieldSel !== 'date') && (searchFieldSel !== 'dateOrderIn')">
+            <input type="date" class="form-control" [(ngModel)]="filterValue" *ngIf="searchFieldSel == 'date' || searchFieldSel == 'dateOrderIn'">
           </div>
           <div class="col-md-2">
             <label>Urutan</label>

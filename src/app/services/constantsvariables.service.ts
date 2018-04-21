@@ -70,11 +70,12 @@ export class ConstantsvariablesService {
 
   getOrderSearchField() {
     let searchField = [
-      {'id': 1, 'name': 'Tanggal', 'value': 'date', 'type': 'date'},
-      {'id': 2, 'name': 'Username', 'value': 'username', 'type': 'text'},
-      {'id': 3, 'name': 'ID Pengguna', 'value': 'idUser', 'type': 'text'},
-      {'id': 4, 'name': 'Nomor Order', 'value': 'noOrder', 'type': 'text'},
-      {'id': 4, 'name': 'Kode User', 'value': 'userCode', 'type': 'text'}
+      {'id': 1, 'name': 'Tanggal Kunjungan', 'value': 'date', 'type': 'date'},
+      {'id': 2, 'name': 'Tanggal Pemesanan', 'value': 'dateOrderIn', 'type': 'date'},
+      {'id': 3, 'name': 'Username', 'value': 'username', 'type': 'text'},
+      {'id': 4, 'name': 'ID Pengguna', 'value': 'idUser', 'type': 'text'},
+      {'id': 5, 'name': 'Nomor Order', 'value': 'noOrder', 'type': 'text'},
+      {'id': 6, 'name': 'Kode User', 'value': 'userCode', 'type': 'text'}
     ];
     return searchField;
   }
