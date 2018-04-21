@@ -29,12 +29,12 @@ export class ConstantsvariablesService {
     let searchField = [
       {'id': 1, 'name': 'Username', 'value': 'username'},
       {'id': 2, 'name': 'Nomor Telepon', 'value': 'phoneNumber'},
-      {'id': 4, 'name': 'Email', 'value': 'email'},
-      {'id': 5, 'name': 'SIPP', 'value': 'sipp'},
-      {'id': 6, 'name': 'STR', 'value': 'nursenumber'},
-      {'id': 7, 'name': 'Nama Depan', 'value': 'firstname'},
-      {'id': 8, 'name': 'Nama Tengah', 'value': 'middlename'},
-      {'id': 9, 'name': 'Nama Belakang', 'value': 'lastname'},
+      {'id': 3, 'name': 'Email', 'value': 'email'},
+      {'id': 4, 'name': 'SIPP', 'value': 'sipp'},
+      {'id': 5, 'name': 'STR', 'value': 'nursenumber'},
+      {'id': 6, 'name': 'Nama Depan', 'value': 'firstname'},
+      {'id': 7, 'name': 'Nama Tengah', 'value': 'middlename'},
+      {'id': 8, 'name': 'Nama Belakang', 'value': 'lastname'},
       {'id': 9, 'name': 'Kode Perawat', 'value': 'caregiverCode'}
     ];
     return searchField;
@@ -44,11 +44,11 @@ export class ConstantsvariablesService {
     let searchField = [
       {'id': 1, 'name': 'Username', 'value': 'username'},
       {'id': 2, 'name': 'Nomor Telepon', 'value': 'phoneNumber'},
-      {'id': 4, 'name': 'Email', 'value': 'email'},
-      {'id': 7, 'name': 'Nama Depan', 'value': 'firstname'},
-      {'id': 8, 'name': 'Nama Tengah', 'value': 'middlename'},
-      {'id': 9, 'name': 'Nama Belakang', 'value': 'lastname'},
-      {'id': 9, 'name': 'Kode User', 'value': 'userCode'}
+      {'id': 3, 'name': 'Email', 'value': 'email'},
+      {'id': 4, 'name': 'Nama Depan', 'value': 'firstname'},
+      {'id': 5, 'name': 'Nama Tengah', 'value': 'middlename'},
+      {'id': 6, 'name': 'Nama Belakang', 'value': 'lastname'},
+      {'id': 7, 'name': 'Kode User', 'value': 'userCode'}
     ];
     return searchField;
   }
@@ -57,8 +57,8 @@ export class ConstantsvariablesService {
     let opt = [
       {'id': 1, 'value': 10},
       {'id': 2, 'value': 15},
-      {'id': 4, 'value': 20},
-      {'id': 7, 'value': 25},
+      {'id': 3, 'value': 20},
+      {'id': 4, 'value': 25},
     ];
     return opt;
   }
@@ -68,7 +68,7 @@ export class ConstantsvariablesService {
       {'id': 1, 'name': 'Tanggal', 'value': 'date', 'type': 'date'},
       {'id': 2, 'name': 'Username', 'value': 'username', 'type': 'text'},
       {'id': 3, 'name': 'ID Pengguna', 'value': 'idUser', 'type': 'text'},
-      {'id': 3, 'name': 'Nomor Order', 'value': 'noOrder', 'type': 'text'}
+      {'id': 4, 'name': 'Nomor Order', 'value': 'noOrder', 'type': 'text'}
     ];
     return searchField;
   }
@@ -76,7 +76,8 @@ export class ConstantsvariablesService {
   getPatientSearchField() {
     let searchField = [
       {'id': 1, 'name': 'Nama', 'value': 'name'},
-      {'id': 2, 'name': 'ID Pengguna', 'value': 'idUser'}
+      {'id': 2, 'name': 'ID Pengguna', 'value': 'idUser'},
+      {'id': 3, 'name': 'Kode User', 'value': 'userCode'}
     ];
     return searchField;
   }
