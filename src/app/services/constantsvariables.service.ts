@@ -59,6 +59,11 @@ export class ConstantsvariablesService {
       {'id': 2, 'value': 15},
       {'id': 3, 'value': 20},
       {'id': 4, 'value': 25},
+      {'id': 5, 'value': 30},
+      {'id': 6, 'value': 35},
+      {'id': 7, 'value': 40},
+      {'id': 8, 'value': 45},
+      {'id': 9, 'value': 50},
     ];
     return opt;
   }
