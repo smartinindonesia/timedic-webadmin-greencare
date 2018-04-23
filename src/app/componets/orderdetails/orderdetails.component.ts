@@ -25,6 +25,7 @@ export class OrderdetailsComponent implements OnInit {
   ngOnInit() {
     if (this.dataTransferService.isRefresh()) {
       this.order = this.dataTransferService.getDataTransfer();
+      this.getOrderById();
     } else {
       this.order = this.dataTransferService.getDataTransfer();
     }
@@ -45,8 +46,23 @@ export class OrderdetailsComponent implements OnInit {
     this.router.navigate(['orderpriceeditor']);
   }
 
+  getOrderById(){
+    this.orderListService.getOrderById(this.order['id']).subscribe(
+      data => {
+        this.order = data;
+      }, error => {
+        console.log('ini sedang error');
+        console.log(error);
+      }
+    );
+  }
+
   convertToRupiah(val:number){
     return this.utilityService.convertNumberToRupiah(val);
+  }
+
+  convertDateTime(val:number){
+    return this.utilityService.milisToDateText(new Date(val));
   }
 
   getDataDetails(){

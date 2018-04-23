@@ -43,12 +43,12 @@
 
             <tr>
               <td class="align-middle">Tanggal Kunjungan</td>
-              <td class="align-middle">{{order.dateConv}}</td>
+              <td class="align-middle">{{convertDateTime(order.date)}}</td>
             </tr>
 
             <tr>
               <td class="align-middle">Tanggal Pemesanan</td>
-              <td class="align-middle">{{order.dateOrderConv}}</td>
+              <td class="align-middle">{{convertDateTime(order.dateOrderConv)}}</td>
             </tr>
 
             <tr>
@@ -75,7 +75,7 @@
 
             <tr>
               <td class="align-middle">Harga Perkiraan</td>
-              <td class="align-middle">{{convertToRupiah(order.predictionPrice)}}
+              <td class="align-middle">{{order.predictionPrice}}
               </td>
             </tr>
 

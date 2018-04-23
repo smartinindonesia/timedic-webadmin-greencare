@@ -45,7 +45,7 @@ export class OrderlistComponent implements OnInit {
   sortParam: any;
   sortParamSel: string;
 
-  dropDownOpt:any;
+  dropDownOpt: any;
 
   constructor(@Inject(PLATFORM_ID) platformId: string,
               private _pushNotifications: PushNotificationsService,
@@ -196,7 +196,7 @@ export class OrderlistComponent implements OnInit {
     this.router.navigate(['orderstatus']);
   }
 
-  goToOrderDetails(data: Object, refresh:boolean) {
+  goToOrderDetails(data: Object, refresh: boolean) {
     this.dataTransferService.setDataTransfer(data);
     this.dataTransferService.setRefresh(false);
     this.router.navigate(['orderdetails']);
@@ -250,10 +250,8 @@ export class OrderlistComponent implements OnInit {
       this.orderListService.getOrderListWithPaginationByField(this.page, this.size, this.sortTypeSel, this.sortParamSel, this.searchFieldSel, this.editedFilterValue).subscribe(
         data => {
           for (var i = 0; i < data[0].length; i++) {
-            let time = new Date(data[0][i].date);
-            let time2 = new Date(data[0][i].dateOrderIn);
-            var date = this.formatDate(time);
-            var date2 = this.formatDate(time2);
+            var date = this.formatDate(data[0][i].date);
+            var date2 = this.formatDate(data[0][i].dateOrderIn);
             data[0][i].dateConv = date;
             data[0][i].dateOrderConv = date2;
           }
@@ -273,8 +271,8 @@ export class OrderlistComponent implements OnInit {
     return this.utilityService.convertNumberToRupiah(val);
   }
 
-  formatDate(date) {
-    return this.utilityService.milisToDateText(date);
+  formatDate(dt: any) {
+    return this.utilityService.milisToDateText(new Date(dt));
   }
 
 }
