@@ -45,6 +45,8 @@ export class OrderlistComponent implements OnInit {
   sortParam: any;
   sortParamSel: string;
 
+  dropDownOpt:any;
+
   constructor(@Inject(PLATFORM_ID) platformId: string,
               private _pushNotifications: PushNotificationsService,
               private injector: Injector,
@@ -70,6 +72,7 @@ export class OrderlistComponent implements OnInit {
     this.sortType = this.constantService.getSortType();
     this.sortTypeSel = 'DESC';
     this.sortParam = this.constantService.getOrderField();
+    this.dropDownOpt = this.constantService.getOrderStatusValue();
     this.sortParamSel = 'date';
     this.page = 0;
     this.size = 10;
@@ -82,7 +85,7 @@ export class OrderlistComponent implements OnInit {
 
   searchWithFilter() {
     if (this.searchFieldSel == 'date' || this.searchFieldSel == 'dateOrderIn') {
-      this.editedFilterValue = this.filterValue + ' 00:00:00';
+      this.editedFilterValue = '2018-04-12';// + ' 00:00:00';
     } else {
       this.editedFilterValue = this.filterValue;
     }
@@ -160,10 +163,13 @@ export class OrderlistComponent implements OnInit {
       res => {
         this.playAudio();
         this.getOrderList();
+        console.log('incoming message');
+        console.log(res);
         if (res.event.type === 'click') {
           this.restartAudio();
-          this.goToOrderDetails(messagebody);
+          this.goToOrderDetails(messagebody, true);
           res.notification.close();
+          console.log('incoming message click');
         }
       },
       err => console.log(err)
@@ -190,8 +196,9 @@ export class OrderlistComponent implements OnInit {
     this.router.navigate(['orderstatus']);
   }
 
-  goToOrderDetails(data: Object) {
+  goToOrderDetails(data: Object, refresh:boolean) {
     this.dataTransferService.setDataTransfer(data);
+    this.dataTransferService.setRefresh(false);
     this.router.navigate(['orderdetails']);
   }
 
@@ -219,7 +226,7 @@ export class OrderlistComponent implements OnInit {
   }
 
   getOrderList() {
-    if (!this.filterState || this.filterValue === undefined || this.filterValue == "") {
+    if (!this.filterState || this.filterValue === undefined || this.filterValue == '') {
       this.orderListService.getOrderListWithPagination(this.page, this.size, this.sortTypeSel, this.sortParamSel).subscribe(
         data => {
           for (var i = 0; i < data[0].length; i++) {
@@ -232,7 +239,8 @@ export class OrderlistComponent implements OnInit {
           }
           this.maxpage = Math.ceil(data[1].numOfRows / this.size);
           this.orderList = data[0];
-          console.log(data);
+          let a = JSON.stringify(data);
+          console.log(a);
         }, error => {
           console.log('ini sedang error');
           console.log(error);
@@ -251,7 +259,8 @@ export class OrderlistComponent implements OnInit {
           }
           this.maxpage = Math.ceil(data[1].numOfRows / this.size);
           this.orderList = data[0];
-          console.log(data);
+          let a = JSON.stringify(data[0]);
+          console.log(a);
         }, error => {
           console.log('ini sedang error');
           console.log(error);
@@ -260,7 +269,7 @@ export class OrderlistComponent implements OnInit {
     }
   }
 
-  convertToRupiah(val:number){
+  convertToRupiah(val: number) {
     return this.utilityService.convertNumberToRupiah(val);
   }
 

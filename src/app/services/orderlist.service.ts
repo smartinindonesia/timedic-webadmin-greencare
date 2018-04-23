@@ -33,6 +33,7 @@ export class OrderlistService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     let strpar = '?page=' + page + '&size=' + sze + '&sort=' + srt + '&sortField=' + srtFld;
+    console.log(strpar);
     return this.http.get(environment.origin_host + 'api/transactionWithPagination/homecare' + strpar, {headers: headers}).map(res => res.json());
   }
 
@@ -41,6 +42,7 @@ export class OrderlistService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     let strpar = '?page=' + page + '&size=' + sze + '&sort=' + srt + '&sortField=' + srtFld + '&searchField=' + searchFields + '&value=' + searchValue;
+    console.log(strpar);
     return this.http.get(environment.origin_host + 'api/transactionWithPaginationByField' + strpar, {headers: headers}).map(res => res.json());
   }
 

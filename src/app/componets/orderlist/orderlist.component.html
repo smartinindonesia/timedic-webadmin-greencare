@@ -16,8 +16,11 @@
         <div class="panel-body">
           <div class="col-md-2">
             <label>Kata kunci pencarian</label>
-            <input type="text" class="form-control" [(ngModel)]="filterValue" *ngIf="(searchFieldSel !== 'date') && (searchFieldSel !== 'dateOrderIn')">
+            <input type="text" class="form-control" [(ngModel)]="filterValue" *ngIf="(searchFieldSel !== 'date') && (searchFieldSel !== 'dateOrderIn') && (searchFieldSel !== 'statusTrx')">
             <input type="date" class="form-control" [(ngModel)]="filterValue" *ngIf="searchFieldSel == 'date' || searchFieldSel == 'dateOrderIn'">
+            <select class="form-control" [(ngModel)]="filterValue" *ngIf="searchFieldSel == 'statusTrx'">
+              <option *ngFor="let relig of dropDownOpt;" [value]="relig.value">{{relig.name}}</option>
+            </select>
           </div>
           <div class="col-md-2">
             <label>Urutan</label>
@@ -88,7 +91,7 @@
                   <input type="button" value="Input Harga" class="btn btn-warning" (click)="goToOrderPrice(order)"/>
                   <input type="button" value="Assessment" class="btn btn-warning" (click)="goToAssessmentOrder(order)"/>
                   <input type="button" value="Tugaskan Perawat" class="btn btn-info" (click)="assignCaregiver(order)"/>
-                  <input type="button" value="Detail" class="btn btn-info" (click)="goToOrderDetails(order)"/>
+                  <input type="button" value="Detail" class="btn btn-info" (click)="goToOrderDetails(order, false)"/>
                 </div>
               </td>
               <td>

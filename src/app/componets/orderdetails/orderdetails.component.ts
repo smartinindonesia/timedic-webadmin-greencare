@@ -23,7 +23,11 @@ export class OrderdetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.order = this.dataTransferService.getDataTransfer();
+    if (this.dataTransferService.isRefresh()) {
+      this.order = this.dataTransferService.getDataTransfer();
+    } else {
+      this.order = this.dataTransferService.getDataTransfer();
+    }
   }
 
   goToOrderMap(data: Object) {
@@ -44,4 +48,15 @@ export class OrderdetailsComponent implements OnInit {
   convertToRupiah(val:number){
     return this.utilityService.convertNumberToRupiah(val);
   }
+
+  getDataDetails(){
+    this.orderListService.getOrderById(this.order['id']).subscribe(
+      data => {
+        this.order = data;
+      }, error => {
+        console.log('ini sedang error');
+        console.log(error);
+      });
+  }
+
 }

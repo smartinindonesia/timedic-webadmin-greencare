@@ -75,9 +75,21 @@ export class ConstantsvariablesService {
       {'id': 3, 'name': 'Username', 'value': 'username', 'type': 'text'},
       {'id': 4, 'name': 'ID Pengguna', 'value': 'idUser', 'type': 'text'},
       {'id': 5, 'name': 'Nomor Order', 'value': 'noOrder', 'type': 'text'},
-      {'id': 6, 'name': 'Kode User', 'value': 'userCode', 'type': 'text'}
+      {'id': 6, 'name': 'Kode User', 'value': 'userCode', 'type': 'text'},
+      {'id': 7, 'name': 'Status Transaksi', 'value': 'statusTrx', 'type': 'list'}
     ];
     return searchField;
+  }
+
+  getOrderStatusValue(){
+    let item = [
+      {'id': 1, 'name': 'Failed', 'value': '3'},
+      {'id': 2, 'name': 'Cancelled', 'value': '4'},
+      {'id': 3, 'name': 'Expired', 'value': '5'},
+      {'id': 4, 'name': 'Finish', 'value': '6'},
+      {'id': 5, 'name': 'On Process', 'value': '8'}
+    ];
+    return item;
   }
 
   getPatientSearchField() {

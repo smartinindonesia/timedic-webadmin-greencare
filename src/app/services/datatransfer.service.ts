@@ -6,6 +6,7 @@ import {Subject} from 'rxjs/Subject';
 export class DatatransferService {
 
   serviceData: Object;
+  refreshData: boolean;
   public _subject = new Subject<Object>();
   public event = this._subject.asObservable();
 
@@ -23,4 +24,11 @@ export class DatatransferService {
     this.serviceData = data;
   }
 
+  isRefresh(){
+    return this.refreshData;
+  }
+
+  setRefresh(type: boolean){
+    this.refreshData = type;
+  }
 }
