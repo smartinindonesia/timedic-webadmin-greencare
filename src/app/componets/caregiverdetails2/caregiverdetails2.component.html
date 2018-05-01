@@ -1,0 +1,95 @@
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" *ngIf="caregiver">
+  <div class="row">
+    <ol class="breadcrumb">
+      <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+      <li class="active">Data Perawat / Detail Perawat</li>
+    </ol>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Detail Perawat</h1>
+    </div>
+  </div>
+
+  <div align="center"><img src="{{caregiver.photoPath}}" width="250" height="300"></div>
+  <br>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <table class="table table-hover">
+
+            <tr>
+              <td class="align-middle">Kode Perawat</td>
+              <td class="align-middle">{{caregiver.caregiverCode}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Nama Perawat</td>
+              <td class="align-middle">{{caregiver.frontName}} {{caregiver.middleName}} {{caregiver.lastName}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Username</td>
+              <td class="align-middle">{{caregiver.username}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Alamat</td>
+              <td class="align-middle">{{caregiver.address}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Email</td>
+              <td class="align-middle">{{caregiver.email}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">No Telepon</td>
+              <td class="align-middle">{{caregiver.phoneNumber}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Tanggal Lahir</td>
+              <td class="align-middle">{{convertDateTime(caregiver.dateOfBirth)}}
+              </td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Agama</td>
+              <td class="align-middle">{{caregiver.religion}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Jenis kelamin</td>
+              <td class="align-middle">{{caregiver.gender}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">STR</td>
+              <td class="align-middle">{{caregiver.registerNurseNumber}} <a [href]="caregiver.registerNurseNumberUrl"
+                                                                            target="_blank" class="btn-info btn-sm">Lihat</a>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">SIPP</td>
+              <td class="align-middle">{{caregiver.sipp}} <a [href]="caregiver.sippUrl" target="_blank" class="btn-info btn-sm">Lihat</a></td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Tanggal Mendaftar</td>
+              <td class="align-middle">{{convertDateTime(caregiver.firstRegistrationDate)}}
+              </td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

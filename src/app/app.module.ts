@@ -51,6 +51,9 @@ import {UserpatientsComponent} from './componets/userpatients/userpatients.compo
 import {CaregivereditComponent} from './componets/caregiveredit/caregiveredit.component';
 import { CaregiverstatusComponent } from './componets/caregiverstatus/caregiverstatus.component';
 import {UtilityService} from './services/utility.service';
+import { OrderfixedpricestatusComponent } from './componets/orderfixedpricestatus/orderfixedpricestatus.component';
+import { OrderprepaidpricestatusComponent } from './componets/orderprepaidpricestatus/orderprepaidpricestatus.component';
+import { Caregiverdetails2Component } from './componets/caregiverdetails2/caregiverdetails2.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -71,6 +74,7 @@ const appRoutes: Routes = [
   {path: 'ordermap', component: OrdermapComponent, canActivate: [AuthGuard]},
   {path: 'orderdetails', component: OrderdetailsComponent, canActivate: [AuthGuard]},
   {path: 'caredetails', component: CaregiverdetailsComponent, canActivate: [AuthGuard]},
+  {path: 'caredetails2', component: Caregiverdetails2Component, canActivate: [AuthGuard]},
   {path: 'userlist', component: UsersComponent, canActivate: [AuthGuard]},
   {path: 'orderpriceeditor', component: OrderpriceeditorComponent, canActivate: [AuthGuard]},
   {path: 'caregiverschedules', component: CaregiverschedulesComponent, canActivate: [AuthGuard]},
@@ -78,7 +82,9 @@ const appRoutes: Routes = [
   {path: 'patientdetails', component: PatientdetailsComponent, canActivate: [AuthGuard]},
   {path: 'userpatients', component: UserpatientsComponent, canActivate: [AuthGuard]},
   {path: 'caregiveredit', component: CaregivereditComponent, canActivate: [AuthGuard]},
-  {path: 'caregiverstatus', component: CaregiverstatusComponent, canActivate: [AuthGuard]}
+  {path: 'caregiverstatus', component: CaregiverstatusComponent, canActivate: [AuthGuard]},
+  {path: 'orderprepaidpricestatus', component: OrderprepaidpricestatusComponent, canActivate: [AuthGuard]},
+  {path: 'orderfixedpricestatus', component: OrderfixedpricestatusComponent, canActivate: [AuthGuard]},
 ];
 
 const googleMapsCore = AgmCoreModule.forRoot({
@@ -116,7 +122,10 @@ const googleMapsCore = AgmCoreModule.forRoot({
     PatientdetailsComponent,
     UserpatientsComponent,
     CaregivereditComponent,
-    CaregiverstatusComponent
+    CaregiverstatusComponent,
+    OrderfixedpricestatusComponent,
+    OrderprepaidpricestatusComponent,
+    Caregiverdetails2Component
   ],
   imports: [
     BrowserModule,

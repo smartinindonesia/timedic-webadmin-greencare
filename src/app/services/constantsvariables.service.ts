@@ -81,7 +81,7 @@ export class ConstantsvariablesService {
     return searchField;
   }
 
-  getOrderStatusValue(){
+  getOrderStatusValue() {
     let item = [
       {'id': 1, 'name': 'Failed', 'value': '3'},
       {'id': 2, 'name': 'Cancelled', 'value': '4'},
@@ -101,7 +101,7 @@ export class ConstantsvariablesService {
     return searchField;
   }
 
-  getSortType(){
+  getSortType() {
     let sortType = [
       {'id': 1, 'name': 'A-Z', 'value': 'ASC'},
       {'id': 2, 'name': 'Z-A', 'value': 'DESC'},
@@ -109,7 +109,7 @@ export class ConstantsvariablesService {
     return sortType;
   }
 
-  getUserField(){
+  getUserField() {
     let userField = [
       {'id': 1, 'name': 'Nama Depan', 'value': 'frontName'},
       {'id': 2, 'name': 'Kode User', 'value': 'userCode'},
@@ -119,7 +119,7 @@ export class ConstantsvariablesService {
     return userField;
   }
 
-  getPatientField(){
+  getPatientField() {
     let patientField = [
       {'id': 1, 'name': 'Nama Pasien', 'value': 'name'},
       {'id': 2, 'name': 'Tanggal Lahir', 'value': 'dateOfBirth'},
@@ -128,7 +128,7 @@ export class ConstantsvariablesService {
     return patientField;
   }
 
-  getOrderField(){
+  getOrderField() {
     let orderField = [
       {'id': 1, 'name': 'Tanggal Kunjungan', 'value': 'date'},
       {'id': 2, 'name': 'Tanggal Pesan', 'value': 'dateOrderIn'},
@@ -140,7 +140,7 @@ export class ConstantsvariablesService {
     return orderField;
   }
 
-  getCaregiverField(){
+  getCaregiverField() {
     let caregiverField = [
       {'id': 1, 'name': 'Nama Depan', 'value': 'frontName'},
       {'id': 2, 'name': 'Kode Perawat', 'value': 'caregiverCode'},
@@ -148,5 +148,18 @@ export class ConstantsvariablesService {
       {'id': 4, 'name': 'ID Perawat', 'value': 'id'}
     ];
     return caregiverField;
+  }
+
+  getDay() {
+    let day = [
+      {'id': 1, 'name': 'Minggu', 'value': 'date'},
+      {'id': 2, 'name': 'Senin', 'value': 'dateOrderIn'},
+      {'id': 3, 'name': 'Selasa', 'value': 'username'},
+      {'id': 4, 'name': 'Rabu', 'value': 'idUser'},
+      {'id': 5, 'name': 'Kamis', 'value': 'noOrder'},
+      {'id': 6, 'name': 'Jumat', 'value': 'userCode'},
+      {'id': 7, 'name': 'Sabtu', 'value': 'statusTrx'}
+    ];
+    return day;
   }
 }
