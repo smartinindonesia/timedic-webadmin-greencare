@@ -55,8 +55,8 @@
 
           <table class="table">
             <tr>
-              <td><input type="date" class="form-control col-sm-1" [(ngModel)]="date" /></td>
-              <td><input type="time" class="form-control col-sm-1" [(ngModel)]="time" /></td>
+              <td><input type="date" class="form-control col-sm-1" [(ngModel)]="date" (ngModelChange)="onModelChanged()"/></td>
+              <td><input type="time" class="form-control col-sm-1" [(ngModel)]="time" (ngModelChange)="onModelChanged()"/></td>
               <td><input type="button" class="btn btn-success" value="Cari" (click)="searchClick()"/></td>
             </tr>
           </table>

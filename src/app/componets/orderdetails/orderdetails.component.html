@@ -93,17 +93,17 @@
               </td>
             </tr>
 
-            <tr>
+            <tr *ngIf="order.sumOfDays">
               <td class="align-middle">Total Hari Perawatan</td>
               <td class="align-middle">
-                <input type="number"/>   <input type="button" class="btn btn-success btn-xs" value="set"/>
+                {{order.sumOfDays}} hari
               </td>
             </tr>
 
-            <tr>
+            <tr *ngIf="order.dateTreatementStart!=undefined && order.dateTreatementEnd!=undefined">
               <td class="align-middle">Tanggal Penanganan</td>
-              <td class="align-middle">
-                <input type="date"/> s.d <input type="date"/> <input type="button" class="btn btn-success btn-xs" value="set"/>
+              <td class="align-middle"> {{convertDateTime(order.dateTreatementStart)}}
+                <input type="date" [(ngModel)]=""/> s.d {{convertDateTime(order.dateTreatementEnd)}}<input type="date"/> <input type="button" class="btn btn-success btn-xs" value="set"/>
               </td>
             </tr>
 

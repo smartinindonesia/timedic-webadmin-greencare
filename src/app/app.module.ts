@@ -55,6 +55,7 @@ import { OrderfixedpricestatusComponent } from './componets/orderfixedpricestatu
 import { OrderprepaidpricestatusComponent } from './componets/orderprepaidpricestatus/orderprepaidpricestatus.component';
 import { Caregiverdetails2Component } from './componets/caregiverdetails2/caregiverdetails2.component';
 import { OrderchangedateComponent } from './componets/orderchangedate/orderchangedate.component';
+import { OrderdetaileditorComponent } from './componets/orderdetaileditor/orderdetaileditor.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -85,6 +86,7 @@ const appRoutes: Routes = [
   {path: 'caregiveredit', component: CaregivereditComponent, canActivate: [AuthGuard]},
   {path: 'caregiverstatus', component: CaregiverstatusComponent, canActivate: [AuthGuard]},
   {path: 'orderprepaidpricestatus', component: OrderprepaidpricestatusComponent, canActivate: [AuthGuard]},
+  {path: 'orderdetaileditor', component: OrderdetaileditorComponent, canActivate: [AuthGuard]},
   {path: 'orderfixedpricestatus', component: OrderfixedpricestatusComponent, canActivate: [AuthGuard]},
 ];
 
@@ -127,7 +129,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     OrderfixedpricestatusComponent,
     OrderprepaidpricestatusComponent,
     Caregiverdetails2Component,
-    OrderchangedateComponent
+    OrderchangedateComponent,
+    OrderdetaileditorComponent
   ],
   imports: [
     BrowserModule,

@@ -202,6 +202,12 @@ export class OrderlistComponent implements OnInit {
     this.router.navigate(['orderdetails']);
   }
 
+  goToOrderDetailsEditor(data: Object, refresh: boolean){
+    this.dataTransferService.setDataTransfer(data);
+    this.dataTransferService.setRefresh(false);
+    this.router.navigate(['orderdetaileditor']);
+  }
+
   updateOrder(orders: Object, type: number) {
     console.log('Order ' + orders['transactionStatusId']['id']);
     let updateparams = {

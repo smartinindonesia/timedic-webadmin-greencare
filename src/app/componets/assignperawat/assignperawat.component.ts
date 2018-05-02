@@ -26,6 +26,8 @@ export class AssignperawatComponent implements OnInit {
   date: string;
   time: string;
 
+  changing: boolean;
+
   constructor(private router: Router,
               private dataTransferService: DatatransferService,
               private caregiverListSvc: CaregiverlistService,
@@ -40,17 +42,25 @@ export class AssignperawatComponent implements OnInit {
     this.getCareGiverList();
   }
 
+  onModelChanged() {
+    this.changing = true;
+    console.log('model changed');
+  }
 
   onSubmitCaregiverItem(item: Object) {
     let that = this;
     let date = null;
-    if (this.date === undefined || this.time === undefined){
-      this.flashMessage.show('Tanggal dan waktu belum ditentukan!', {cssClass: 'alert-danger', timeout: 5000});
+    if (this.date === undefined || this.time === undefined || this.changing) {
+      if (this.changing) {
+        if (item['readysubmit']) this.flashMessage.show('Tanggal dan waktu belum diubah', {cssClass: 'alert-danger', timeout: 5000});
+      } else {
+        if (item['readysubmit']) this.flashMessage.show('Tanggal dan waktu belum ditentukan!', {cssClass: 'alert-danger', timeout: 5000});
+      }
     } else {
       date = this.date + ' ' + this.time + ':00';
       let convDate = new Date(date).toISOString();
       let convDate2 = new Date(convDate).getTime();
-      console.log(convDate+' '+convDate2);
+      console.log(convDate + ' ' + convDate2);
       if (item['readysubmit']) {
         console.log(item['frontName']);
         var uploadItem =
@@ -97,6 +107,7 @@ export class AssignperawatComponent implements OnInit {
     var datetime = (dateParts + 'T' + timeParts);
     this.setDateProperties(new Date(datetime));
     this.getCareGiverList();
+    this.changing = false;
   }
 
   getCareGiverList() {
