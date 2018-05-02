@@ -103,7 +103,7 @@
             <tr *ngIf="order.dateTreatementStart!=undefined && order.dateTreatementEnd!=undefined">
               <td class="align-middle">Tanggal Penanganan</td>
               <td class="align-middle"> {{convertDateTime(order.dateTreatementStart)}}
-                <input type="date" [(ngModel)]=""/> s.d {{convertDateTime(order.dateTreatementEnd)}}<input type="date"/> <input type="button" class="btn btn-success btn-xs" value="set"/>
+                <input type="date"/> s.d {{convertDateTime(order.dateTreatementEnd)}}<input type="date"/> <input type="button" class="btn btn-success btn-xs" value="set"/>
               </td>
             </tr>
 
