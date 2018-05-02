@@ -52,7 +52,6 @@
           <table class="table table-hover">
 
             <tr class="table-info">
-              <th>Tanggal</th>
               <th>Hari</th>
               <th>Shift 1</th>
               <th>Shift 2</th>
@@ -60,8 +59,7 @@
             </tr>
 
             <tr *ngFor="let schedule of schedules;">
-              <td class="align-middle">{{schedule.dateConv}}</td>
-              <td class="align-middle">{{schedule.day}}</td>
+              <td class="align-middle">{{changeDay(schedule.day)}}</td>
               <td class="align-middle">{{schedule.startTime}}-{{schedule.endTime}}</td>
               <td class="align-middle">{{schedule.startTime2}}-{{schedule.endTime2}}</td>
               <td class="align-middle">{{schedule.statConv}}</td>

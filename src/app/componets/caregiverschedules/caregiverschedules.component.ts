@@ -39,6 +39,17 @@ export class CaregiverschedulesComponent implements OnInit {
     });
   }
 
+  changeDay(input:string){
+    if (input == 'sunday') return 'Minggu';
+    if (input == 'monday') return 'Senin';
+    if (input == 'tuesday') return 'Selasa';
+    if (input == 'wednesday') return 'Rabu';
+    if (input == 'thursday') return 'Kamis';
+    if (input == 'friday') return 'Jumat';
+    if (input == 'saturday') return 'Sabtu';
+    return '';
+  }
+
   formatDate(date) {
     var monthNames = [
       'January', 'February', 'March',
