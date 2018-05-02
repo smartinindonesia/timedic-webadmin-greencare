@@ -40,6 +40,13 @@
               <td class="align-middle">{{orderObject.homecarePatientId.idAppUser.phoneNumber}}</td>
             </tr>
 
+            <tr *ngIf="orderObject.dateTreatementStart!=undefined && orderObject.dateTreatementEnd!=undefined">
+              <td class="align-middle">Tanggal Penanganan</td>
+              <td class="align-middle"> {{convertDateTime(orderObject.dateTreatementStart)}} s.d {{convertDateTime(orderObject.dateTreatementEnd)}}
+                 ({{orderObject.sumOfDays}} hari)
+              </td>
+            </tr>
+
           </table>
         </div>
       </div>
@@ -92,11 +99,13 @@
             <tr class="table-info">
               <th>Nama Perawat</th>
               <th>Surat Tanda Registrasi</th>
+              <th>Tgl Penanganan</th>
               <th>Aksi</th>
             </tr>
             <tr *ngFor="let record2 of orderObject.homecareTransactionCaregiverlistList;">
               <td class="align-middle">{{record2.caregiverName}}</td>
               <td class="align-middle">{{record2.registerNurseNumber}}</td>
+              <td class="align-middle">{{convertDateTime(record2.date)}}</td>
               <td>
                 <div class="btn-group-vertical btn-group-xs align-middle">
                   <input type="button" value="Delete" class="btn btn-warning"

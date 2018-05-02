@@ -32,7 +32,7 @@ export class AssignperawatComponent implements OnInit {
               private dataTransferService: DatatransferService,
               private caregiverListSvc: CaregiverlistService,
               private flashMessage: FlashMessagesService,
-              private utiltyService: UtilityService,
+              private utilityService: UtilityService,
               private orderListService: OrderlistService) {
   }
 
@@ -135,7 +135,7 @@ export class AssignperawatComponent implements OnInit {
   }
 
   formatDate(date) {
-    return this.utiltyService.milisToDateText(new Date(date));
+    return this.utilityService.milisToDateText(new Date(date));
   }
 
   setDateProperties(date) {
@@ -160,5 +160,9 @@ export class AssignperawatComponent implements OnInit {
     this.years = year;
     this.hours = time;
     this.day = dayName;
+  }
+
+  convertDateTime(val:number){
+    return this.utilityService.milisToDateText(new Date(val));
   }
 }
