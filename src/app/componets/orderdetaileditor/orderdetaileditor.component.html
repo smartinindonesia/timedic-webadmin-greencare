@@ -1,0 +1,151 @@
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" *ngIf="order">
+  <div class="row">
+    <ol class="breadcrumb">
+      <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+      <li class="active">Data Pemesanan / Daftar Pemesanan / Edit pesanan</li>
+    </ol>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Detail Pemesanan</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <table class="table table-hover">
+
+            <tr>
+              <td class="align-middle">Nomor Pemesanan (Kode)</td>
+              <td class="align-middle">{{order.orderNumber}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Nama Pasien</td>
+              <td class="align-middle">{{order.homecarePatientId.name}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Nama Pemesan</td>
+              <td class="align-middle">{{order.homecarePatientId.idAppUser.frontName}}
+                {{order.homecarePatientId.idAppUser.middleName}}
+                {{order.homecarePatientId.idAppUser.lastName}}
+              </td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Layanan yang diinginkan</td>
+              <td class="align-middle">{{order.selectedService}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Tanggal Kunjungan</td>
+              <td class="align-middle">{{convertDateTime(order.date)}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Tanggal Pemesanan</td>
+              <td class="align-middle">{{convertDateTime(order.dateOrderIn)}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Kontak</td>
+              <td class="align-middle">{{order.homecarePatientId.idAppUser.phoneNumber}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Deskripsi</td>
+              <td class="align-middle">{{order.transactionDescription}}</td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Status Pembayaran Harga DP</td>
+              <td class="align-middle">
+                {{convertToRupiah(order.prepaidPrice)}}<br>
+                <div *ngIf="order.paymentPrepaidPriceStatusId">
+                  <input type="button" [ngClass]="{disabled:(order.paymentPrepaidPriceStatusId.id == 1)}"
+                         class="btn btn-success btn-xs"
+                         value="Paid" (click)="updateOrderPrepaidPrice(order,1)"/>
+                  <input type="button" [ngClass]="{disabled:(order.paymentPrepaidPriceStatusId.id == 2)}"
+                         class="btn btn-danger btn-xs"
+                         value="Unpaid" (click)="updateOrderPrepaidPrice(order,2)"/>
+                </div>
+                <div *ngIf="!order.paymentPrepaidPriceStatusId">
+                  <input type="button" class="btn btn-success btn-xs"
+                         value="Paid" (click)="updateOrderPrepaidPrice(order,1)"/>
+                  <input type="button" class="btn btn-danger btn-xs"
+                         value="Unpaid" (click)="updateOrderPrepaidPrice(order,2)"/>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Harga Perkiraan</td>
+              <td class="align-middle">
+                {{order.predictionPrice}}
+              </td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Status Pembayaran Harga Tetap</td>
+              <td class="align-middle">{{convertToRupiah(order.fixedPrice)}}<br>
+                <div *ngIf="order.paymentFixedPriceStatusId">
+                  <input type="button" [ngClass]="{disabled:(order.paymentFixedPriceStatusId.id == 1)}"
+                         class="btn btn-success btn-xs"
+                         value="Paid" (click)="updateOrderFixedPrice(order,1)"/>
+                  <input type="button" [ngClass]="{disabled:(order.paymentFixedPriceStatusId.id == 2)}"
+                         class="btn btn-danger btn-xs"
+                         value="Unpaid" (click)="updateOrderFixedPrice(order,2)"/>
+                </div>
+                <div *ngIf="!order.paymentFixedPriceStatusId">
+                  <input type="button" class="btn btn-success btn-xs"
+                         value="Paid" (click)="updateOrderFixedPrice(order,1)"/>
+                  <input type="button" class="btn btn-danger btn-xs"
+                         value="Unpaid" (click)="updateOrderFixedPrice(order,2)"/>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Total Hari Perawatan</td>
+              <td class="align-middle">
+                <input type="number" [(ngModel)]="sumOfDays"/> <input type="button" class="btn btn-success btn-xs"
+                                                                            value="set" (click)="updateOrderDaySum(order, sumOfDays)"/>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Tanggal Penanganan</td>
+              <td class="align-middle">
+                <input type="date" [value]="order.dateTreatementStart"/> s.d <input type="date"
+                                                                                    [value]="order.dateTreatementEnd"/>
+                <input type="button" class="btn btn-success btn-xs" value="set"/>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Lokasi Pemesanan</td>
+              <td class="align-middle">
+                <input type="button"
+                       value="Lihat Lokasi"
+                       class="btn btn-info btn-xs"
+                       (click)="goToOrderMap(order)"/>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="align-middle">Keterangan Alamat Lengkap</td>
+              <td class="align-middle">{{order.fullAddress}}</td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
