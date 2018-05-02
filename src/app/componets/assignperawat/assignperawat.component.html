@@ -53,17 +53,13 @@
         <div class="panel-heading">Daftar Perawat</div>
         <div class="panel-body">
 
-          <div class="row">
-            <input type="date" class="form-control col-lg-4" [(ngModel)]="date" />
-          </div>
-
-          <div class="row">
-            <input type="time" class="form-control col-lg-4" [(ngModel)]="time"   />
-          </div>
-
-          <div class="row">
-            <input type="button" class="btn btn-success" value="Cari" (click)="searchClick()"/>
-          </div>
+          <table class="table">
+            <tr>
+              <td><input type="date" class="form-control col-sm-1" [(ngModel)]="date" /></td>
+              <td><input type="time" class="form-control col-sm-1" [(ngModel)]="time" /></td>
+              <td><input type="button" class="btn btn-success" value="Cari" (click)="searchClick()"/></td>
+            </tr>
+          </table>
 
           <table class="table table-hover">
             <tr class="table-info">

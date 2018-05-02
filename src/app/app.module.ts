@@ -54,6 +54,7 @@ import {UtilityService} from './services/utility.service';
 import { OrderfixedpricestatusComponent } from './componets/orderfixedpricestatus/orderfixedpricestatus.component';
 import { OrderprepaidpricestatusComponent } from './componets/orderprepaidpricestatus/orderprepaidpricestatus.component';
 import { Caregiverdetails2Component } from './componets/caregiverdetails2/caregiverdetails2.component';
+import { OrderchangedateComponent } from './componets/orderchangedate/orderchangedate.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -125,7 +126,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     CaregiverstatusComponent,
     OrderfixedpricestatusComponent,
     OrderprepaidpricestatusComponent,
-    Caregiverdetails2Component
+    Caregiverdetails2Component,
+    OrderchangedateComponent
   ],
   imports: [
     BrowserModule,

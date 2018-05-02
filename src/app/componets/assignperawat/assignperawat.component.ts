@@ -4,6 +4,7 @@ import {CaregiverlistService} from '../../services/caregiverlist.service';
 import {OrderlistService} from '../../services/orderlist.service';
 import {Router} from '@angular/router';
 import {UtilityService} from '../../services/utility.service';
+import {FlashMessagesService} from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-assignperawat',
@@ -28,6 +29,7 @@ export class AssignperawatComponent implements OnInit {
   constructor(private router: Router,
               private dataTransferService: DatatransferService,
               private caregiverListSvc: CaregiverlistService,
+              private flashMessage: FlashMessagesService,
               private utiltyService: UtilityService,
               private orderListService: OrderlistService) {
   }
@@ -41,23 +43,33 @@ export class AssignperawatComponent implements OnInit {
 
   onSubmitCaregiverItem(item: Object) {
     let that = this;
-    if (item['readysubmit']) {
-      console.log(item['frontName']);
-      var uploadItem =
-        {
-          'caregiverName': item['frontName'] + ' ' + item['middleName'] + ' ' + item['lastName'],
-          'registerNurseNumber': item['registerNurseNumber'],
-          'idHomecareClinic': {'id': 1},
-          'idTransaction': that.orderObject['id'],
-          'idCaregiver': item['id'],
-          'rateStatus': false
-        }
-      console.log(uploadItem);
-      that.caregiverListSvc.caregiverAssignSchedule(uploadItem).subscribe(data => {
-        this.getOrderById();
-      }, error => {
-        console.log(error);
-      });
+    let date = null;
+    if (this.date === undefined || this.time === undefined){
+      this.flashMessage.show('Tanggal dan waktu belum ditentukan!', {cssClass: 'alert-danger', timeout: 5000});
+    } else {
+      date = this.date + ' ' + this.time + ':00';
+      let convDate = new Date(date).toISOString();
+      let convDate2 = new Date(convDate).getTime();
+      console.log(convDate+' '+convDate2);
+      if (item['readysubmit']) {
+        console.log(item['frontName']);
+        var uploadItem =
+          {
+            'caregiverName': item['frontName'] + ' ' + item['middleName'] + ' ' + item['lastName'],
+            'registerNurseNumber': item['registerNurseNumber'],
+            'idHomecareClinic': {'id': 1},
+            'date': convDate2,
+            'idTransaction': that.orderObject['id'],
+            'idCaregiver': item['id'],
+            'rateStatus': false
+          }
+        console.log(uploadItem);
+        that.caregiverListSvc.caregiverAssignSchedule(uploadItem).subscribe(data => {
+          this.getOrderById();
+        }, error => {
+          console.log(error);
+        });
+      }
     }
   }
 
