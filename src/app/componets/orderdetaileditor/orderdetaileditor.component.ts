@@ -14,7 +14,9 @@ import {UtilityService} from '../../services/utility.service';
 export class OrderdetaileditorComponent implements OnInit {
 
   order: Object;
-  sumOfDays:number;
+  sumOfDays: number;
+  startDate: any;
+  endDate: any;
 
   constructor(private router: Router,
               private dataTransferService: DatatransferService,
@@ -31,7 +33,13 @@ export class OrderdetaileditorComponent implements OnInit {
     } else {
       this.order = this.dataTransferService.getDataTransfer();
     }
-    this.sumOfDays = this.order['sumOfDays'];
+    this.setOrderDetail(this.order);
+  }
+
+  setOrderDetail(order:Object){
+    this.sumOfDays = order['sumOfDays'];
+    this.startDate = this.getDateISO(order['dateTreatementStart']);
+    this.endDate = this.getDateISO(order['dateTreatementEnd']);
   }
 
   goToOrderMap(data: Object) {
@@ -69,16 +77,43 @@ export class OrderdetaileditorComponent implements OnInit {
     return this.utilityService.milisToDateText(new Date(val));
   }
 
+  getDateISO(val: number) {
+    return this.utilityService.milisToDateOnly(val);
+  }
+
   getDataDetails() {
     this.orderListService.getOrderById(this.order['id']).subscribe(
       data => {
         this.order = data;
-        this.sumOfDays = this.order['sumOfDays'];
+        this.setOrderDetail(data);
         console.log(data);
       }, error => {
         console.log('ini sedang error');
         console.log(error);
       });
+  }
+
+  updateServiceDate(orders: Object){
+    var myStDate = new Date(this.startDate);
+    var myEdDate = new Date(this.endDate);
+    let updateparams = {
+      'dateTreatementStart': myStDate.getTime(),
+      'dateTreatementEnd': myEdDate.getTime()
+    };
+    this.orderListService.updateOrder(updateparams, orders['id']).subscribe(data => {
+        this.flashMessage.show('Tanggal transaksi ' + this.order['homecarePatientId']['name'] + ' telah berhasil dirubah', {
+          cssClass: 'alert-success',
+          timeout: 5000
+        });
+        this.getDataDetails();
+      }, error => {
+        console.log(error);
+        this.flashMessage.show('Tanggal transaksi ' + this.order['homecarePatientId']['name'] + ' gagal dirubah! mohon periksa kembali', {
+          cssClass: 'alert-danger',
+          timeout: 5000
+        });
+      }
+    );
   }
 
   updateOrderDaySum(orders: Object, val: number) {

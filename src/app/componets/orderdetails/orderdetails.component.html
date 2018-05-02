@@ -48,7 +48,7 @@
 
             <tr>
               <td class="align-middle">Tanggal Pemesanan</td>
-              <td class="align-middle">{{convertDateTime(order.dateOrderConv)}}</td>
+              <td class="align-middle">{{convertDateTime(order.dateOrderIn)}}</td>
             </tr>
 
             <tr>
@@ -102,8 +102,7 @@
 
             <tr *ngIf="order.dateTreatementStart!=undefined && order.dateTreatementEnd!=undefined">
               <td class="align-middle">Tanggal Penanganan</td>
-              <td class="align-middle"> {{convertDateTime(order.dateTreatementStart)}}
-                <input type="date"/> s.d {{convertDateTime(order.dateTreatementEnd)}}<input type="date"/> <input type="button" class="btn btn-success btn-xs" value="set"/>
+              <td class="align-middle"> {{convertDateTime(order.dateTreatementStart)}} s.d {{convertDateTime(order.dateTreatementEnd)}}
               </td>
             </tr>
 

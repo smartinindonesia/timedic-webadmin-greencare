@@ -56,4 +56,8 @@ export class UtilityService {
     return dayName + ', ' + day + ' ' + monthNames[monthIndex] + ' ' + year + ' : ' + time;
   }
 
+  milisToDateOnly(milis:number){
+    return new Date(milis).toISOString();
+  }
+
 }

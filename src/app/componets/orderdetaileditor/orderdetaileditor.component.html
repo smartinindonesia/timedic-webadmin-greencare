@@ -120,9 +120,8 @@
             <tr>
               <td class="align-middle">Tanggal Penanganan</td>
               <td class="align-middle">
-                <input type="date" [value]="order.dateTreatementStart"/> s.d <input type="date"
-                                                                                    [value]="order.dateTreatementEnd"/>
-                <input type="button" class="btn btn-success btn-xs" value="set"/>
+                <input type="date" [(ngModel)]="startDate"/> s.d <input type="date" [(ngModel)]="endDate"/>
+                <input type="button" class="btn btn-success btn-xs" value="set" (click)="updateServiceDate(order)"/>
               </td>
             </tr>
 
